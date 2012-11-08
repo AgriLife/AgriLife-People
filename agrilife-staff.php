@@ -261,6 +261,25 @@ function staff_add_image_sizes() {
 }
 
 /**
+ * The staff listing shortcode. [staff_listing]
+ *
+ * Shows the entries in the staff custom post type. Just points to the archive page.
+ **
+ */
+function staff_listing_shortcode() {
+	global $post;
+
+	$paged = 1; 
+	if ( get_query_var('paged') ) $paged = get_query_var('paged'); 
+	if ( get_query_var('page') ) $paged = get_query_var('page'); 
+	 
+	query_posts( '&post_type=staff&post_status=publish&posts_per_page='.get_option('posts_per_page').'&paged=' . $paged ); 
+	include( 'archive-staff.php');
+
+}
+add_shortcode('staff_listing', 'staff_listing_shortcode');
+
+/**
  * Get the requested templates
  */
 add_filter( 'archive_template', 'staff_get_archive_template' );
@@ -295,5 +314,3 @@ function staff_get_single_template( $single_template ) {
   }
   return $single_template;
 }
-
-print_r( get_intermediate_image_sizes() );
