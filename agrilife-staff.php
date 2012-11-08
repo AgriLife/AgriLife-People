@@ -244,3 +244,19 @@ function add_class_to_cpt_menu($classes)
 }
 
 add_filter('nav_menu_css_class', 'add_class_to_cpt_menu');
+
+/**
+ * Create images sizes
+ *
+ * staff_single - 175x175
+ * staff_archive - 70x70
+ */
+register_activation_hook( __FILE__, 'staff_add_image_sizes' );
+
+function staff_add_image_sizes() {
+
+  add_image_size( 'staff_single', 175, 175, true );
+  add_image_size( 'staff_archive', 70, 70, true );
+
+}
+
