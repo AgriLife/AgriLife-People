@@ -14,29 +14,6 @@ get_header(); ?>
 
           <div id="wrap">
                <div id="content" role="main">
-				
-               <?php
-               if (($options['extension_type'] == 2 || $options['extension_type'] == 3) && $isextensiononly) :
-               		require_once (MY_THEME_FOLDER . '/includes/counties.php');
-					require_once (MY_THEME_FOLDER . '/includes/nusoap/nusoap.php');
-                    // For County Extension Offices
-                    // This pulls from a managed staff database web service
-                    if ( have_posts() ) while ( have_posts() ) : the_post();
-                         county_office_info(); ?>
-                        
-                        
-                         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                         <h1 class="entry-title"><?php the_title(); ?></h1>                   
-                              <div class="entry-content">
-                                   <?php the_content(); ?>
-                              </div><!-- .entry-content -->
-                              <?php show_county_directory($options); ?>
-                         </div><!-- #post-## -->
-                    <?php endwhile; // end of the loop. ?>
-                        
-               <?php else:
-                    // Everyone else gets info from 'Staff' custom post type ?>
-                   
                     <h1 class="entry-title">Staff</h1>
                          <div class="staff-search-form">
                               <label>
@@ -92,7 +69,6 @@ get_header(); ?>
                          </div>
                          <?php wp_reset_query(); ?>
          
-               <?php endif;?>
 
                </div><!-- #content -->
 
