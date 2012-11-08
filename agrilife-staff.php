@@ -191,7 +191,7 @@ function box_meta_save($post_id)
  
      // check user permissions
 
-       if ( array('job_posting','staff','tests') == $_POST['post_type'] )
+       if ( array( 'staff' ) == $_POST['post_type'] )
        {
          if ( !current_user_can( 'edit_page', $post_id ) )
          return;
@@ -251,7 +251,7 @@ add_filter('nav_menu_css_class', 'add_class_to_cpt_menu');
  * staff_single - 175x175
  * staff_archive - 70x70
  */
-register_activation_hook( __FILE__, 'staff_add_image_sizes' );
+add_action( 'init', 'staff_add_image_sizes' );
 
 function staff_add_image_sizes() {
 
@@ -260,3 +260,40 @@ function staff_add_image_sizes() {
 
 }
 
+/**
+ * Get the requested templates
+ */
+add_filter( 'archive_template', 'staff_get_archive_template' );
+function staff_get_archive_template( $archive_template ) {
+  global $post;
+  $plugindir = dirname( __FILE__ );
+  
+  if( is_post_type_archive ( 'staff' ) ) {
+    $archive_template = $plugindir . '/archive-staff.php';
+  }
+  return $archive_template;
+}
+
+add_filter( 'search_template', 'staff_get_search_template' );
+function staff_get_search_template( $search_template ) {
+  global $post;
+  $plugindir = dirname( __FILE__ );
+  
+  if( get_query_var( 'post_type' ) == 'staff' ) {
+    $search_template = $plugindir . '/archive-staff.php';
+  }
+  return $search_template;
+}
+
+add_filter( 'single_template', 'staff_get_single_template' );
+function staff_get_single_template( $single_template ) {
+  global $post;
+  $plugindir = dirname( __FILE__ );
+  
+  if( get_query_var( 'post_type' ) == 'staff' ) {
+    $single_template = $plugindir . '/single-staff.php';
+  }
+  return $single_template;
+}
+
+print_r( get_intermediate_image_sizes() );
