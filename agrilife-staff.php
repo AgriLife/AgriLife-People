@@ -50,6 +50,8 @@ class AgriLife_Staff {
 
   public function init() {
 
+    // Create the custom post type
+    $als_posttype = new ALS_PostType;
 
     
   }
