@@ -11,6 +11,7 @@
 
 define( 'PLUGIN_NAME', 'AgriLife Staff' );
 define( 'PLUGIN_DIRNAME', 'agrilife-staff' );
+define( 'META_PREFIX', 'als_' );
 
 // Autoload all classes
 spl_autoload_register( 'AgriLife_Staff::autoload' );
@@ -73,6 +74,9 @@ class AgriLife_Staff {
 
     // Create the Type taxonomy
     $als_taxonomy = new ALS_Taxonomy;
+
+    // Create the Metaboxes
+    $als_metabox = new ALS_Metabox;
 
   }
 
