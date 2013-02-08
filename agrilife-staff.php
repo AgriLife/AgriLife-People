@@ -20,7 +20,7 @@ class AgriLife_Staff {
 
   private static $instance;
 
-  private static $version = '2.0';
+  public $version = '2.0';
 
   private static $file = __FILE__;
 
@@ -36,6 +36,9 @@ class AgriLife_Staff {
 
     // Run the upgrade script
     register_activation_hook( self::$file, array( $this, 'upgrade' ) );
+
+    // Testing
+    // add_action( 'init', array( $this, 'upgrade'));
 
     // Load up the plugin
     add_action( 'init', array( $this, 'init' ) ); 
@@ -64,7 +67,7 @@ class AgriLife_Staff {
   }
 
   public function upgrade() {
-
+    $als_upgrade = new ALS_Upgrade;
   }
 
   public function init() {
@@ -77,6 +80,11 @@ class AgriLife_Staff {
 
     // Create the Metaboxes
     $als_metabox = new ALS_Metabox;
+
+    $staff = get_posts( array( 'post_type' => 'staff', 'post_status' => 'publish'));
+    foreach ( $staff as $s ) {
+      $m = get_post_meta( $s->ID );
+    }
 
   }
 
