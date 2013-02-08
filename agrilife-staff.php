@@ -53,6 +53,8 @@ class AgriLife_Staff {
     // Create the custom post type
     $als_posttype = new ALS_PostType;
 
+    // Create the Type taxonomy
+    $als_taxonomy = new ALS_Taxonomy;
     
   }
 
