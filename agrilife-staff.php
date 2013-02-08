@@ -30,6 +30,9 @@ class AgriLife_Staff {
     // Run an activation hook to make sure we are using the correct WP version
     register_activation_hook( self::$file, array( $this, 'activation_check' ) );
 
+    // Make sure the Meta Box plugin is installed
+    add_action( 'init', array( $this, 'meta_box_check' ) );
+
     // Run the upgrade script
     register_activation_hook( self::$file, array( $this, 'upgrade' ) );
 
@@ -44,6 +47,21 @@ class AgriLife_Staff {
 
   }
 
+  public function meta_box_check() {
+
+    // Make sure that the Meta Box plugin is installed and activated
+    if ( ! function_exists( 'rwmb_meta' ) ) {
+      echo '<div class="updated">';
+      __(
+        printf( '<p>You must install/activate the <a href="%s">Meta Box</a> plugin to use the Staff custom post type.</p>',
+          'http://wordpress.org/extend/plugins/meta-box/' ),
+        'agrilife'
+      );
+      echo '</div>';
+    }
+
+  }
+
   public function upgrade() {
 
   }
@@ -55,7 +73,7 @@ class AgriLife_Staff {
 
     // Create the Type taxonomy
     $als_taxonomy = new ALS_Taxonomy;
-    
+
   }
 
  /**
