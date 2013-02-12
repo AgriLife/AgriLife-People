@@ -37,9 +37,6 @@ class AgriLife_Staff {
     // Run the upgrade script
     register_activation_hook( self::$file, array( $this, 'upgrade' ) );
 
-    // Testing
-    // add_action( 'init', array( $this, 'upgrade'));
-
     // Load up the plugin
     add_action( 'init', array( $this, 'init' ) ); 
 

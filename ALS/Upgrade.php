@@ -26,11 +26,11 @@ class ALS_Upgrade {
 
 		$this->defaults['version'] = $this->version;
 
-		// if ( $this->check_new_install() === false ) {
+		if ( $this->check_new_install() === false ) {
 			$this->update_staff_meta();
-		// } else {
-		// 	$this->set_staff_options();
-		// }
+		}
+
+		$this->set_staff_options();
 
 	}
 
@@ -67,6 +67,7 @@ class ALS_Upgrade {
 		$args = array(
 			'post_type' => 'staff',
 			'post_status' => 'publish',
+			'posts_per_page' => -1,
 		);
 
 		$staff = get_posts( $args );
@@ -79,59 +80,61 @@ class ALS_Upgrade {
 
 		$old_meta = get_post_meta( $s->ID, $this->meta_name_old );
 
-		foreach ( $old_meta[0] as $k => $v ) {
+		if ( ! empty( $old_meta[0] ) ) {
+			foreach ( $old_meta[0] as $k => $v ) {
 
-			switch ( $k ) {
-				case 'firstname' :
-					$this->convert_firstname( $s->ID, $v );
-					break;
-				case 'lastname' :
-					$this->convert_lastname( $s->ID, $v );
-					break;
-				case 'position' :
-					$this->convert_position( $s->ID, $v );
-					break;
-				case 'room' :
-					$this->convert_room( $s->ID, $v );
-					break;
-				case 'website' :
-					$this->convert_website( $s->ID, $v );
-					break;
-				case 'phone' :
-					$this->convert_phone( $s->ID, $v );
-					break;
-				case 'email' :
-					$this->convert_email( $s->ID, $v );
-					break;
-				case 'undergraduate_1' :
-				case 'undergraduate_2' :
-					$this->convert_undergraduate( $s->ID, $v );
-					break;
-				case 'graduate_1' :
-				case 'graduate_2' :
-				case 'graduate_3' :
-					$this->convert_graduate( $s->ID, $v );
-					break;
-				case 'specialty' :
-					$this->convert_specialty( $s->ID, $v );
-					break;
-				case 'research' :
-					$this->convert_description( $s->ID, $v );
-					break;
-				case 'award_1' :
-				case 'award_2' :
-				case 'award_3' :
-					$this->convert_award( $s->ID, $v );
-					break;
-				case 'course_1' :
-				case 'course_2' :
-				case 'course_3' :
-				case 'course_4' :
-				case 'course_5' :
-					$this->convert_course( $s->ID, $v );
-					break;
+				switch ( $k ) {
+					case 'firstname' :
+						$this->convert_firstname( $s->ID, $v );
+						break;
+					case 'lastname' :
+						$this->convert_lastname( $s->ID, $v );
+						break;
+					case 'position' :
+						$this->convert_position( $s->ID, $v );
+						break;
+					case 'room' :
+						$this->convert_room( $s->ID, $v );
+						break;
+					case 'website' :
+						$this->convert_website( $s->ID, $v );
+						break;
+					case 'phone' :
+						$this->convert_phone( $s->ID, $v );
+						break;
+					case 'email' :
+						$this->convert_email( $s->ID, $v );
+						break;
+					case 'undergraduate_1' :
+					case 'undergraduate_2' :
+						$this->convert_undergraduate( $s->ID, $v );
+						break;
+					case 'graduate_1' :
+					case 'graduate_2' :
+					case 'graduate_3' :
+						$this->convert_graduate( $s->ID, $v );
+						break;
+					case 'specialty' :
+						$this->convert_specialty( $s->ID, $v );
+						break;
+					case 'research' :
+						$this->convert_description( $s->ID, $v );
+						break;
+					case 'award_1' :
+					case 'award_2' :
+					case 'award_3' :
+						$this->convert_award( $s->ID, $v );
+						break;
+					case 'course_1' :
+					case 'course_2' :
+					case 'course_3' :
+					case 'course_4' :
+					case 'course_5' :
+						$this->convert_course( $s->ID, $v );
+						break;
+				}
+
 			}
-
 		}
 
 	}
@@ -180,33 +183,57 @@ class ALS_Upgrade {
 
 	private function convert_undergraduate( $id, $value ) {
 
-		$undergrad = get_post_meta( $id, 'als_undergrad', true );
+		$undergrad = get_post_meta( $id, 'als_undergrad' );
+
+		if ( empty( $value ) )
+			return;
 
 		if ( ! empty( $undergrad ) ) {
-			$undergrad = unserialize( $undergrad );
+
+			delete_post_meta( $id, 'als_undergrad' );
+			$new_undergrad = array();
+
+			if ( is_string( $undergrad ) && $value !== $undergrad ) {
+				array_push( $new_undergrad, $undergrad );
+				array_push( $new_undergrad, $value );
+			} elseif ( is_array( $undergrad ) &&  ! in_array( $value, $undergrad ) ) {
+				$new_undergrad = $undergrad;
+				array_push( $new_undergrad, $value );
+			}
+
+			update_post_meta( $id, 'als_undergrad', $new_undergrad );
+			return;
+		} else {
+			update_post_meta( $id, 'als_undergrad', $value );
 		}
-
-		$undergrad[] = $value;
-
-		$new_undergrad = serialize( $undergrad );
-
-		update_post_meta( $id, 'als_undergrad', $new_undergrad );
 
 	}
 
 	private function convert_graduate( $id, $value ) {
 
-		$graduate = get_post_meta( $id, 'als_graduate', true );
+		$graduate = get_post_meta( $id, 'als_graduate' );
+
+		if ( empty( $value ) )
+			return;
 
 		if ( ! empty( $graduate ) ) {
-			$graduate = unserialize( $graduate );
+
+			delete_post_meta( $id, 'als_graduate' );
+			$new_graduate = array();
+
+			if ( is_string( $graduate ) && $value !== $graduate ) {
+				array_push( $new_graduate, $graduate );
+				array_push( $new_graduate, $value );
+			} elseif ( is_array( $graduate ) &&  ! in_array( $value, $graduate ) ) {
+				$new_graduate = $graduate;
+				array_push( $new_graduate, $value );
+			}
+
+			update_post_meta( $id, 'als_graduate', $new_graduate );
+			return;
+		} else {
+			update_post_meta( $id, 'als_graduate', $value );
 		}
-
-		$graduate[] = $value;
-
-		$new_graduate = serialize( $graduate );
-
-		update_post_meta( $id, 'als_graduate', $new_graduate );
 
 	}
 
@@ -224,35 +251,60 @@ class ALS_Upgrade {
 
 	private function convert_award( $id, $value ) {
 
-		$award = get_post_meta( $id, 'als_award', true );
+		$award = get_post_meta( $id, 'als_award' );
+
+		if ( empty( $value ) )
+			return;
 
 		if ( ! empty( $award ) ) {
-			$award = unserialize( $award );
+
+			delete_post_meta( $id, 'als_award' );
+			$new_award = array();
+
+			if ( is_string( $award ) && $value !== $award ) {
+				array_push( $new_award, $award );
+				array_push( $new_award, $value );
+			} elseif ( is_array( $award ) &&  ! in_array( $value, $award ) ) {
+				$new_award = $award;
+				array_push( $new_award, $value );
+			}
+
+			update_post_meta( $id, 'als_award', $new_award );
+			return;
+		} else {
+			update_post_meta( $id, 'als_award', $value );
 		}
-
-		$award[] = $value;
-
-		$new_award = serialize( $award );
-
-		update_post_meta( $id, 'als_award', $new_award );
 
 	}
 
 	private function convert_course( $id, $value ) {
 
-		$course = get_post_meta( $id, 'als_course', true );
+		$course = get_post_meta( $id, 'als_course' );
+
+		if ( empty( $value ) )
+			return;
 
 		if ( ! empty( $course ) ) {
-			$course = unserialize( $course );
+
+			delete_post_meta( $id, 'als_course' );
+			$new_course = array();
+
+			if ( is_string( $course ) && $value !== $course ) {
+				array_push( $new_course, $course );
+				array_push( $new_course, $value );
+			} elseif ( is_array( $course ) &&  ! in_array( $value, $course ) ) {
+				$new_course = $course;
+				array_push( $new_course, $value );
+			}
+
+			update_post_meta( $id, 'als_course', $new_course );
+			return;
+		} else {
+			update_post_meta( $id, 'als_course', $value );
 		}
 
-		$course[] = $value;
-
-		$new_course = serialize( $course );
-
-		update_post_meta( $id, 'als_course', $new_course );
-
 	}
+	
 	private function set_staff_options() {
 
 		update_option( $this->option_name, $this->defaults );
