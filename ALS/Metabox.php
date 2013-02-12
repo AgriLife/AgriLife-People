@@ -116,12 +116,17 @@ class ALS_Metabox {
 		);
 
 		$meta_boxes[] = array(
-			'id' => 'specialty',
-			'title' => 'Specialty',
-			'context' => 'normal',
+			'id'       => 'specialty',
+			'title'    => 'Specialty',
+			'context'  => 'normal',
 			'priority' => 'high',
-			'pages' => array( 'staff' ),
-			'fields' => array(
+			'pages'    => array( 'staff' ),
+			'fields'   => array(
+				array(
+					'name' => 'Section Label',
+					'id' => $prefix . 'specialty-label',
+					'type' => 'text',
+				),
 				array(
 					'name' => 'Specialty',
 					'id' => $prefix . 'specialty',
@@ -129,7 +134,7 @@ class ALS_Metabox {
 				),
 				array(
 					'name' => 'Description',
-					'id' => $prefix . 'description',
+					'id'   => $prefix . 'description',
 					'type' => 'textarea',
 				),
 			),
