@@ -78,11 +78,19 @@ class AgriLife_Staff {
     // Create the Metaboxes
     $als_metabox = new ALS_Metabox;
 
-    $staff = get_posts( array( 'post_type' => 'staff', 'post_status' => 'publish'));
-    foreach ( $staff as $s ) {
-      $m = get_post_meta( $s->ID );
-    }
+    add_filter( 'title_save_pre', array( $this, 'save_staff_title' ) );
 
+  }
+
+  public function save_staff_title( $staff_title ) {
+
+    $first = $_POST[META_PREFIX . 'first-name'];
+    $last = $_POST[META_PREFIX . 'last-name'];
+    if ( $_POST['post_type'] == 'staff' )
+      $staff_title = $last . ', ' . $first;
+
+    return $staff_title;
+    
   }
 
  /**
@@ -109,4 +117,5 @@ class AgriLife_Staff {
   }
 
 }
+
 new AgriLife_Staff;
