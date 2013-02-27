@@ -29,7 +29,7 @@ class ALS_PostType {
 			'labels' => $labels,
 			'public' => true,
 			'show_ui' => true,
-			'rewrite' => true,
+			'rewrite' => array( 'slug' => 'staff' ),
 			'supports' => array( 'thumbnail' ),
 		);
 
