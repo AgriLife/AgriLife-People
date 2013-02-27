@@ -85,6 +85,8 @@ class AgriLife_Staff {
 
     add_filter( 'title_save_pre', array( $this, 'save_staff_title' ) );
 
+    $this->add_image_sizes();
+
   }
 
   public function save_staff_title( $staff_title ) {
@@ -96,6 +98,13 @@ class AgriLife_Staff {
 
     return $staff_title;
     
+  }
+
+  public function add_image_sizes() {
+
+    add_image_size( 'staff_single', 175, 175, true );
+    add_image_size( 'staff_archive', 70, 70, true );
+
   }
 
  /**
