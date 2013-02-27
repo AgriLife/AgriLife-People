@@ -20,114 +20,83 @@ get_header(); ?>
 						<?php if ( has_post_thumbnail() ) {
   							the_post_thumbnail('staff_single'); 
 						} else  { 
-							echo '<img src="'.get_bloginfo("template_url").'/images/AgriLife-default-staff-image-single.png?v=100" class="alignleft" alt="AgriLife staff image default" title="AgriLife" />'; 
+							echo '<img src="'.get_bloginfo("template_url").'/img/AgriLife-default-staff-image-single.png?v=100" class="alignleft" alt="AgriLife staff image default" title="AgriLife" />'; 
 						}
 						?>
-						<?php $my_meta = get_post_meta($post->ID,'_my_meta',TRUE); ?>
 						<div class="staff-person-details">
 							<dl>	
-							<dt><?php echo $my_meta['firstname'].' '.$my_meta['lastname']; ?></dt>
+							<dt><?php echo rwmb_meta( 'als_first-name' ).' '.rwmb_meta( 'als_last-name' ); ?></dt>
 							
-							<?php if ($my_meta['position']) { ?> 
-								<dd class="role"><?php echo $my_meta['position'];?></dd>
-							<?php } ?>
+								<dd class="role"><?php echo rwmb_meta( 'als_position' );?></dd>
 							
-							<?php if ($my_meta['room']) { ?> 
-								<dd><?php echo $my_meta['room'];?></dd> 
-							<?php } ?>	
+								<dd><?php echo rwmb_meta( 'als_building-room' );?></dd> 
 							
-							<?php if ($my_meta['email']) { ?>							
-								<dd class="email"><a href="mailto:<?php echo $my_meta['email'];?>"><?php echo $my_meta['email'];?></a></dd>
-							<?php } ?>
+								<dd class="email"><a href="mailto:<?php echo rwmb_meta( 'als_email' );?>"><?php echo rwmb_meta( 'als_email' );?></a></dd>
 							
-							<?php if ($my_meta['phone']) { ?>
-								<dd><?php echo $my_meta['phone'];?></dd> 
-							<?php } ?> 
+								<dd><?php echo rwmb_meta( 'als_phone' );?></dd> 
 								
-							<?php if ($my_meta['website']) { ?>
-								<dd class="website"><a href="<?php echo $my_meta['website'];?>"><?php echo $my_meta['website'];?></a></dd> 
-							<?php } ?>							
+								<dd class="website"><a href="<?php echo rwmb_meta( 'als_website' );?>"><?php echo rwmb_meta( 'als_website' );?></a></dd> 
 							
-							<?php if ($my_meta['undergraduate_1']) { ?>						
-							<dt>Undergraduate Education</dt>
-							<?php } ?> 
-							
-							<?php if ($my_meta['undergraduate_1']) { ?>
-								<dd><?php echo $my_meta['undergraduate_1']; ?></dd>
-							<?php } ?> 
-								
-							<?php if ($my_meta['undergraduate_2']) { ?>	
-								<dd><?php echo $my_meta['undergraduate_2'];?></dd>
-							<?php } ?> 
-							
-							<?php if ($my_meta['graduate_1']) { ?>						
-							<dt>Graduate Education</dt>
-							<?php } ?> 							
-								
-							<?php if ($my_meta['graduate_1']) { ?>							
-								<dd><?php echo $my_meta['graduate_1'];?></dd>
-							<?php } ?> 
-								
-							<?php if ($my_meta['graduate_2']) { ?>	 						
-								<dd><?php echo $my_meta['graduate_2']; ?></dd>								
-							<?php } ?> 	
-							
-							<?php if ($my_meta['graduate_3']) { ?>							
-								<dd><?php echo $my_meta['graduate_3'];?></dd>
-							<?php } ?> 
-							
-							<?php if ($my_meta['specialty']) { ?>						
-							<dt>Specialty</dt>
-							<?php } ?> 							
-								
-							<?php if ($my_meta['specialty']) { ?>							
-								<dd><?php echo $my_meta['specialty'];?></dd>
-							<?php } ?> 
-							
-							<?php if ($my_meta['research']) { ?>							
-								<dd><?php echo $my_meta['research'];?></dd>
-							<?php } ?>
-							 
-							<?php if ($my_meta['award_1']) { ?>						
-							<dt>Awards</dt>
-							<?php } ?> 							
-								
-							<?php if ($my_meta['award_1']) { ?>							
-								<dd><?php echo $my_meta['award_1'];?></dd>
-							<?php } ?> 
-								
-							<?php if ($my_meta['award_2']) { ?>	 						
-								<dd><?php echo $my_meta['award_2']; ?></dd>								
-							<?php } ?> 	
-							
-							<?php if ($my_meta['award_3']) { ?>							
-								<dd><?php echo $my_meta['award_3'];?></dd>
-							<?php } ?> 
-							 
-							<?php if ($my_meta['course_1']) { ?>						
-							<dt>Courses Taught</dt>
-							<?php } ?> 							
-								
-							<?php if ($my_meta['course_1']) { ?>							
-								<dd><?php echo $my_meta['course_1'];?></dd>
-							<?php } ?> 
-								
-							<?php if ($my_meta['course_2']) { ?>	 						
-								<dd><?php echo $my_meta['course_2']; ?></dd>								
-							<?php } ?> 	
-							
-							<?php if ($my_meta['course_3']) { ?>							
-								<dd><?php echo $my_meta['course_3'];?></dd>
-							<?php } ?> 	
+							<?php $undergrad = rwmb_meta( 'als_undergrad' );
+							if ( $undergrad )  {
+								echo '<dt>Undergraduate Education</dt>';
+							}
+							if ( is_array( $undergrad ) ) {
+								foreach( $undergrad as $u ) {
+									echo '<dd>' . $u . '</dd>';
+								}
+							} else {
+								echo '<dd>' . $undergrad . '</dd>';
+							}
+							?>
 
-							<?php if ($my_meta['course_4']) { ?>	 						
-								<dd><?php echo $my_meta['course_4']; ?></dd>								
-							<?php } ?> 	
-							
-							<?php if ($my_meta['course_5']) { ?>							
-								<dd><?php echo $my_meta['course_5'];?></dd>
-							<?php } ?>							
-																				
+							<?php $graduate = rwmb_meta( 'als_graduate' );
+							if ( $graduate ) {
+								echo '<dt>Graduate Education</dt>';
+							}
+							if ( is_array( $graduate ) ) {
+								foreach( $graduate as $g ) {
+									echo '<dd>' . $g . '</dd>';
+								}
+							} else {
+								echo '<dd>' . $graduate . '</dd>';
+							}
+							?>
+
+							<?php $specialty = rwmb_meta( 'als_specialty-label' );
+							if ( $specialty ) {
+								echo '<dt>' . $specialty . '</dt>';
+								echo '<dd>' . rwmb_meta( 'als_specialty' ) . '</dd>';
+								echo '<dd>' . rwmb_meta( 'als_description' ) . '</dd>';
+							}
+							?>
+
+							<?php $awards = rwmb_meta( 'als_award' );
+							if ( $awards ) {
+								echo '<dt>Awards</dt>';
+							}
+							if ( is_array( $awards ) ) {
+								foreach( $awards as $a ) {
+									echo '<dd>' . $a . '</dd>';
+								}
+							} else {
+								echo '<dd>' . $awards . '</dd>';
+							}
+							?>
+
+							<?php $courses = rwmb_meta( 'als_course' );
+							if ( $courses ) {
+								echo '<dt>Courses Taught</dt>';
+							}
+							if ( is_array( $courses ) ) {
+								foreach( $courses as $c ) {
+									echo '<dd>' . $c . '</dd>';
+								}
+							} else {
+								echo '<dd>' . $courses . '</dd>';
+							}
+							?>
+								
 							</dl>	
 								
 						</div>
