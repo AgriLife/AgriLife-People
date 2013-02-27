@@ -13,6 +13,7 @@
 // ', 'AgriLife Staff' );
 define( 'PLUGIN_DIRNAME', 'agrilife-staff' );
 define( 'STAFF_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'STAFF_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'META_PREFIX', 'als_' );
 
 // Autoload all classes
@@ -79,6 +80,9 @@ class AgriLife_Staff {
 
     // Create the Metaboxes
     $als_metabox = new ALS_Metabox;
+
+    // Make the shortcode
+    $als_shortcode = new ALS_Shortcode;
 
     // Direct to the proper templates
     $als_templates = new ALS_Templates;

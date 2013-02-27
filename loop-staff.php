@@ -37,7 +37,6 @@
 	<?php	
 			while (have_posts()) : the_post();
 				global $post;
-				$my_meta = get_post_meta($post->ID,'_my_meta',TRUE);
 				    ?>
 				
 				     <li class="staff-listing-item">
@@ -46,16 +45,16 @@
 				          <?php if ( has_post_thumbnail() ) {
 				                 the_post_thumbnail('staff_archive');
 				          } else  {
-				               echo '<img src="'.get_bloginfo("template_url").'/images/AgriLife-default-staff-image.png?v=100" alt="AgriLife Logo" title="AgriLife" />';
+				               echo '<img src="'.STAFF_PLUGIN_DIR_URL.'img/agrilife-default-staff-image-single.png" alt="AgriLife Logo" title="AgriLife" width="70" height="70" />';
 				          }
 				          ?></a>
 				               <hgroup class="staff-head">
-				               <h2 class="staff-title" title="<?php the_title(); ?>"><a href="<?php the_permalink(); ?>"><?php echo $my_meta['firstname'].' '.$my_meta['lastname']; ?></a></h2>
-				               <h3 class="staff-position"><?php echo $my_meta['position']; ?></h3>
+				               <h2 class="staff-title" title="<?php the_title(); ?>"><a href="<?php the_permalink(); ?>"><?php echo rwmb_meta( 'als_first-name' ).' '.rwmb_meta( 'als_last-name' ); ?></a></h2>
+				               <h3 class="staff-position"><?php echo rwmb_meta( 'als_position' ); ?></h3>
 				               </hgroup>                                  
 				               <div class="staff-contact-details">
-				                    <p class="staff-phone tel"><?php echo $my_meta['phone']; ?></p>
-				                    <p class="staff-email email"><a href="mailto:<?php echo $my_meta['email']; ?>"><?php echo $my_meta['email']; ?></a></p>
+				                    <p class="staff-phone tel"><?php echo rwmb_meta( 'als_phone' ); ?></p>
+				                    <p class="staff-email email"><a href="mailto:<?php echo rwmb_meta( 'als_email' ); ?>"><?php echo rwmb_meta( 'als_email' ); ?></a></p>
 				               </div>
 				          </div>
 				          </a>
