@@ -1,0 +1,120 @@
+.single-staff span.read-more a {
+	margin-top: 0;
+	float: none;
+	padding-top: .3em;
+}
+
+.staff-search-form {
+	margin-bottom: 20px;
+	padding: 10px;
+	background: #edece4;
+	border-top: 1px solid #d5d1bf;
+	border-bottom: 1px solid #d5d1bf;
+	position: relative;
+}
+
+.staff-search-form .searchform {
+	top: 8px;
+}
+
+.staff-search-form label h4 {
+	margin-bottom: 5px;
+}
+
+.staff-listing-ul {
+	border-top: double #d5d1bf;	
+}
+
+.staff-listing-ul,
+.staff-listing-item {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.staff-listing-item {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	overflow: hidden;
+	display: block;
+	background: #EAE6D2;
+	background: rgba(217, 208, 173, .30);
+	border-bottom: 1px solid #fafaf6;
+}
+
+
+.staff-listing-item:nth-child(even) {
+	background: #EAE6D2;
+	background: rgba(217, 208, 173, .10);
+}
+
+.staff-container {
+	overflow: hidden;
+	display: block;	
+	text-decoration: none;
+	padding: 10px;
+	border-bottom: 1px solid #d5d1c3;		
+}
+
+
+.staff-listing-item:hover,
+a.staff-listing-link:hover {
+	background: #f1efce;
+	border-bottom: 1px solid #9f9490;		
+}
+
+.staff-image {
+	float: left;
+	margin-right: 10px;
+}
+
+.staff-title {
+	font: 90% "minion-pro-1","minion-pro-2", 'Cambria', 'Georgia', 'Times New Roman', serif;
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.staff-phone,
+.staff-email,
+.staff-position {
+	font-size: 14px;
+	color: #433C3A;	
+}
+
+.staff-position {
+	font-weight: bold;	
+}
+
+.staff-head {
+	width: 45%;
+	float: left;
+}
+
+.staff-contact-details {
+	font-size: 14px;
+	color: #433C3A;
+	float: left
+	width: 30%;
+	padding-left: 20px;	
+}
+
+.staff-contact-details p{
+	margin: 7px 0;
+}
+
+#content .stafftable ul {
+	margin: 0;
+	list-style: none;
+}
+
+#content .stafftable ul ul {
+	margin: 0 0 0 2em;
+	list-style: circle;
+}
+
+.county-staff-list .staff-contact-details {
+	width: 45%;
+}
+

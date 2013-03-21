@@ -64,6 +64,9 @@ class AgriLife_Staff {
 
   public function init() {
 
+    // Load the plugin assets
+    $als_assets = new ALS_Assets;
+    
     // Create the custom post type
     $als_posttype = new ALS_PostType;
 
