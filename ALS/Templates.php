@@ -29,7 +29,7 @@ class ALS_Templates {
 		global $post;
 
 		if ( get_query_var( 'post_type' ) == 'staff' ) {
-			$search_template = STAFF_PLUGIN_DIR_PATH . '/search-staff.php';
+			$search_template = STAFF_PLUGIN_DIR_PATH . 'search-staff.php';
 		}
 
 		return $search_template;
