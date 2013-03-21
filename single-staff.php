@@ -17,12 +17,14 @@ get_header(); ?>
 			
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>		
 					<section class="entry-content">
-						<?php if ( has_post_thumbnail() ) {
-  							the_post_thumbnail('staff_single'); 
-						} else  { 
-							echo '<img src="'.STAFF_PLUGIN_DIR_URL.'img/agrilife-default-staff-image-single.png" alt="AgriLife Logo" title="AgriLife" width="175" height="175" />';
-						}
-						?>
+						<div class="staff-single-image">
+							<?php if ( has_post_thumbnail() ) {
+	  							the_post_thumbnail('staff_single'); 
+							} else  { 
+								echo '<img src="'.STAFF_PLUGIN_DIR_URL.'img/agrilife-default-staff-image-single.png" alt="AgriLife Logo" title="AgriLife" width="175" height="175" />';
+							}
+							?>
+						</div>
 						<div class="staff-person-details">
 							<dl>	
 							<dt><?php echo rwmb_meta( 'als_first-name' ).' '.rwmb_meta( 'als_last-name' ); ?></dt>

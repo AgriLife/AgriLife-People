@@ -118,3 +118,29 @@ a.staff-listing-link:hover {
 	width: 45%;
 }
 
+.staff-single-image {
+	float: left;	
+	width: 25%;
+}
+
+.staff-person-details {
+	float: left;
+	margin-left: 20px;
+	width: 70%;
+}
+
+#content .staff-person-details dd {
+	margin: 0;
+	padding: 2px 0;
+}
+
+img.attachment-staff_single {
+	float: left;
+}
+
+.type-staff section {
+	width: 100%;
+	float: left;
+}
+
+
