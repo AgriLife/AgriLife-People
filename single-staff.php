@@ -107,7 +107,6 @@ get_header(); ?>
 					<footer class="entry-meta">
 
 						<section class="entry-utility">
-							<?php agriflex_posted_in(); ?>
 							<?php edit_post_link( __( 'Edit', 'agriflex' ), '<span class="edit-link">', '</span>' ); ?>
 						</section><!-- .entry-utility -->
 					</footer><!-- .entry-meta -->
