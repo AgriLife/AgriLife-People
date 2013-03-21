@@ -9,6 +9,7 @@ class ALS_Templates {
 		add_filter( 'archive_template', array( $this, 'get_archive_template' ) );
 		add_filter( 'search_template', array( $this, 'get_search_template' ) );
 		add_filter( 'single_template', array( $this, 'get_single_template' ) );
+		add_filter( 'taxonomy_template', array( $this, 'get_types_template' ) );
 
 	}
 
@@ -47,5 +48,17 @@ class ALS_Templates {
 		return $single_template;
 
 	} 
+
+	public function get_types_template( $types_template ) {
+
+		global $post;
+
+		if ( get_query_var( 'taxonomy' ) == 'types' ) {
+			$types_template = STAFF_PLUGIN_DIR_PATH . '/taxonomy-types.php';
+		}
+
+		return $types_template;
+
+	}
 
 }

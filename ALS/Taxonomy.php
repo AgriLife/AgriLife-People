@@ -29,7 +29,7 @@ class ALS_Taxonomy {
 			'labels' => $labels,
 			'show_ui' => true,
 			'show_admin_column' => true,
-			'rewrite' => true,
+			'rewrite' => array( 'slug' ),
 		);
 
 		// Register the Type taxonomy
