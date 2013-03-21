@@ -2,14 +2,15 @@
 
 class ALS_Shortcode {
 
-	private static $instance;
-
 	public function __construct() {
 
 		add_shortcode( 'staff_listing', array( $this, 'create_shortcode' ) );
 
 	}
 
+	/**
+	 * The shortcode logic
+	 */
 	public function create_shortcode() {
 
 		global $post;

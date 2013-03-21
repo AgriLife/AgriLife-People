@@ -2,8 +2,9 @@
 
 class ALS_Taxonomy {
 
-	private static $instance;
-
+	/**
+	 * Builds and registers the custom taxonomy
+	 */
 	public function __construct() {
 
 		self::$instance = $this;
@@ -34,12 +35,6 @@ class ALS_Taxonomy {
 
 		// Register the Type taxonomy
 		register_taxonomy( 'types', 'staff', $args );
-
-	}
-
-	public static function get_instance() {
-
-		return self::$instance;
 
 	}
 

@@ -1,10 +1,6 @@
 <?php
 /**
  * The Template for displaying all staff single posts.
- *
- * @package WordPress
- * @subpackage agriflex
- * @since agriflex 1.0
  */
 
 get_header(); ?>

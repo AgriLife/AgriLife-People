@@ -1,14 +1,7 @@
 <?php
 /**
- * @package WordPress
- *
  * The Template for displaying 'staff' custom post type by taxonomy
- *
- * @package WordPress
- * @subpackage agriflex
- * @since agriflex 1.0
  */
-
 
 get_header(); ?>
 

@@ -2,7 +2,7 @@
 /*
  * Plugin Name: AgriLife Staff
  * Plugin URI: https://github.com/channeleaton/AgriLife-Staff
- * Description: Creates a staff custom post type
+ * Description: Creates a staff custom post type. NOTICE: This plugin cannot be used with the AgriFlex2012 theme.
  * Version: 2.0
  * Author: J. Aaron Eaton
  * Author URI: http://channeleaton.com
@@ -25,6 +25,9 @@ class AgriLife_Staff {
 
   private static $file = __FILE__;
 
+  /**
+   * Start the engine!
+   */
   public function __construct() {
 
     self::$instance = $this;
@@ -45,10 +48,10 @@ class AgriLife_Staff {
 
   }
 
-  public function activation_check() {
-
-  }
-
+  /**
+   * Checks to see if Meta Box plugin is installed. Shows an
+   * error if it's not.
+   */
   public function meta_box_check() {
 
     // Make sure that the Meta Box plugin is installed and activated
@@ -58,15 +61,23 @@ class AgriLife_Staff {
 
   }
 
+  /**
+   * Run the schema upgrade script
+   */
   public function upgrade() {
+
     $als_upgrade = new ALS_Upgrade;
+
   }
 
+  /**
+   * Initialize the required classes
+   */
   public function init() {
 
     // Load the plugin assets
     $als_assets = new ALS_Assets;
-    
+
     // Create the custom post type
     $als_posttype = new ALS_PostType;
 
@@ -88,6 +99,11 @@ class AgriLife_Staff {
 
   }
 
+  /**
+   * Saves the staff title as lastname, firstname
+   * @param  string $staff_title The empty staff title
+   * @return string              The correct staff title
+   */
   public function save_staff_title( $staff_title ) {
 
     if ( $_POST['post_type'] == 'staff' )
@@ -99,6 +115,9 @@ class AgriLife_Staff {
     
   }
 
+  /**
+   * Add the required image sizes
+   */
   public function add_image_sizes() {
 
     add_image_size( 'staff_single', 175, 175, true );

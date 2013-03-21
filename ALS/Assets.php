@@ -2,11 +2,7 @@
 
 class ALS_Assets {
 
-	private static $instance;
-
 	public function __construct() {
-
-		self::$instance = $this;
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );

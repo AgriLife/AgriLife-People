@@ -2,14 +2,15 @@
 
 class ALS_Metabox {
 
-	private static $instance;
-
 	public function __construct() {
 
 		add_action( 'admin_init', array( $this, 'register_metabox' ) );
 
 	}
 
+	/**
+	 * Registers the metaboxes
+	 */
 	public function register_metabox() {
 
 		if ( ! $this->meta_box_check() )
@@ -23,24 +24,21 @@ class ALS_Metabox {
 
 	}
 
+	/**
+	 * Checks to see if the Meta Box plugin is installed
+	 */
 	private function meta_box_check() {
 
 		if ( ! class_exists( 'RW_Meta_Box' ) ) {
-			echo '<div class="updated">';
-      __(
-        printf( '<p>You must install/activate the <a href="%s">Meta Box</a> plugin to use the Staff custom post type.</p>',
-          'http://wordpress.org/extend/plugins/meta-box/' ),
-        'agrilife'
-      );
-      echo '</div>';
-
-      return false;
-		} else {
-			return true;
+			ALS_Error::no_metabox_plugin();
 		}
 
 	}
 
+	/**
+	 * Builds the metabox array
+	 * @return array The metaboxes
+	 */
 	private function make_metaboxes() {
 
 		$prefix = STAFF_META_PREFIX;

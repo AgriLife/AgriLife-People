@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Converts all old staff entries from AgriFlex 1.x to the new schema
+ */
 class ALS_Upgrade {
 
 	private static $instance;

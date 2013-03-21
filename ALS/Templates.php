@@ -1,8 +1,9 @@
 <?php
 
+/**
+ * Redirects to correct template files based on query variables.
+ */
 class ALS_Templates {
-
-	private static $instance;
 
 	public function __construct() {
 

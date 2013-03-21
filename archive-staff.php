@@ -1,12 +1,6 @@
 <?php
 /**
- * @package WordPress
- *
- * The Template for displaying all staff single posts or pulling in staff web service for counties.
- *
- * @package WordPress
- * @subpackage agriflex
- * @since agriflex 1.0
+ * The Template for displaying all staff single posts
  */
 
 

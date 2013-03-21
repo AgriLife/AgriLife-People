@@ -2,8 +2,9 @@
 
 class ALS_PostType {
 
-	private static $instance;
-
+	/**
+	 * Builds and registers the staff custom post type
+	 */
 	public function __construct() {
 
 		self::$instance = $this;
@@ -37,12 +38,6 @@ class ALS_PostType {
 		// Register the Staff post type
 		register_post_type( 'staff', $args );
 
-	}
-
-	public static function get_instance() {
-
-		return self::$instance;
-		
 	}
 
 }
