@@ -20,7 +20,7 @@ get_header(); ?>
 						<?php if ( has_post_thumbnail() ) {
   							the_post_thumbnail('staff_single'); 
 						} else  { 
-							echo '<img src="'.get_bloginfo("template_url").'/img/AgriLife-default-staff-image-single.png?v=100" class="alignleft" alt="AgriLife staff image default" title="AgriLife" />'; 
+							echo '<img src="'.STAFF_PLUGIN_DIR_URL.'img/agrilife-default-staff-image-single.png" alt="AgriLife Logo" title="AgriLife" width="175" height="175" />';
 						}
 						?>
 						<div class="staff-person-details">
