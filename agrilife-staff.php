@@ -9,12 +9,10 @@
  * License: GPL2
  */
 
-// define( 'PLUGIN_NAME:w
-// ', 'AgriLife Staff' );
-define( 'PLUGIN_DIRNAME', 'agrilife-staff' );
+define( 'STAFF_PLUGIN_DIRNAME', 'agrilife-staff' );
 define( 'STAFF_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'STAFF_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
-define( 'META_PREFIX', 'als_' );
+define( 'STAFF_META_PREFIX', 'als_' );
 
 // Autoload all classes
 spl_autoload_register( 'AgriLife_Staff::autoload' );

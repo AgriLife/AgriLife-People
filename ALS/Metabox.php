@@ -43,7 +43,7 @@ class ALS_Metabox {
 
 	private function make_metaboxes() {
 
-		$prefix = META_PREFIX;
+		$prefix = STAFF_META_PREFIX;
 		$meta_boxes = array();
 
 		$meta_boxes[] = array(
