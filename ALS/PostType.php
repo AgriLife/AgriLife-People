@@ -31,6 +31,7 @@ class ALS_PostType {
 			'show_ui' => true,
 			'rewrite' => array( 'slug' => 'staff' ),
 			'supports' => array( 'thumbnail' ),
+			'has_archive' => true,
 		);
 
 		// Register the Staff post type
