@@ -103,10 +103,11 @@ class AgriLife_Staff {
    */
   public function save_staff_title( $staff_title ) {
 
-    if ( $_POST['post_type'] == 'staff' )
+    if ( $_POST['post_type'] == 'staff' ){
       $first = $_POST[STAFF_META_PREFIX . 'first-name'];
       $last = $_POST[STAFF_META_PREFIX . 'last-name'];
       $staff_title = $last . ', ' . $first;
+    }
 
     return $staff_title;
     
