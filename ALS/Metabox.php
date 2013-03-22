@@ -13,9 +13,6 @@ class ALS_Metabox {
 	 */
 	public function register_metabox() {
 
-		if ( ! $this->meta_box_check() )
-			return;
-
 		$meta_boxes = $this->make_metaboxes();
 
 		foreach ( $meta_boxes as $meta_box ) {
