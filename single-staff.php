@@ -34,6 +34,22 @@ get_header(); ?>
 								<dd><?php echo rwmb_meta( 'als_phone' );?></dd> 
 								
 								<dd class="website"><a href="<?php echo rwmb_meta( 'als_website' );?>"><?php echo rwmb_meta( 'als_website' );?></a></dd> 
+								<dt class="specialty-title">
+									<?php
+
+									if ( rwmb_meta( 'als_specialty' ) ) {
+										if (  ! rwmb_meta('als_specialty-label') ) {
+											echo 'Specialty: ' . rwmb_meta( 'als_specialty' );
+										} else {
+											echo rwmb_meta( 'als_specialty-label' ) . ': ' . rwmb_meta( 'als_specialty');
+										}
+									}
+
+									?>
+								</dt>
+								<dd>
+									<?php echo rwmb_meta( 'als_description' ); ?>
+								</dd>
 							
 							<?php $undergrad = rwmb_meta( 'als_undergrad' );
 							if ( $undergrad )  {
@@ -70,7 +86,7 @@ get_header(); ?>
 							?>
 
 							<?php $awards = rwmb_meta( 'als_award' );
-							if ( $awards ) {
+							if ( ! empty( $awards[0] ) ) {
 								echo '<dt>Awards</dt>';
 							}
 							if ( is_array( $awards ) ) {
@@ -83,7 +99,7 @@ get_header(); ?>
 							?>
 
 							<?php $courses = rwmb_meta( 'als_course' );
-							if ( $courses ) {
+							if ( ! empty( $courses[0] ) ) {
 								echo '<dt>Courses Taught</dt>';
 							}
 							if ( is_array( $courses ) ) {
