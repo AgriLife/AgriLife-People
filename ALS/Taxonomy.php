@@ -7,8 +7,6 @@ class ALS_Taxonomy {
 	 */
 	public function __construct() {
 
-		self::$instance = $this;
-
 		// Taxonomy labels
 		$labels = array(
 			'name' => __( 'Types', 'agrilife' ),

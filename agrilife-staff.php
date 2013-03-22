@@ -32,9 +32,6 @@ class AgriLife_Staff {
 
     self::$instance = $this;
 
-    // Run an activation hook to make sure we are using the correct WP version
-    register_activation_hook( self::$file, array( $this, 'activation_check' ) );
-
     // Make sure the Meta Box plugin is installed
     add_action( 'init', array( $this, 'meta_box_check' ) );
 

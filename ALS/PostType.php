@@ -7,8 +7,6 @@ class ALS_PostType {
 	 */
 	public function __construct() {
 
-		self::$instance = $this;
-
 		// Backend labels
 		$labels = array(
 			'name' => __( 'Staff', 'agrilife' ),
