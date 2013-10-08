@@ -32,22 +32,10 @@ class AgriLife_People {
 
     self::$instance = $this;
 
-    // Run the upgrade script
-    register_activation_hook( self::$file, array( $this, 'upgrade' ) );
-
     // Load up the plugin
     add_action( 'init', array( $this, 'init' ) ); 
 
     // Add image sizes
-
-  }
-
-  /**
-   * Run the schema upgrade script
-   */
-  public function upgrade() {
-
-    $alp_upgrade = new ALP_Upgrade;
 
   }
 
