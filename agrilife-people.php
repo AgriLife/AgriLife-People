@@ -44,6 +44,9 @@ class AgriLife_People {
     // Add/update options on admin load
     add_action( 'admin_init', array( $this, 'admin_init' ) );
 
+    // Setup the icons
+    add_action( 'admin_head', array( $this, 'admin_head' ) );
+
   }
 
   /**
@@ -95,6 +98,23 @@ class AgriLife_People {
     }
 
   }
+
+  /**
+   * Set up the admin menu icon
+   * @return void
+   */
+  public function admin_head() { ?>
+
+  <style type="text/css" media="screen">
+    #menu-posts-people .wp-menu-image {
+      background: url('<?php echo PEOPLE_PLUGIN_DIR_URL; ?>/img/user.png') no-repeat 6px -17px !important;
+    }
+    #menu-posts-people:hover .wp-menu-image, #menu-posts-people.wp-has-current-submenu .wp-menu-image {
+      background-position:6px 7px!important;
+    }
+  </style>
+
+  <?php }
 
   /**
    * Saves the person title as lastname, firstname
