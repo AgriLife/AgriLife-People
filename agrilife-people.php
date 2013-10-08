@@ -1,23 +1,23 @@
 <?php
 /*
- * Plugin Name: AgriLife Staff
+ * Plugin Name: AgriLife People
  * Plugin URI: https://github.com/channeleaton/AgriLife-Staff
- * Description: Creates a staff custom post type. NOTICE: This plugin cannot be used with the AgriFlex2012 theme.
+ * Description: Creates a people custom post type. NOTICE: This plugin cannot be used with the AgriFlex2012 theme.
  * Version: 2.0
  * Author: J. Aaron Eaton
  * Author URI: http://channeleaton.com
  * License: GPL2
  */
 
-define( 'STAFF_PLUGIN_DIRNAME', 'agrilife-staff' );
-define( 'STAFF_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
-define( 'STAFF_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
-define( 'STAFF_META_PREFIX', 'als_' );
+define( 'PEOPLE_PLUGIN_DIRNAME', 'agrilife-people' );
+define( 'PEOPLE_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'PEOPLE_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+define( 'PEOPLE_META_PREFIX', 'als_' );
 
 // Autoload all classes
-spl_autoload_register( 'AgriLife_Staff::autoload' );
+spl_autoload_register( 'AgriLife_People::autoload' );
 
-class AgriLife_Staff {
+class AgriLife_People {
 
   private static $instance;
 
@@ -32,9 +32,6 @@ class AgriLife_Staff {
 
     self::$instance = $this;
 
-    // Make sure the Meta Box plugin is installed
-    add_action( 'init', array( $this, 'meta_box_check' ) );
-
     // Run the upgrade script
     register_activation_hook( self::$file, array( $this, 'upgrade' ) );
 
@@ -46,24 +43,11 @@ class AgriLife_Staff {
   }
 
   /**
-   * Checks to see if Meta Box plugin is installed. Shows an
-   * error if it's not.
-   */
-  public function meta_box_check() {
-
-    // Make sure that the Meta Box plugin is installed and activated
-    if ( ! function_exists( 'rwmb_meta' ) ) {
-      ALS_Error::no_metabox_plugin();
-    }
-
-  }
-
-  /**
    * Run the schema upgrade script
    */
   public function upgrade() {
 
-    $als_upgrade = new ALS_Upgrade;
+    $alp_upgrade = new ALP_Upgrade;
 
   }
 
@@ -73,24 +57,24 @@ class AgriLife_Staff {
   public function init() {
 
     // Load the plugin assets
-    $als_assets = new ALS_Assets;
+    $alp_assets = new ALP_Assets;
 
     // Create the custom post type
-    $als_posttype = new ALS_PostType;
+    $alp_posttype = new ALP_PostType;
 
     // Create the Type taxonomy
-    $als_taxonomy = new ALS_Taxonomy;
+    $alp_taxonomy = new ALP_Taxonomy;
 
     // Create the Metaboxes
-    $als_metabox = new ALS_Metabox;
+    $alp_metabox = new ALP_Metabox;
 
     // Make the shortcode
-    $als_shortcode = new ALS_Shortcode;
+    $alp_shortcode = new ALP_Shortcode;
 
     // Direct to the proper templates
-    $als_templates = new ALS_Templates;
+    $alp_templates = new ALP_Templates;
 
-    add_filter( 'title_save_pre', array( $this, 'save_staff_title' ) );
+    // add_filter( 'title_save_pre', array( $this, 'save_people_title' ) );
 
     $this->add_image_sizes();
 
@@ -101,15 +85,15 @@ class AgriLife_Staff {
    * @param  string $staff_title The empty staff title
    * @return string              The correct staff title
    */
-  public function save_staff_title( $staff_title ) {
+  public function save_people_title( $people_title ) {
 
     if ( $_POST['post_type'] == 'staff' ){
-      $first = $_POST[STAFF_META_PREFIX . 'first-name'];
-      $last = $_POST[STAFF_META_PREFIX . 'last-name'];
+      $first = $_POST[PEOPLE_META_PREFIX . 'first-name'];
+      $last = $_POST[PEOPLE_META_PREFIX . 'last-name'];
       $staff_title = $last . ', ' . $first;
     }
 
-    return $staff_title;
+    return $people_title;
     
   }
 
@@ -118,8 +102,8 @@ class AgriLife_Staff {
    */
   public function add_image_sizes() {
 
-    add_image_size( 'staff_single', 175, 175, true );
-    add_image_size( 'staff_archive', 70, 70, true );
+    add_image_size( 'people_single', 175, 175, true );
+    add_image_size( 'people_archive', 70, 70, true );
 
   }
 
@@ -148,4 +132,4 @@ class AgriLife_Staff {
 
 }
 
-new AgriLife_Staff;
+new AgriLife_People;

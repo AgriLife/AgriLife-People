@@ -1,6 +1,6 @@
 <?php
 
-class ALS_Assets {
+class ALP_Assets {
 
 	public function __construct() {
 
@@ -12,8 +12,8 @@ class ALS_Assets {
 	public function register_styles() {
 
 		wp_register_style(
-			'staff_stylesheet',
-			STAFF_PLUGIN_DIR_URL . '/css/style.css',
+			'people_stylesheet',
+			PEOPLE_PLUGIN_DIR_URL . '/css/style.css',
 			array(),
 			'',
 			'all'
@@ -23,7 +23,7 @@ class ALS_Assets {
 
 	public function enqueue_styles() {
 
-		wp_enqueue_style( 'staff_stylesheet' );
+		wp_enqueue_style( 'people_stylesheet' );
 
 	}
 

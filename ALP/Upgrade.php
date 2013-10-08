@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Converts all old staff entries from AgriFlex 1.x to the new schema
+ * Converts all old people entries from AgriFlex 1.x to the new schema
  */
-class ALS_Upgrade {
+class ALP_Upgrade {
 
 	private static $instance;
 
 	private $version;
 
-	private $option_name = 'als_options';
+	private $option_name = 'alp_options';
 
 	private $options = null;
 
@@ -25,15 +25,15 @@ class ALS_Upgrade {
 
 		self::$instance = $this;
 
-		$this->version = AgriLife_Staff::get_instance()->version;
+		$this->version = AgriLife_People::get_instance()->version;
 
 		$this->defaults['version'] = $this->version;
 
 		if ( $this->check_new_install() === false ) {
-			$this->update_staff_meta();
+			$this->update_people_meta();
 		}
 
-		$this->set_staff_options();
+		$this->set_people_options();
 
 	}
 
@@ -54,28 +54,28 @@ class ALS_Upgrade {
 
 	} 
 
-	private function update_staff_meta() {
+	private function update_people_meta() {
 
 		// Get existing staff posts
-		$staff = $this->get_staff();
+		$staff = $this->get_people();
 
-		foreach ( $staff as $s ) {
+		foreach ( $people as $s ) {
 			$this->migrate( $s );
 		}
 
 	}
 
-	private function get_staff() {
+	private function get_people() {
 
 		$args = array(
-			'post_type' => 'staff',
+			'post_type' => 'people',
 			'post_status' => 'publish',
 			'posts_per_page' => -1,
 		);
 
-		$staff = get_posts( $args );
+		$people = get_posts( $args );
 
-		return $staff;
+		return $people;
 
 	}
 
@@ -308,7 +308,7 @@ class ALS_Upgrade {
 
 	}
 	
-	private function set_staff_options() {
+	private function set_people_options() {
 
 		update_option( $this->option_name, $this->defaults );
 		$this->options = $this->defaults;

@@ -1,6 +1,6 @@
 <?php
 
-class ALS_Error {
+class ALP_Error {
 
 	public static function no_metabox_plugin() {
 

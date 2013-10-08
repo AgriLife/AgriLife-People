@@ -3,7 +3,7 @@
 /**
  * Redirects to correct template files based on query variables.
  */
-class ALS_Templates {
+class ALP_Templates {
 
 	public function __construct() {
 
@@ -18,8 +18,8 @@ class ALS_Templates {
 
 		global $post;
 
-		if ( is_post_type_archive( 'staff' ) ) {
-			$archive_template = STAFF_PLUGIN_DIR_PATH . '/archive-staff.php';
+		if ( is_post_type_archive( 'people' ) ) {
+			$archive_template = PEOPLE_PLUGIN_DIR_PATH . '/archive-people.php';
 		}
 
 		return $archive_template;
@@ -30,8 +30,8 @@ class ALS_Templates {
 
 		global $post;
 
-		if ( get_query_var( 'post_type' ) == 'staff' ) {
-			$search_template = STAFF_PLUGIN_DIR_PATH . 'search-staff.php';
+		if ( get_query_var( 'post_type' ) == 'people' ) {
+			$search_template = PEOPLE_PLUGIN_DIR_PATH . 'search-people.php';
 		}
 
 		return $search_template;
@@ -42,8 +42,8 @@ class ALS_Templates {
 
 		global $post;
 
-		if ( get_query_var( 'post_type' ) == 'staff' ) {
-			$single_template = STAFF_PLUGIN_DIR_PATH . '/single-staff.php';
+		if ( get_query_var( 'post_type' ) == 'people' ) {
+			$single_template = PEOPLE_PLUGIN_DIR_PATH . '/single-people.php';
 		}
 
 		return $single_template;
@@ -55,7 +55,7 @@ class ALS_Templates {
 		global $post;
 
 		if ( get_query_var( 'taxonomy' ) == 'types' ) {
-			$types_template = STAFF_PLUGIN_DIR_PATH . '/taxonomy-types.php';
+			$types_template = PEOPLE_PLUGIN_DIR_PATH . '/taxonomy-types.php';
 		}
 
 		return $types_template;

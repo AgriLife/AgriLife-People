@@ -1,6 +1,6 @@
 <?php
 
-class ALS_Taxonomy {
+class ALP_Taxonomy {
 
 	/**
 	 * Builds and registers the custom taxonomy
@@ -32,7 +32,7 @@ class ALS_Taxonomy {
 		);
 
 		// Register the Type taxonomy
-		register_taxonomy( 'types', 'staff', $args );
+		register_taxonomy( 'types', 'people', $args );
 
 	}
 

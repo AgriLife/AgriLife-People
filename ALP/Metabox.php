@@ -1,10 +1,9 @@
 <?php
 
-class ALS_Metabox {
+class ALP_Metabox {
 
 	public function __construct() {
 
-		add_action( 'admin_init', array( $this, 'register_metabox' ) );
 
 	}
 
