@@ -21,7 +21,13 @@ class AgriLife_People {
 
   private static $instance;
 
-  public $version = '1.0';
+  public $plugin_version = '1.0';
+
+  private $option_name = 'agrilife_people';
+
+  private $options = array();
+
+  private $schema_version = 1;
 
   private static $file = __FILE__;
 
@@ -35,7 +41,8 @@ class AgriLife_People {
     // Load up the plugin
     add_action( 'init', array( $this, 'init' ) ); 
 
-    // Add image sizes
+    // Add/update options on admin load
+    add_action( 'admin_init', array( $this, 'admin_init' ) );
 
   }
 
@@ -65,6 +72,27 @@ class AgriLife_People {
     add_filter( 'title_save_pre', array( $this, 'save_people_title' ) );
 
     $this->add_image_sizes();
+
+  }
+
+  public function admin_init() {
+
+    // Setup/update options
+    if ( false === $this->options || ! isset( $this->options['schema_version'] ) || $this->options['schema_version'] < $this->schema_version ) {
+                         
+      //init options array
+      if ( ! is_array( $this->options ) )
+              $this->options = array();
+             
+      //establish schema version
+      $current_schema_version = isset( $this->options['schema_version'] ) ? $this->options['schema_version'] : 0;
+     
+      //run upgrade and store new version #
+      // $this->upgrade( $current_schema_version );
+      $this->options['schema_version'] = $this->schema_version;
+      update_option( $this->option_name, $this->options );
+           
+    }
 
   }
 
