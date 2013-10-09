@@ -153,7 +153,7 @@ class AgriLife_People {
    */
   public function add_image_sizes() {
 
-    add_image_size( 'people_single', 175, 175, true );
+    add_image_size( 'people_single', 240, 240, true );
     add_image_size( 'people_archive', 70, 70, true );
 
   }
