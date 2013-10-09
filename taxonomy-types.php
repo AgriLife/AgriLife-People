@@ -1,14 +1,7 @@
 <?php
 /**
- * @package WordPress
- *
  * The Template for displaying 'staff' custom post type by taxonomy
- *
- * @package WordPress
- * @subpackage agriflex
- * @since agriflex 1.0
  */
-
 
 get_header(); ?>
 
@@ -28,7 +21,8 @@ get_header(); ?>
 				 * If you want to overload this in a child theme then include a file
 				 * called loop-staff.php and that will be used instead.
 				 */
-				get_template_part( 'loop', 'staff' );
+				query_posts( $query_string . '&posts_per_page=-1&meta_key=als_last-name&orderby=meta_value&order=ASC' ); 
+				include( STAFF_PLUGIN_DIR_PATH . 'loop-staff.php' );
 				?>	
 	
 	   </div><!-- #content -->
