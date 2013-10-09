@@ -1,119 +1,115 @@
 <?php
 /**
- * The Template for displaying all staff single posts.
+ * The Template for displaying all people single posts.
  */
 
 get_header(); ?>
 
 		<div id="wrap">
 			<div id="content" role="main">
-			<p><span class="read-more"><a href="../">&larr; All Employees</a><span></p>
+			<p><span class="read-more"><a href="../">&larr; All People</a><span></p>
 
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-			
+<?php if ( have_posts() ) while ( have_posts() ) : the_post();
+
+	if ( get_field( 'ag-people-photo' ) ) {
+		$image = get_field( 'ag-people-photo' );
+		$image_src = $image['sizes']['people_single'];
+		$image_alt = the_title( '', '', false );
+	} else {
+		$image_src = PEOPLE_PLUGIN_DIR_URL . 'img/agrilife-default-people-image-single.png';
+		$image_alt = 'No photo found';
+	}
+
+?>			
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>		
 					<section class="entry-content">
-						<div class="staff-single-image">
-							<?php if ( has_post_thumbnail() ) {
-	  							the_post_thumbnail('staff_single'); 
-							} else  { 
-								echo '<img src="'.STAFF_PLUGIN_DIR_URL.'img/agrilife-default-staff-image-single.png" alt="AgriLife Logo" title="AgriLife" width="175" height="175" />';
-							}
-							?>
+						<div class="people-single-image">
+							<img src="<?php echo $image_src; ?>" alt="<?php echo $image_alt; ?>" title="<?php echo $image_alt; ?>" width="100%" height="auto" />
 						</div>
-						<div class="staff-person-details">
+						<div class="people-person-details">
 							<dl>	
-							<dt><?php echo rwmb_meta( 'als_first-name' ).' '.rwmb_meta( 'als_last-name' ); ?></dt>
+							<dt class="name"><?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?></dt>
 							
-								<dd class="role"><?php echo rwmb_meta( 'als_position' );?></dd>
+								<dd class="role"><?php the_field( 'ag-people-title' );?></dd>
 							
-								<dd><?php echo rwmb_meta( 'als_building-room' );?></dd> 
+								<dd><?php the_field( 'ag-people-location' );?></dd> 
 							
-								<dd class="email"><a href="mailto:<?php echo rwmb_meta( 'als_email' );?>"><?php echo rwmb_meta( 'als_email' );?></a></dd>
+								<dd class="email"><a href="mailto:<?php the_field( 'ag-people-email' );?>"><?php the_field( 'ag-people-email' );?></a></dd>
 							
-								<dd><?php echo rwmb_meta( 'als_phone' );?></dd> 
+								<dd><?php the_field( 'ag-people-phone' );?></dd> 
 								
-								<dd class="website"><a href="<?php echo rwmb_meta( 'als_website' );?>"><?php echo rwmb_meta( 'als_website' );?></a></dd> 
-								<dt class="specialty-title">
-									<?php
-
-									if ( rwmb_meta( 'als_specialty' ) ) {
-										if (  ! rwmb_meta('als_specialty-label') ) {
-											echo 'Specialty: ' . rwmb_meta( 'als_specialty' );
-										} else {
-											echo rwmb_meta( 'als_specialty-label' ) . ': ' . rwmb_meta( 'als_specialty');
-										}
-									}
-
-									?>
-								</dt>
-								<dd>
-									<?php echo rwmb_meta( 'als_description' ); ?>
-								</dd>
+								<dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd> 
 							
-							<?php $undergrad = rwmb_meta( 'als_undergrad' );
-							if ( $undergrad )  {
+							<?php
+							if ( get_field( 'ag-people-undergrad' ) ) {
 								echo '<dt>Undergraduate Education</dt>';
-							}
-							if ( is_array( $undergrad ) ) {
-								foreach( $undergrad as $u ) {
-									echo '<dd>' . $u . '</dd>';
-								}
-							} else {
-								echo '<dd>' . $undergrad . '</dd>';
+								while ( has_sub_field( 'ag-people-undergrad' ) ) :
+									printf('<dd>%s</dd>', get_sub_field( 'ag-people-undergrad-degree' ) );
+								endwhile;
 							}
 							?>
 
-							<?php $graduate = rwmb_meta( 'als_graduate' );
-							if ( $graduate ) {
+							<?php
+							if ( get_field( 'ag-people-graduate' ) ) {
 								echo '<dt>Graduate Education</dt>';
-							}
-							if ( is_array( $graduate ) ) {
-								foreach( $graduate as $g ) {
-									echo '<dd>' . $g . '</dd>';
-								}
-							} else {
-								echo '<dd>' . $graduate . '</dd>';
+								while ( has_sub_field( 'ag-people-graduate' ) ) :
+									printf( '<dd>%s</dd>', get_sub_field( 'ag-people-graduate-degree' ) );
+								endwhile;
 							}
 							?>
 
-							<?php $specialty = rwmb_meta( 'als_specialty-label' );
-							if ( $specialty ) {
-								echo '<dt>' . $specialty . '</dt>';
-								echo '<dd>' . rwmb_meta( 'als_specialty' ) . '</dd>';
-								echo '<dd>' . rwmb_meta( 'als_description' ) . '</dd>';
-							}
-							?>
-
-							<?php $awards = rwmb_meta( 'als_award' );
-							if ( ! empty( $awards[0] ) ) {
+							<?php
+							if ( get_field( 'ag-people-awards' ) ) {
 								echo '<dt>Awards</dt>';
-							}
-							if ( is_array( $awards ) ) {
-								foreach( $awards as $a ) {
-									echo '<dd>' . $a . '</dd>';
-								}
-							} else {
-								echo '<dd>' . $awards . '</dd>';
+								while ( has_sub_field( 'ag-people-awards' ) ) :
+									printf( '<dd>%s</dd>', get_sub_field( 'ag-people-award' ) );
+								endwhile;
 							}
 							?>
 
-							<?php $courses = rwmb_meta( 'als_course' );
-							if ( ! empty( $courses[0] ) ) {
+							<?php
+							if ( get_field( 'ag-people-courses' ) ) {
 								echo '<dt>Courses Taught</dt>';
-							}
-							if ( is_array( $courses ) ) {
-								foreach( $courses as $c ) {
-									echo '<dd>' . $c . '</dd>';
-								}
-							} else {
-								echo '<dd>' . $courses . '</dd>';
+								while ( has_sub_field( 'ag-people-courses' ) ) :
+									printf( '<dd>%s</dd>', get_sub_field( 'ag-people-course' ) );
+								endwhile;
 							}
 							?>
-								
+
 							</dl>	
-								
 						</div>
+
+						<div class="people-person-content">
+							<?php while ( has_sub_field( 'ag-people-content' ) ) :
+								$layout = get_row_layout();
+								switch( $layout ) {
+									case 'ag-people-content-header' :
+										printf( '<h3 class="people-content-header">%s</h3>', get_sub_field( 'header' ) );
+										break;
+									case 'ag-people-content-text' :
+										printf( '<div class="people-content-text">%s</div>', get_sub_field( 'text' ) );
+										break;
+									case 'ag-people-content-image' :
+										$image = get_sub_field( 'image' );
+										$image_src = $image['url'];
+										$image_title = $image['title'];
+										$image_alt = $image['alt'];
+										printf( '<div class="people-content-image"><img src="%s" alt="%s" title="%s" /></div>', $image_src, $image_src, $image_title );									
+										break;
+									case 'ag-people-content-gallery' :
+										$images = get_sub_field( 'gallery' );
+										$image_ids = array();
+										foreach ( $images as $image ) {
+											$image_ids[] = $image['id'];
+										}
+										$shortcode = sprintf( '[gallery ids="%s"]', implode(',', $image_ids ) );
+										echo do_shortcode( $shortcode );
+										break;
+								}
+							endwhile;
+							?>
+						</div>
+
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'agriflex' ), 'after' => '</div>' ) ); ?>
 					</section><!-- .entry-content -->
 

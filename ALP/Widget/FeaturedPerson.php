@@ -49,7 +49,7 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 				</h4>
 				<p class="featured-person-title"><?php the_field( 'ag-people-title', $person_id ); ?></p>
 				<p class="featured-person-more">
-					<a href="<?php echo get_permalink( $person_id ); ?>">Read More</a>
+					<a href="<?php echo get_permalink( $person_id ); ?>">Read More &rarr;</a>
 				</p>
 			</div>
 

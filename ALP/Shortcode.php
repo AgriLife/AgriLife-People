@@ -15,7 +15,7 @@ class ALP_Shortcode {
 
 		global $post;
 
-		query_posts( '&post_type=people&post_status=publish&posts_per_page=-1&meta_key=als_last-name&orderby=meta_value&order=ASC' ); 
+		query_posts( '&post_type=people&post_status=publish&posts_per_page=-1' ); 
 		include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
 
 	}
