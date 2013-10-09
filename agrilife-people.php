@@ -81,6 +81,9 @@ class AgriLife_People {
 
   }
 
+  /**
+   * Initialize things for the admin area
+   */
   public function admin_init() {
 
     // Setup/update options
