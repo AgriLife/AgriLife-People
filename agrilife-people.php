@@ -47,6 +47,9 @@ class AgriLife_People {
     // Setup the icons
     add_action( 'admin_head', array( $this, 'admin_head' ) );
 
+    // Get the widgets ready
+    add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+
   }
 
   /**
@@ -115,6 +118,15 @@ class AgriLife_People {
   </style>
 
   <?php }
+
+  /**
+   * Register widgets
+   */
+  public function register_widgets() {
+
+    register_widget( 'ALP_Widget_FeaturedPerson' );
+
+  }
 
   /**
    * Saves the person title as lastname, firstname
