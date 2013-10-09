@@ -2,7 +2,7 @@
 /*
  * Plugin Name: AgriLife People
  * Plugin URI: http://github.com/AgriLife/AgriLife-People 
- * Description: Creates a people custom post type. NOTICE: This plugin cannot be used with the AgriFlex2012 theme.
+ * Description: Creates a people custom post type.
  * Version: 1.0
  * Author: J. Aaron Eaton
  * Author URI: http://channeleaton.com
@@ -12,7 +12,6 @@
 define( 'PEOPLE_PLUGIN_DIRNAME', 'agrilife-people' );
 define( 'PEOPLE_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PEOPLE_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
-define( 'PEOPLE_META_PREFIX', 'ag-people-' );
 
 // Autoload all classes
 spl_autoload_register( 'AgriLife_People::autoload' );
