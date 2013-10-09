@@ -1,10 +1,10 @@
-.single-staff span.read-more a {
+.single-people span.read-more a {
 	margin-top: 0;
 	float: none;
 	padding-top: .3em;
 }
 
-.staff-search-form {
+.people-search-form {
 	margin-bottom: 20px;
 	padding: 10px;
 	background: #edece4;
@@ -13,26 +13,26 @@
 	position: relative;
 }
 
-.staff-search-form .searchform {
+.people-search-form .searchform {
 	top: 8px;
 }
 
-.staff-search-form label h4 {
+.people-search-form label h4 {
 	margin-bottom: 5px;
 }
 
-.staff-listing-ul {
+.people-listing-ul {
 	border-top: double #d5d1bf;	
 }
 
-.staff-listing-ul,
-.staff-listing-item {
+.people-listing-ul,
+.people-listing-item {
 	list-style-type: none;
 	margin-left: 0;
 	padding-left: 0;
 }
 
-.staff-listing-item {
+.people-listing-item {
 	list-style-type: none;
 	margin-left: 0;
 	padding-left: 0;
@@ -44,12 +44,12 @@
 }
 
 
-.staff-listing-item:nth-child(even) {
+.people-listing-item:nth-child(even) {
 	background: #EAE6D2;
 	background: rgba(217, 208, 173, .10);
 }
 
-.staff-container {
+.people-container {
 	overflow: hidden;
 	display: block;	
 	text-decoration: none;
@@ -58,41 +58,41 @@
 }
 
 
-.staff-listing-item:hover,
-a.staff-listing-link:hover {
+.people-listing-item:hover,
+a.people-listing-link:hover {
 	background: #f1efce;
 	border-bottom: 1px solid #9f9490;		
 }
 
-.staff-image {
+.people-image {
 	float: left;
 	margin-right: 10px;
 }
 
-.staff-title {
+.people-name {
 	font: 90% "minion-pro-1","minion-pro-2", 'Cambria', 'Georgia', 'Times New Roman', serif;
 	font-size: 22px;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
 
-.staff-phone,
-.staff-email,
-.staff-position {
+.people-phone,
+.people-email,
+.people-title {
 	font-size: 14px;
 	color: #433C3A;	
 }
 
-.staff-position {
+.people-title {
 	font-weight: bold;	
 }
 
-.staff-head {
+.people-head {
 	width: 45%;
 	float: left;
 }
 
-.staff-contact-details {
+.people-contact-details {
 	font-size: 14px;
 	color: #433C3A;
 	float: left
@@ -100,47 +100,66 @@ a.staff-listing-link:hover {
 	padding-left: 20px;	
 }
 
-.staff-contact-details p{
+.people-contact-details p{
 	margin: 7px 0;
 }
 
-#content .stafftable ul {
+#content .peopletable ul {
 	margin: 0;
 	list-style: none;
 }
 
-#content .stafftable ul ul {
+#content .peopletable ul ul {
 	margin: 0 0 0 2em;
 	list-style: circle;
 }
 
-.county-staff-list .staff-contact-details {
+.county-people-list .people-contact-details {
 	width: 45%;
 }
 
-.staff-single-image {
+.people-single-image {
 	float: left;	
-	width: 25%;
+	width: 40%;
 }
 
-.staff-person-details {
+.people-person-details {
 	float: left;
 	margin-left: 20px;
-	width: 70%;
+	width: 55%;
 }
 
-#content .staff-person-details dd {
+#content .people-person-details .name {
+	font-size: 2em;
+}
+
+#content .people-person-details dt {
+	margin: 1em 0 0 0;
+}
+
+#content .people-person-details dd {
 	margin: 0;
 	padding: 2px 0;
 }
 
-img.attachment-staff_single {
+img.attachment-people_single {
 	float: left;
 }
 
-.type-staff section {
+.type-people section {
 	width: 100%;
 	float: left;
 }
 
+.widget_featured_person .featured-person-image, .widget_featured_person .featured-person-info {
+	text-align: center;
+}
 
+.widget_featured_person .featured-person-name {
+	font-size: 1.6em;
+	margin-bottom: .2em;
+}
+
+.widget_featured_person .featured-person-title {
+	margin-top: 0;
+}
