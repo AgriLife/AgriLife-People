@@ -48,6 +48,9 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 					<?php the_field( 'ag-people-first-name', $person_id ); ?> <?php the_field( 'ag-people-last-name', $person_id ); ?>
 				</h4>
 				<p class="featured-person-title"><?php the_field( 'ag-people-title', $person_id ); ?></p>
+				<p class="feature-person-blurb">
+					<?php echo $instance['blurb']; ?>
+				</p>
 				<p class="featured-person-more">
 					<a href="<?php echo get_permalink( $person_id ); ?>">Read More &rarr;</a>
 				</p>
@@ -74,13 +77,18 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 			$title = __( 'Featured Person', 'agriflex' );
 		}
 
-
 		$title_field_id = $this->get_field_id( 'title' );
 		$title_field_name = $this->get_field_name( 'title' );
 
 		$people = $this->get_people_list();
 		$people_field_id = $this->get_field_id( 'people' );
 		$people_field_name = $this->get_field_name( 'people' );
+
+		if ( isset( $instance['blurb'] ) )
+			$person_blurb = $instance['blurb'];
+		$person_blurb = $instance['blurb'];
+		$person_blurb_id = $this->get_field_id( 'blurb' );
+		$person_blurb_name = $this->get_field_name( 'blurb' );
 
 		ob_start();?>
 
@@ -97,6 +105,11 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 					<option value="<?php echo $person->ID; ?>" <?php selected( $instance['people'], $person->ID ); ?>><?php echo $person->post_title; ?></option>
 				<?php endforeach; ?>
 			</select>
+		</p>
+
+		<p>
+			<label for="<?php echo $person_blurb_id; ?>"><?php _e( 'Blurb:' ); ?></label>
+			<textarea name="<?php echo $person_blurb_name; ?>" id="<?php echo $person_blurb_id; ?>" cols="29" rows="10"><?php echo $person_blurb; ?></textarea>
 		</p>
 
 		<?php
@@ -117,6 +130,8 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
 		$instance['people'] = ( ! empty( $new_instance['people'] ) ) ? strip_tags( $new_instance['people'] ) : '';
+
+		$instance['blurb'] = ( ! empty( $new_instance['blurb'] ) ) ? strip_tags( $new_instance['blurb'] ) : '';
 
 		return $instance;
 
