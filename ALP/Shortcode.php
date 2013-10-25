@@ -11,11 +11,35 @@ class ALP_Shortcode {
 	/**
 	 * The shortcode logic
 	 */
-	public function create_shortcode() {
+	public function create_shortcode( $atts ) {
 
 		global $post;
 
-		query_posts( '&post_type=people&post_status=publish&posts_per_page=-1' ); 
+		extract( shortcode_atts( array(
+							'type' => '',
+						),
+						$atts ));
+
+		$args = array(
+			'post_type'      => 'people',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'meta_key'       => 'ag-people-last-name',
+			'order_by'       => 'meta_value',
+			'order'          => 'ASC'
+		);
+
+		if ( ! empty( $type ) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'types',
+					'field'    => 'slug',
+					'terms'    => $type,
+				),
+			);
+		}
+
+		query_posts( $args ); 
 		include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
 
 	}
