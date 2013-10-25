@@ -9,7 +9,7 @@ get_header(); ?>
 	  	<div id="content" role="main">
 	  	
 	  		<h1 class="page-title"><?php
-				printf( __( 'Staff: %s', 'agriflex' ), '<span>' . $wp_query->queried_object->name . '</span>' );
+				printf( __( 'People: %s', 'agriflex' ), '<span>' . $wp_query->queried_object->name . '</span>' );
 			?></h1>
 	
 			<?php
@@ -19,10 +19,21 @@ get_header(); ?>
 
 				/* Run the loop for the category page to output the posts.
 				 * If you want to overload this in a child theme then include a file
-				 * called loop-staff.php and that will be used instead.
+				 * called loop-people.php and that will be used instead.
 				 */
-				query_posts( $query_string . '&posts_per_page=-1&meta_key=als_last-name&orderby=meta_value&order=ASC' ); 
-				include( STAFF_PLUGIN_DIR_PATH . 'loop-staff.php' );
+
+				// global $wp_query;
+
+				$args = array(
+					'posts_per_page' => '-1',
+					// 'types' => $wp_query->queried_object->slug,
+					'meta_key' => 'ag-people-last-name',
+					'order_by' => 'meta_value',
+					'order' => 'ASC',
+				);
+
+				query_posts( $query_string . '&posts_per_page=-1&meta_key=ag-people-last-name&order_by=meta_value&order=ASC' ); 
+				include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
 				?>	
 	
 	   </div><!-- #content -->
