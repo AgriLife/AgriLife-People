@@ -36,6 +36,42 @@ class ALP_PostType {
 		// Register the People post type
 		register_post_type( 'people', $args );
 
+		// Set the title as Last, First
+    add_action( 'save_post', array( $this, 'save_people_title' ) );
+
 	}
+
+  /**
+   * Saves the person title as lastname, firstname
+   * @param  string $people_title The empty staff title
+   * @return string              The correct staff title
+   */
+  public function save_people_title( $post_id ) {
+
+    $slug = 'people';
+
+    if ( ! isset( $_POST['post_type'] ) || $slug != $_POST['post_type'] )
+      return;
+
+    remove_action( 'save_post', array( $this, 'save_people_title' ) );
+
+    $people_title = sprintf( '%s, %s',
+    	get_field( 'ag-people-last-name', $post_id ),
+    	get_field( 'ag-people-first-name', $post_id )
+    );
+
+    $people_slug = sanitize_title( $people_title );
+
+    $args = array(
+      'ID' => $post_id,
+      'post_title' => $people_title,
+      'post_name' => $people_slug,
+    );
+
+    wp_update_post( $args );
+
+    add_action( 'save_post', array( $this, 'save_people_title' ) );
+
+  }
 
 }

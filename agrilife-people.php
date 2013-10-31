@@ -74,7 +74,6 @@ class AgriLife_People {
     // Direct to the proper templates
     $alp_templates = new ALP_Templates;
 
-    add_filter( 'title_save_pre', array( $this, 'save_people_title' ) );
 
     $this->add_image_sizes();
 
@@ -128,26 +127,6 @@ class AgriLife_People {
 
     register_widget( 'ALP_Widget_FeaturedPerson' );
 
-  }
-
-  /**
-   * Saves the person title as lastname, firstname
-   * @param  string $people_title The empty staff title
-   * @return string              The correct staff title
-   */
-  public function save_people_title( $people_title ) {
-
-    if ( ! empty( $_POST['post_type'] ) && $_POST['post_type'] == 'people' ){
-      global $post;
-
-      $first = $_POST['fields']['field_52540a7be7804'];
-      $last = $_POST['fields']['field_52540aa741c37'];
-
-      $people_title = sprintf( '%2$s, %1$s', $first, $last );
-    }
-
-    return $people_title;
-    
   }
 
   /**
