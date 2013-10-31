@@ -1,26 +1,12 @@
 <?php
-/**
- * The loop that displays posts.
- */
-?>
 
-<?php var_dump($people); ?>
-	
-<?php if ( ! have_posts() ) : ?>
-	<div id="post-0" class="post error404 not-found">
-		<h1 class="entry-title"><?php _e( 'Not Found', 'agriflex' ); ?></h1>
-		<div class="entry-content">
-			<p><?php _e( 'Apologies, but no people were found that match your search criteria.', 'agriflex' ); ?></p>
-		</div><!-- .entry-content -->
-	</div><!-- #post-0 -->
-<?php endif; ?>
+if ( $people->have_posts() ) : ?>
 
+	<ul class="people-listing-ul">
+		
+	<?php while ( $people->have_posts() ) : $people->the_post(); ?>
 
-<ul class="people-listing-ul">
-	<?php	
-	while (have_posts()) : the_post();
-		global $post;
-
+		<?php
 		if ( get_field( 'ag-people-photo' ) ) {
 			$image = get_field( 'ag-people-photo' );
 			$image_src = $image['sizes']['people_archive'];
@@ -39,7 +25,11 @@
 					</a>
 				</div>
 				<div class="people-head">
-					<h2 class="people-name" title="<?php the_title(); ?>"><a href="<?php the_permalink(); ?>"><?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?></a></h2>
+					<h2 class="people-name" title="<?php the_title(); ?>">
+						<a href="<?php the_permalink(); ?>">
+							<?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?>
+						</a>
+					</h2>
 					<h3 class="people-title"><?php the_field( 'ag-people-title' ); ?></h3>
 				</div>                                  
 				<div class="people-contact-details">
@@ -50,7 +40,8 @@
 			</a>
 		</li>
 
-	<?php endwhile;?>
-</ul>
+	<?php endwhile; ?>
 
-<?php wp_reset_query(); ?>
+	</ul>
+
+<?php endif;
