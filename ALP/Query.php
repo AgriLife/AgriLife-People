@@ -2,7 +2,7 @@
 
 class ALP_Query {
 
-	public static function get_people( $type = '' ) {
+	public static function get_people( $type = '', $search = '' ) {
 
 		$args = array(
 			'post_type'      => 'people',
@@ -21,6 +21,10 @@ class ALP_Query {
 					'terms'    => $type,
 				),
 			);
+		}
+
+		if ( ! empty( $search ) ) {
+			$args['s'] = $search;
 		}
 
 		return new WP_Query( $args );

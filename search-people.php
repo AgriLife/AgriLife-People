@@ -11,21 +11,20 @@ get_header(); ?>
 <div id="wrap">
 	<div id="content" role="main">
 		<h1 class="entry-title">Person search for: <?php echo $search_terms; ?></h1>
-		<div class="people-search-form">
-			<label>
-				<h4>Search People Database</h4>
-			</label>
-			<form role="search" class="people-searchform" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-				<input type="text" class="s" name="s" id="s" placeholder="<?php echo $search_terms; ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"/><br />
-				<input type="hidden" name="post_type" value="staff" />
-			</form>
-		</div>
 
 			<?php 
+			ALP_Templates::search_form();
 
-			include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
+			$people = ALP_Query::get_people( false, $search_terms );
+
+			ob_start();
+			require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
+			$output = ob_get_contents();
+			ob_clean();
+
+			echo $output;
 			
-			wp_reset_query(); ?>
+			?>
 
 
 	</div><!-- #content -->

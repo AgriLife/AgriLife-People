@@ -62,4 +62,10 @@ class ALP_Templates {
 
 	}
 
+	public static function search_form() {
+
+		require PEOPLE_PLUGIN_DIR_PATH . '/views/people-search.php';
+
+	}
+
 }

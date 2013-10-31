@@ -14,13 +14,21 @@ class ALP_Shortcode {
 	public function create_shortcode( $atts ) {
 
 		extract( shortcode_atts( array(
-							'type' => false,
+							'type'   => false,
+							'search' => true,
 						),
 						$atts ));
 
 		$people = ALP_Query::get_people( $type );
 
+		// The search parameter is passed as a string. Convert it to boolean.
+		$search = $search === 'false' ? false : $search;
+
 		ob_start();
+		if ( $search ) {
+			ALP_Templates::search_form();
+		}
+
 		require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
 		$output = ob_get_contents();
 		ob_clean();
