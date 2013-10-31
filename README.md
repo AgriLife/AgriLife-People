@@ -4,7 +4,7 @@ __Plugin URI:__ https://github.com/AgriLife/AgriLife-People
 
 __Description:__ People custom post type with some other goodies
 
-__Version:__ 0.9.2
+__Version:__ 0.9.3
 
 __Author:__ J. Aaron Eaton
 
@@ -27,6 +27,11 @@ The following plugins must be installed and activated:
 * This is a fork of the now deprecated AgriLife Staff plugin. You may continue to use AgriLife Staff, but updates will not be made.
 
 ## Changelog
+
+### 0.9.3
+
+* Fixed archive template title
+* Fixed name going blank when using quick edit
 
 ### 0.9.2
 
