@@ -8,7 +8,7 @@ get_header(); ?>
 
 <div id="wrap">
 	<div id="content" role="main">
-		<h1 class="entry-title">Staff</h1>
+		<h1 class="entry-title">People</h1>
 		<div class="people-search-form">
 			<label>
 				<h4>Search People Database</h4>
