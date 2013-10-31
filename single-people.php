@@ -37,6 +37,8 @@ get_header(); ?>
 								<dd class="email"><a href="mailto:<?php the_field( 'ag-people-email' );?>"><?php the_field( 'ag-people-email' );?></a></dd>
 							
 								<dd><?php the_field( 'ag-people-phone' );?></dd> 
+
+								<dd><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
 								
 								<dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd> 
 							

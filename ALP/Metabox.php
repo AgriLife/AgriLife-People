@@ -71,6 +71,14 @@ class ALP_Metabox {
 						'maxlength' => '',
 					),
 					array (
+						'key' => 'field_5272c2754c8fa',
+						'label' => 'Resume/CV',
+						'name' => 'ag-people-resume',
+						'type' => 'file',
+						'save_format' => 'url',
+						'library' => 'all',
+					),
+					array (
 						'key' => 'field_52540af341c39',
 						'label' => 'Email',
 						'name' => 'ag-people-email',
