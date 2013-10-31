@@ -21,10 +21,16 @@ get_header(); ?>
 
 			<?php 
 
-			query_posts( '&post_type=people&post_status=publish&posts_per_page=-1' ); 
-			include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
-			
-			wp_reset_query(); ?>
+			$people = ALP_Query::get_people();
+
+			ob_start();
+			require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
+			$output = ob_get_contents();
+			ob_clean();
+
+			echo $output;
+
+			?>
 
 
 	</div><!-- #content -->

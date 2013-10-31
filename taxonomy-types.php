@@ -17,23 +17,14 @@ get_header(); ?>
 				if ( ! empty( $category_description ) )
 					echo '<div class="archive-meta">' . $category_description . '</div>';
 
-				/* Run the loop for the category page to output the posts.
-				 * If you want to overload this in a child theme then include a file
-				 * called loop-people.php and that will be used instead.
-				 */
+				$people = ALP_Query::get_people( $wp_query->queried_object->slug );
 
-				// global $wp_query;
+				ob_start();
+				require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
+				$output = ob_get_contents();
+				ob_clean();
 
-				$args = array(
-					'posts_per_page' => '-1',
-					// 'types' => $wp_query->queried_object->slug,
-					'meta_key' => 'ag-people-last-name',
-					'order_by' => 'meta_value',
-					'order' => 'ASC',
-				);
-
-				query_posts( $query_string . '&posts_per_page=-1&meta_key=ag-people-last-name&order_by=meta_value&order=ASC' ); 
-				include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
+				echo $output;
 				?>	
 	
 	   </div><!-- #content -->

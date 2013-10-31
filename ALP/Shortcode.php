@@ -13,34 +13,19 @@ class ALP_Shortcode {
 	 */
 	public function create_shortcode( $atts ) {
 
-		global $post;
-
 		extract( shortcode_atts( array(
-							'type' => '',
+							'type' => false,
 						),
 						$atts ));
 
-		$args = array(
-			'post_type'      => 'people',
-			'post_status'    => 'publish',
-			'posts_per_page' => -1,
-			'meta_key'       => 'ag-people-last-name',
-			'order_by'       => 'meta_value',
-			'order'          => 'ASC'
-		);
+		$people = ALP_Query::get_people( $type );
 
-		if ( ! empty( $type ) ) {
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'types',
-					'field'    => 'slug',
-					'terms'    => $type,
-				),
-			);
-		}
+		ob_start();
+		require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
+		$output = ob_get_contents();
+		ob_clean();
 
-		query_posts( $args ); 
-		include( PEOPLE_PLUGIN_DIR_PATH . 'loop-people.php' );
+		return $output;
 
 	}
 
