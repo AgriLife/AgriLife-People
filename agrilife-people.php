@@ -18,16 +18,40 @@ spl_autoload_register( 'AgriLife_People::autoload' );
 
 class AgriLife_People {
 
+  /**
+   * Instance of this class
+   * @var object
+   */
   private static $instance;
 
+  /**
+   * The current plugin version
+   * @var string
+   */
   public $plugin_version = '1.0';
 
+  /**
+   * The name of the plugin option
+   * @var string
+   */
   private $option_name = 'agrilife_people';
 
+  /**
+   * The array of plugin options
+   * @var array
+   */
   private $options = array();
 
+  /**
+   * The current meta schema version
+   * @var integer
+   */
   private $schema_version = 1;
 
+  /**
+   * The current file
+   * @var string
+   */
   private static $file = __FILE__;
 
   /**

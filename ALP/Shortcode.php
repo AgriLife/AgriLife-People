@@ -13,7 +13,9 @@ class ALP_Shortcode {
 	}
 
 	/**
-	 * The shortcode logic
+	 * Renders the 'people_listing' shortcode
+	 * @param  string $atts The shortcode attributes
+	 * @return string       The shortcode output
 	 */
 	public function create_shortcode( $atts ) {
 

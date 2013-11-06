@@ -4,6 +4,7 @@
  * Redirects to correct template files based on query variables.
  * Also provides static methods to pull certain views
  */
+
 class ALP_Templates {
 
 	public function __construct() {
@@ -15,6 +16,11 @@ class ALP_Templates {
 
 	}
 
+	/**
+	 * Shows the archive template when needed
+	 * @param  string $archive_template The default archive template
+	 * @return string                   The correct archive template
+	 */
 	public function get_archive_template( $archive_template ) {
 
 		global $post;
@@ -27,6 +33,11 @@ class ALP_Templates {
 
 	} 
 
+	/**
+	 * Shows the search template when needed
+	 * @param  string $search_template The default search template
+	 * @return string                  The correct search template
+	 */
 	public function get_search_template( $search_template ) {
 
 		global $post;
@@ -39,6 +50,11 @@ class ALP_Templates {
 
 	} 
 
+	/**
+	 * Shows the single template when needed
+	 * @param  string $single_template The default single template
+	 * @return string                  The correct single template
+	 */
 	public function get_single_template( $single_template ) {
 
 		global $post;
@@ -51,6 +67,11 @@ class ALP_Templates {
 
 	} 
 
+	/**
+	 * Shows the taxonomy archive when needed
+	 * @param  string $types_template The default taxonomy archive
+	 * @return string                 The correct taxonomy archive
+	 */
 	public function get_types_template( $types_template ) {
 
 		global $post;
