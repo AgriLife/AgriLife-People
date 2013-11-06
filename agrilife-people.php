@@ -37,11 +37,17 @@ class AgriLife_People {
 
     self::$instance = $this;
 
+    register_activation_hook( __FILE__, array( $this, 'activate' ) );
+    register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+
     // Load up the plugin
     add_action( 'init', array( $this, 'init' ) ); 
 
     // Add/update options on admin load
     add_action( 'admin_init', array( $this, 'admin_init' ) );
+
+    // Display admin notifications
+    add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
     // Setup the icons
     add_action( 'admin_head', array( $this, 'admin_head' ) );
@@ -52,7 +58,29 @@ class AgriLife_People {
   }
 
   /**
+   * Items to run on plugin activation
+   * @return voic
+   */
+  public function activate() {
+
+    // Flush rewrite rules as we're creating new post types and taxonomies
+    flush_rewrite_rules();
+
+  }
+
+  /**
+   * Items to run on plugin deactivation
+   * @return void
+   */
+  public function deactivate() {
+
+    flush_rewrite_rules();
+
+  }
+
+  /**
    * Initialize the required classes
+   * @return void
    */
   public function init() {
 
@@ -78,6 +106,7 @@ class AgriLife_People {
 
   /**
    * Initialize things for the admin area
+   * @return void
    */
   public function admin_init() {
 
