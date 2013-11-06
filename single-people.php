@@ -38,7 +38,9 @@ get_header(); ?>
 							
 								<dd><?php the_field( 'ag-people-phone' );?></dd> 
 
-								<dd><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
+								<?php if ( get_field( 'ag-people-resume' ) ) : ?>
+									<dd><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
+								<?php endif; ?>
 								
 								<dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd> 
 							
