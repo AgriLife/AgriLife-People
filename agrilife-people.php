@@ -128,6 +128,26 @@ class AgriLife_People {
   }
 
   /**
+   * Displays admin notices
+   * @return void
+   */
+  public function admin_notices() {
+
+    if ( ! class_exists( 'Acf' ) )
+      ALP_Message::install_plugin( 'Advanced Custom Fields' );
+
+    if ( ! class_exists( 'acf_field_repeater' ) )
+      ALP_Message::install_plugin( 'ACF: Repeater' );
+
+    if ( ! class_exists( 'acf_field_gallery' ) )
+      ALP_Message::install_plugin( 'ACF: Gallery' );
+
+    if ( ! class_exists( 'acf_field_flexible_content' ) )
+      ALP_Message::install_plugin( 'ACF: Flexible Content' );
+
+  }
+
+  /**
    * Set up the admin menu icon
    * @return void
    */
