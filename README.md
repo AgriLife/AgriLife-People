@@ -4,7 +4,7 @@ __Plugin URI:__ https://github.com/AgriLife/AgriLife-People
 
 __Description:__ People custom post type with some other goodies
 
-__Version:__ 0.9.5
+__Version:__ 1.0
 
 __Author:__ J. Aaron Eaton
 
@@ -27,6 +27,14 @@ The following plugins must be installed and activated:
 * This is a fork of the now deprecated AgriLife Staff plugin. You may continue to use AgriLife Staff, but updates will not be made.
 
 ## Changelog
+
+### 1.0
+
+* Fixed resume link to be conditional
+* Forcing reduced font size on email addresses
+* Flushing rewrite rules on activation/deactivation
+* Alerts users if required plugins are not installed/activated
+* Commented and cleaned up code
 
 ### 0.9.5
 
