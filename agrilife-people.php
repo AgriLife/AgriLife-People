@@ -59,7 +59,7 @@ class AgriLife_People {
 
   /**
    * Items to run on plugin activation
-   * @return voic
+   * @return void
    */
   public function activate() {
 
