@@ -79,7 +79,7 @@ a.people-listing-link:hover {
 .people-phone,
 .people-email,
 .people-title {
-	font-size: 14px;
+	font-size: 14px !important;
 	color: #433C3A;	
 }
 
