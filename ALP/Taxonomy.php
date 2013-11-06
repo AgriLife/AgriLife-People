@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Creates the Type taxonomy to categorize People
+ */
+
 class ALP_Taxonomy {
 
 	/**

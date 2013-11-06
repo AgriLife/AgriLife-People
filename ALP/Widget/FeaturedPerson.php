@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Creates the Featured Person Widget
+ */
+
 class ALP_Widget_FeaturedPerson extends WP_Widget {
 
 	/**
