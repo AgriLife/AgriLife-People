@@ -2,6 +2,7 @@
 
 /**
  * Redirects to correct template files based on query variables.
+ * Also provides static methods to pull certain views
  */
 class ALP_Templates {
 
@@ -62,6 +63,10 @@ class ALP_Templates {
 
 	}
 
+	/**
+	 * Allows for easy inclusion of the search bar
+	 * @return void
+	 */
 	public static function search_form() {
 
 		require PEOPLE_PLUGIN_DIR_PATH . '/views/people-search.php';

@@ -1,10 +1,11 @@
 <?php
 
+/**
+ * Builds and registers the staff custom post type
+ */
+
 class ALP_PostType {
 
-	/**
-	 * Builds and registers the staff custom post type
-	 */
 	public function __construct() {
 
 		// Backend labels
@@ -41,11 +42,11 @@ class ALP_PostType {
 
 	}
 
-  /**
-   * Saves the person title as lastname, firstname
-   * @param  string $people_title The empty staff title
-   * @return string              The correct staff title
-   */
+	/**
+	 * Saves the title as Last, First
+	 * @param  int $post_id The current post ID
+	 * @return void
+	 */
   public function save_people_title( $post_id ) {
 
     $slug = 'people';

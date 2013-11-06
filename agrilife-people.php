@@ -74,9 +74,6 @@ class AgriLife_People {
     // Direct to the proper templates
     $alp_templates = new ALP_Templates;
 
-
-    $this->add_image_sizes();
-
   }
 
   /**
@@ -94,8 +91,6 @@ class AgriLife_People {
       //establish schema version
       $current_schema_version = isset( $this->options['schema_version'] ) ? $this->options['schema_version'] : 0;
      
-      //run upgrade and store new version #
-      // $this->upgrade( $current_schema_version );
       $this->options['schema_version'] = $this->schema_version;
       update_option( $this->option_name, $this->options );
            
@@ -126,16 +121,6 @@ class AgriLife_People {
   public function register_widgets() {
 
     register_widget( 'ALP_Widget_FeaturedPerson' );
-
-  }
-
-  /**
-   * Add the required image sizes
-   */
-  public function add_image_sizes() {
-
-    add_image_size( 'people_single', 240, 240, true );
-    add_image_size( 'people_archive', 70, 70, true );
 
   }
 
