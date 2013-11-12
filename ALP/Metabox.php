@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Creates the People metaboxes. Uses Advanced Custom Fields.
+ */
+
 class ALP_Metabox {
 
 	public function __construct() {

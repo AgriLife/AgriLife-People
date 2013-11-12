@@ -3,7 +3,7 @@
  * Plugin Name: AgriLife People
  * Plugin URI: http://github.com/AgriLife/AgriLife-People 
  * Description: Creates a people custom post type.
- * Version: 0.9.5
+ * Version: 1.0
  * Author: J. Aaron Eaton
  * Author URI: http://channeleaton.com
  * License: GPL2
@@ -18,16 +18,40 @@ spl_autoload_register( 'AgriLife_People::autoload' );
 
 class AgriLife_People {
 
+  /**
+   * Instance of this class
+   * @var object
+   */
   private static $instance;
 
+  /**
+   * The current plugin version
+   * @var string
+   */
   public $plugin_version = '1.0';
 
+  /**
+   * The name of the plugin option
+   * @var string
+   */
   private $option_name = 'agrilife_people';
 
+  /**
+   * The array of plugin options
+   * @var array
+   */
   private $options = array();
 
+  /**
+   * The current meta schema version
+   * @var integer
+   */
   private $schema_version = 1;
 
+  /**
+   * The current file
+   * @var string
+   */
   private static $file = __FILE__;
 
   /**
@@ -37,11 +61,17 @@ class AgriLife_People {
 
     self::$instance = $this;
 
+    register_activation_hook( __FILE__, array( $this, 'activate' ) );
+    register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+
     // Load up the plugin
     add_action( 'init', array( $this, 'init' ) ); 
 
     // Add/update options on admin load
     add_action( 'admin_init', array( $this, 'admin_init' ) );
+
+    // Display admin notifications
+    add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
     // Setup the icons
     add_action( 'admin_head', array( $this, 'admin_head' ) );
@@ -52,7 +82,29 @@ class AgriLife_People {
   }
 
   /**
+   * Items to run on plugin activation
+   * @return void
+   */
+  public function activate() {
+
+    // Flush rewrite rules as we're creating new post types and taxonomies
+    flush_rewrite_rules();
+
+  }
+
+  /**
+   * Items to run on plugin deactivation
+   * @return void
+   */
+  public function deactivate() {
+
+    flush_rewrite_rules();
+
+  }
+
+  /**
    * Initialize the required classes
+   * @return void
    */
   public function init() {
 
@@ -74,13 +126,11 @@ class AgriLife_People {
     // Direct to the proper templates
     $alp_templates = new ALP_Templates;
 
-
-    $this->add_image_sizes();
-
   }
 
   /**
    * Initialize things for the admin area
+   * @return void
    */
   public function admin_init() {
 
@@ -94,12 +144,30 @@ class AgriLife_People {
       //establish schema version
       $current_schema_version = isset( $this->options['schema_version'] ) ? $this->options['schema_version'] : 0;
      
-      //run upgrade and store new version #
-      // $this->upgrade( $current_schema_version );
       $this->options['schema_version'] = $this->schema_version;
       update_option( $this->option_name, $this->options );
            
     }
+
+  }
+
+  /**
+   * Displays admin notices
+   * @return void
+   */
+  public function admin_notices() {
+
+    if ( ! class_exists( 'Acf' ) )
+      ALP_Message::install_plugin( 'Advanced Custom Fields' );
+
+    if ( ! class_exists( 'acf_field_repeater' ) )
+      ALP_Message::install_plugin( 'ACF: Repeater' );
+
+    if ( ! class_exists( 'acf_field_gallery' ) )
+      ALP_Message::install_plugin( 'ACF: Gallery' );
+
+    if ( ! class_exists( 'acf_field_flexible_content' ) )
+      ALP_Message::install_plugin( 'ACF: Flexible Content' );
 
   }
 
@@ -126,16 +194,6 @@ class AgriLife_People {
   public function register_widgets() {
 
     register_widget( 'ALP_Widget_FeaturedPerson' );
-
-  }
-
-  /**
-   * Add the required image sizes
-   */
-  public function add_image_sizes() {
-
-    add_image_size( 'people_single', 240, 240, true );
-    add_image_size( 'people_archive', 70, 70, true );
 
   }
 

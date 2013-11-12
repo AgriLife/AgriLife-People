@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Creates the shortcode to list people. Can be filtered by Type taxonomy
+ */
+
 class ALP_Shortcode {
 
 	public function __construct() {
@@ -9,7 +13,9 @@ class ALP_Shortcode {
 	}
 
 	/**
-	 * The shortcode logic
+	 * Renders the 'people_listing' shortcode
+	 * @param  string $atts The shortcode attributes
+	 * @return string       The shortcode output
 	 */
 	public function create_shortcode( $atts ) {
 
@@ -30,6 +36,7 @@ class ALP_Shortcode {
 		}
 
 		require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
+		
 		$output = ob_get_contents();
 		ob_clean();
 
