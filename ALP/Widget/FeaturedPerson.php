@@ -38,27 +38,32 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 
 		$image = get_field('ag-people-photo', $person_id );
 
-		$image_url = $image['sizes']['people_archive'];
+		$image_url = $image['sizes']['people_single'];
 		$image_alt = $image['alt'];
 
 		ob_start(); ?>
 
+<!--			<div class="featured-person-image" style="background-image: url(<?php echo $image_url; ?>)">
+				</div>-->
 			<div class="featured-person-image">
 				<img src="<?php echo $image_url; ?>" alt="<?php echo $image_alt; ?>" />
+			
+				<div class="featured-person-info">
+					<h4 class="featured-person-name">
+						<a href="<?php echo get_permalink( $person_id ); ?>"><?php the_field( 'ag-people-first-name', $person_id ); ?> <?php the_field( 'ag-people-last-name', $person_id ); ?></a>
+					</h4>
+					<p class="featured-person-title"><?php the_field( 'ag-people-title', $person_id ); ?></p>
+				</div>
 			</div>
-
-			<div class="featured-person-info">
-				<h4 class="featured-person-name">
-					<?php the_field( 'ag-people-first-name', $person_id ); ?> <?php the_field( 'ag-people-last-name', $person_id ); ?>
-				</h4>
-				<p class="featured-person-title"><?php the_field( 'ag-people-title', $person_id ); ?></p>
+			<div class="featured-person-info-extended">
 				<p class="feature-person-blurb">
 					<?php echo $instance['blurb']; ?>
 				</p>
 				<p class="featured-person-more">
 					<a href="<?php echo get_permalink( $person_id ); ?>">Read More &rarr;</a>
 				</p>
-			</div>
+			</div>		
+
 
 		<?php
 		$output = ob_get_contents();
