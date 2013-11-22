@@ -4,7 +4,7 @@ __Plugin URI:__ https://github.com/AgriLife/AgriLife-People
 
 __Description:__ People custom post type with some other goodies
 
-__Version:__ 1.0
+__Version:__ 1.1
 
 __Author:__ J. Aaron Eaton
 
