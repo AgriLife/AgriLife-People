@@ -3,7 +3,7 @@
  * Plugin Name: AgriLife People
  * Plugin URI: http://github.com/AgriLife/AgriLife-People 
  * Description: Creates a people custom post type.
- * Version: 1.0
+ * Version: 1.1
  * Author: J. Aaron Eaton
  * Author URI: http://channeleaton.com
  * License: GPL2
