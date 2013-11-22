@@ -82,7 +82,7 @@ a.people-listing-link:hover {
 .people-phone,
 .people-email,
 .people-title {
-	font-size: 14px !important;
+	font-size: 14px;
 	color: #433C3A;	
 }
 
@@ -177,15 +177,47 @@ img.attachment-people_single {
 	float: left;
 }
 
-.widget_featured_person .featured-person-image, .widget_featured_person .featured-person-info {
-	text-align: center;
+.widget_featured_person .featured-person-image {
+	width: 100%;
+	position: relative;
+}
+
+
+.widget_featured_person .featured-person-info {
+	width: 100%;
+	height: auto;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	zoom: 1;
+	background: #000;
+	background: rgba(1,1,1,0.8);
+	border-bottom: 5px solid black;
+}
+
+#aside .featured-person-info h4 {
+	color: #fff;
+	margin: .2em;
+	zoom: 1;
+}
+#aside .featured-person-info h4 a {
+	color: #fff;
+}
+.featured-person-image img {
+	width: 100%;
 }
 
 .widget_featured_person .featured-person-name {
 	font-size: 1.6em;
 	margin-bottom: .2em;
+	zoom: 1;
 }
 
 .widget_featured_person .featured-person-title {
 	margin-top: 0;
+	color: #fff;
+	margin: .4em .2em;
+	zoom: 1;
 }
