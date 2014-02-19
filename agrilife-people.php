@@ -73,9 +73,6 @@ class AgriLife_People {
     // Display admin notifications
     add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 
-    // Setup the icons
-    add_action( 'admin_head', array( $this, 'admin_head' ) );
-
     // Get the widgets ready
     add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
@@ -170,23 +167,6 @@ class AgriLife_People {
       ALP_Message::install_plugin( 'ACF: Flexible Content' );
 
   }
-
-  /**
-   * Set up the admin menu icon
-   * @return void
-   */
-  public function admin_head() { ?>
-
-  <style type="text/css" media="screen">
-    #menu-posts-people .wp-menu-image {
-      background: url('<?php echo PEOPLE_PLUGIN_DIR_URL; ?>/img/user.png') no-repeat 6px -17px !important;
-    }
-    #menu-posts-people:hover .wp-menu-image, #menu-posts-people.wp-has-current-submenu .wp-menu-image {
-      background-position:6px 7px!important;
-    }
-  </style>
-
-  <?php }
 
   /**
    * Register widgets
