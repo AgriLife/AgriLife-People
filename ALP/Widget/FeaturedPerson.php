@@ -43,9 +43,8 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 
 		ob_start(); ?>
 
-<!--			<div class="featured-person-image" style="background-image: url(<?php echo $image_url; ?>)">
-				</div>-->
 			<div class="featured-person-image">
+				
 				<img src="<?php echo $image_url; ?>" alt="<?php echo $image_alt; ?>" />
 			
 				<div class="featured-person-info">

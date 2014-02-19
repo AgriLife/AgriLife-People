@@ -32,6 +32,7 @@ class ALP_PostType {
 			'rewrite' => array( 'slug' => 'people' ),
 			'supports' => false,
 			'has_archive' => true,
+			'menu_icon' => 'dashicons-groups',
 		);
 
 		// Register the People post type
