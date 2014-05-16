@@ -24,7 +24,7 @@
 }
 
 .people-listing-ul {
-	border-top: double #f0f0f0	
+	border-top: double #f0f0f0
 }
 
 .people-listing-ul,
@@ -50,9 +50,9 @@
 
 .people-container {
 	overflow: hidden;
-	display: block;	
+	display: block;
 	text-decoration: none;
-	padding: 1.5em 10px;	
+	padding: 1.5em 10px;
 }
 
 #content ul li.people-listing-item {
@@ -61,7 +61,7 @@
 
 .people-listing-item:hover,
 a.people-listing-link:hover {
-	background: #f1efce;	
+	background: #f1efce;
 }
 
 .people-image {
@@ -83,7 +83,7 @@ a.people-listing-link:hover {
 .people-email,
 .people-title {
 	font-size: 14px;
-	color: #433C3A;	
+	color: #433C3A;
 }
 
 .people-title {
@@ -95,6 +95,12 @@ a.people-listing-link:hover {
 	width: 45%;
 	float: left;
 }
+.people-single-head {
+	width: 100%;
+	float: left;
+	margin-bottom: 15px;
+}
+
 
 .people-contact-details {
 	font-size: 14px;
@@ -127,7 +133,7 @@ a.people-listing-link:hover {
 }
 
 .people-single-image {
-	float: left;	
+	float: left;
 	width: 40%;
 }
 
@@ -139,6 +145,7 @@ a.people-listing-link:hover {
 
 #content .people-person-details .name {
 	font-size: 2em;
+	margin-bottom: .2em;
 }
 .people-person-details .role {
 	font-weight: bold;
@@ -147,12 +154,15 @@ a.people-listing-link:hover {
 	word-wrap: break-word;
 }
 
+#content .people-extra-info dt,
 #content .people-person-details dt {
 	margin: 0;
 }
 
+#content .people-extra-info dd,
 #content .people-person-details dd {
 	margin: 0;
+	margin-bottom: .5em;
 	padding: 2px 0;
 }
 
@@ -220,4 +230,13 @@ img.attachment-people_single {
 	color: #fff;
 	margin: .4em .2em;
 	zoom: 1;
+}
+
+@media screen and (max-width: 493px) {
+	.people-person-details {
+		margin-top: 1em;
+		margin-left: 0;
+		width: 100%;
+		float: left;
+	}
 }
