@@ -1,3 +1,6 @@
 {
-	"servers" : [ "agrilife", "coals" ]
+	"servers" : [ "agrilife", "coals" ],
+	"composer" : false,
+	"bower" : false,
+	"grunt" : false
 }
