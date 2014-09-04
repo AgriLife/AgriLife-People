@@ -128,27 +128,12 @@ a.people-listing-link:hover {
 	list-style: circle;
 }
 
-.county-people-list .people-contact-details {
-	width: 45%;
+#content .people-person-details dt.name {
+	display: none;
 }
-
-.people-single-image {
-	float: left;
-	width: 40%;
-}
-
-.people-person-details {
-	float: left;
-	margin-left: 20px;
-	width: 55%;
-}
-
-#content .people-person-details .name {
-	font-size: 2em;
-	margin-bottom: .2em;
-}
-.people-person-details .role {
+#content .people-person-details dd.role {
 	font-weight: bold;
+    padding: 1em 0;
 }
 .people-person-details .email {
 	word-wrap: break-word;
@@ -156,18 +141,41 @@ a.people-listing-link:hover {
 
 #content .people-extra-info dt,
 #content .people-person-details dt {
+    font-size: 1em;
+}
+#content .people-person-details dt.field-title {
 	margin: 0;
+    font-weight: normal;
+    width: 30%;
+    float: left;
+}
+#content dl.education {
+    clear: both;
+}
+#content dl.education dt {
+    margin: 1em 0 .5em 0;
 }
 
-#content .people-extra-info dd,
-#content .people-person-details dd {
-	margin: 0;
-	margin-bottom: .5em;
-	padding: 2px 0;
+#content .people dd {
+    word-break: break-word;
+    margin: 0;
+}
+
+#content .people-person-details dd.field-definition {
+    margin-left: 32%;
+}
+
+#content .people-person-details dl.details {
+    margin-bottom: 1.5em;
 }
 
 .people-content-header {
 	margin: 1.5em 0 .2em 0;
+    font-weight: bold;
+}
+
+.people-person-content {
+    clear: both;
 }
 
 .people-content-text p {
@@ -232,11 +240,25 @@ img.attachment-people_single {
 	zoom: 1;
 }
 
-@media screen and (max-width: 493px) {
-	.people-person-details {
-		margin-top: 1em;
-		margin-left: 0;
-		width: 100%;
-		float: left;
-	}
+@media all and (min-width: 500px) {
+    h2.entry-title {
+        display: none;
+    }
+    #content .people-person-details dt.name {
+        font-size: 2em;
+        word-wrap: break-word;
+        line-height: 1em;
+        margin: 0;
+        display: block;
+    }
+    .people-person-details {
+        margin-left: 45%;
+        width: 55%;
+    }
+    .people-single-image {
+        float: left;
+        width: 40%;
+        padding-right: 5%;
+        padding-bottom: 5%;
+    }
 }
