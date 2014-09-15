@@ -241,7 +241,7 @@ img.attachment-people_single {
 }
 
 @media all and (min-width: 500px) {
-    h2.entry-title {
+    .people h2.entry-title {
         display: none;
     }
     #content .people-person-details dt.name {
