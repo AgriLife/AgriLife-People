@@ -25,11 +25,12 @@ class ALP_Query {
 
 		// Add the person type query if needed
 		if ( ! empty( $type ) ) {
+			$slugs = explode(',', $type);
 			$args['tax_query'] = array(
 				array(
 					'taxonomy' => 'types',
 					'field'    => 'slug',
-					'terms'    => $type,
+					'terms'    => $slugs,
 				),
 			);
 		}
