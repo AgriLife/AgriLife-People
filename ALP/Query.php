@@ -40,6 +40,8 @@ class ALP_Query {
 			$args['s'] = $search;
 		}
 
+		$args = apply_filters('people_listing_args', $args);
+
 		return new WP_Query( $args );
 
 	}
