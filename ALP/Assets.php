@@ -48,7 +48,7 @@ class ALP_Assets {
   public function add_image_sizes() {
 
     add_image_size( 'people_single', 240, 320, true );
-    add_image_size( 'people_archive', 70, 70, true );
+    add_image_size( 'people_archive', 70, 105, true );
 
   }
 
