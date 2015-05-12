@@ -37,7 +37,9 @@ class ALP_Assets {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( 'people_stylesheet' );
+        if( !defined('AG_COL_DIRNAME') ) {
+		    wp_enqueue_style( 'people_stylesheet' );
+        }
 
 	}
 
