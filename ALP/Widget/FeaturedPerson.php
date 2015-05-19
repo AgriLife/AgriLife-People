@@ -122,7 +122,7 @@ class ALP_Widget_FeaturedPerson extends WP_Widget {
 
 		<?php
 		$form = ob_get_contents();
-		ob_clean();
+		ob_end_clean();
 
 		echo $form;
 
