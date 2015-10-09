@@ -25,12 +25,12 @@ if ( $people->have_posts() ) : ?>
 					</a>
 				</div>
 				<div class="people-head">
-					<h2 class="people-name" title="<?php the_title(); ?>">
+					<h3 class="people-name" title="<?php the_title(); ?>">
 						<a href="<?php the_permalink(); ?>">
 							<?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?>
 						</a>
-					</h2>
-					<h3 class="people-title"><?php the_field( 'ag-people-title' ); ?></h3>
+					</h3>
+					<h4 class="people-title"><?php the_field( 'ag-people-title' ); ?></h4>
 				</div>                                  
 				<div class="people-contact-details">
 					<p class="people-phone tel"><?php the_field( 'ag-people-phone' ); ?></p>

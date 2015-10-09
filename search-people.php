@@ -10,7 +10,7 @@ get_header(); ?>
 
 <div id="wrap">
 	<div id="content" role="main">
-		<h1 class="entry-title">Person search for: <?php echo $search_terms; ?></h1>
+		<h2 class="entry-title">Person search for: <?php echo $search_terms; ?></h2>
 
 			<?php 
 			ALP_Templates::search_form();

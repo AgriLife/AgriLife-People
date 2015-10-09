@@ -22,6 +22,12 @@ The following plugins must be installed and activated:
 * ACF: Gallery Field
 * Jetpack by WordPress.com
 
+To set up the repo for development for the first time, navigate to the directory in the console and run "npm run once".
+
+To watch for changes to Sass files, run "npm watch".
+
+To manually compile Sass files, run "npm build".
+
 ## Notices
 
 * This is a fork of the now deprecated AgriLife Staff plugin. You may continue to use AgriLife Staff, but updates will not be made.
