@@ -27,7 +27,13 @@ if ( $people->have_posts() ) : ?>
 				<div class="people-head">
 					<h3 class="people-name" title="<?php the_title(); ?>">
 						<a href="<?php the_permalink(); ?>">
-							<?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?>
+							<?php
+								if($lastnamefirst === true){
+									 the_field( 'ag-people-last-name' );?>, <?php the_field( 'ag-people-first-name' );
+								} else {
+									the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); 
+								}
+							?>
 						</a>
 					</h3>
 					<h4 class="people-title"><?php the_field( 'ag-people-title' ); ?></h4>

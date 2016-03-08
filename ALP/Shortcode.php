@@ -22,6 +22,7 @@ class ALP_Shortcode {
 		extract( shortcode_atts( array(
 							'type'   => false,
 							'search' => true,
+							'lastnamefirst' => false
 						),
 						$atts ));
 
@@ -29,6 +30,9 @@ class ALP_Shortcode {
 
 		// The search parameter is passed as a string. Convert it to boolean.
 		$search = $search === 'false' ? false : $search;
+
+		// The lastnamefirst parameter is passed as a string. Convert it to boolean.
+		$lastnamefirst = $lastnamefirst === 'true' ? true : $lastnamefirst;
 
 		ob_start();
 		if ( $search ) {
