@@ -15,7 +15,7 @@
     "build": "npm run build:css -s",
     "build:css": "compass compile",
 
-    "package": "npm install && npm run once:compass && npm run build:css",
+    "package": "npm install && npm run build:css",
     
     "watch": "npm run watch:css -s",
     "watch:css": "nodemon --quiet --watch css/ --ext scss --exec 'npm run build:css'"
