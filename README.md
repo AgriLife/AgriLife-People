@@ -51,7 +51,7 @@ You can also view people by each type. This page is also automatically created a
 
 Lastly, you can insert a list of people in any post or page you like by using the shortcode [people_listing]. You can even filter by type and choose whether or not to show the search form.
 
-![Shortcodes](http://agrilife.org/communications_old/files/2013/10/Add_New_Page_‹_AgriLife_People_Demo_—_WordPress-300x194.png)
+![Shortcodes](http://agrilifecdn.tamu.edu/communications_old/files/2013/10/Add_New_Page_%E2%80%B9_AgriLife_People_Demo_%E2%80%94_WordPress.png)
 
 
 ## Requirements
