@@ -40,16 +40,16 @@ The AgriLife People plugin allows you to display the faculty and staff of your d
 
 ### Viewing People
 
-The first and most common method of viewing your list of people is the automatically generated 'People' page. You can find this at <your-site-url>/people. In order for this view to work, you must not have an existing page named 'People'.
+The first and most common method of viewing your list of people is the automatically generated 'People' page. You can find this at `<your-site-url>/people`. In order for this view to work, you must not have an existing page named 'People'.
 
 ![People Page](http://agrilife.org/communications_old/files/2013/10/People___AgriLife_People_Demo-300x194.png)
 
 
-You can also view people by each type. This page is also automatically created and can be found at <your-site-url/people/<type-slug>. In this case our type slug is 'heroes'. It is the lowercase version of the type 'Heroes'.
+You can also view people by each type. This page is also automatically created and can be found at `<your-site-url/people/<type-slug>`. In this case our type slug is 'heroes'. It is the lowercase version of the type 'Heroes'.
 
 ![Heroes Type Page](http://agrilife.org/communications_old/files/2013/10/Heroes___Types___AgriLife_People_Demo-300x194.png)
 
-Lastly, you can insert a list of people in any post or page you like by using the shortcode [people_listing]. You can even filter by type and choose whether or not to show the search form.
+Lastly, you can insert a list of people in any post or page you like by using the shortcode `[people_listing]`. You can even filter by type and choose whether or not to show the search form.
 
 ![Shortcodes](http://agrilifecdn.tamu.edu/communications_old/files/2013/10/Add_New_Page_%E2%80%B9_AgriLife_People_Demo_%E2%80%94_WordPress.png)
 
