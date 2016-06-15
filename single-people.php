@@ -44,10 +44,11 @@ get_header(); ?>
                                     <dd class="email"><a href="mailto:<?php the_field( 'ag-people-email' );?>"><?php the_field( 'ag-people-email' );?></a></dd>
 
 
-                                    <dt class="field-title">Phone: </dt>
+                                    <?php if ( get_field( 'ag-people-phone' ) ) : ?><dt class="field-title">Phone: </dt>
                                     <dd><?php the_field( 'ag-people-phone' );?></dd>
 
-                                    <?php if ( get_field( 'ag-people-resume' ) ) : ?>
+                                    <?php endif;
+                                    if ( get_field( 'ag-people-resume' ) ) : ?>
                                         <dd class="resume"><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
                                     <?php endif; ?>
 
