@@ -38,21 +38,23 @@ get_header(); ?>
                                     <?php if ( get_field( 'ag-people-office-location' ) ) : ?>
                                         <dt class="field-title">Office: </dt>
                                         <dd class="office"><?php the_field( 'ag-people-office-location' ); ?></dd>
-                                    <?php endif; ?>
-
-                                    <dt class="field-title">Email: </dt>
+                                    <?php endif; 
+                                    
+                                    if ( get_field( 'ag-people-email' ) ) :
+                                    ?><dt class="field-title">Email: </dt>
                                     <dd class="email"><a href="mailto:<?php the_field( 'ag-people-email' );?>"><?php the_field( 'ag-people-email' );?></a></dd>
-
-
-                                    <?php if ( get_field( 'ag-people-phone' ) ) : ?><dt class="field-title">Phone: </dt>
-                                    <dd><?php the_field( 'ag-people-phone' );?></dd>
-
                                     <?php endif;
+
+                                    if ( get_field( 'ag-people-phone' ) ) :
+                                    ?><dt class="field-title">Phone: </dt>
+                                    <dd><?php the_field( 'ag-people-phone' );?></dd>
+                                    <?php endif;
+
                                     if ( get_field( 'ag-people-resume' ) ) : ?>
                                         <dd class="resume"><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
-                                    <?php endif; ?>
+                                    <?php endif;
 
-                                    <?php if ( get_field( 'ag-people-website' ) ) : ?>
+                                    if ( get_field( 'ag-people-website' ) ) : ?>
                                         <dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd>
                                     <?php endif; ?>
                                  </dl>
