@@ -36,26 +36,28 @@ get_header(); ?>
                                     <dd class="role"><?php the_field( 'ag-people-title' );?></dd>
 
                                     <?php if ( get_field( 'ag-people-office-location' ) ) : ?>
-                                        <dt class="field-title">Office: </dt>
-                                        <dd class="office"><?php the_field( 'ag-people-office-location' ); ?></dd>
+                                    <dt class="field-title">Office: </dt>
+                                    <dd class="office"><?php the_field( 'ag-people-office-location' ); ?></dd>
                                     <?php endif; 
                                     
-                                    if ( get_field( 'ag-people-email' ) ) :
-                                    ?><dt class="field-title">Email: </dt>
+                                    if ( get_field( 'ag-people-email' ) ) : ?>
+                                    <dt class="field-title">Email: </dt>
                                     <dd class="email"><a href="mailto:<?php the_field( 'ag-people-email' );?>"><?php the_field( 'ag-people-email' );?></a></dd>
                                     <?php endif;
 
-                                    if ( get_field( 'ag-people-phone' ) ) :
-                                    ?><dt class="field-title">Phone: </dt>
+                                    if ( get_field( 'ag-people-phone' ) ) : ?>
+                                    <dt class="field-title">Phone: </dt>
                                     <dd class="phone"><?php the_field( 'ag-people-phone' );?></dd>
                                     <?php endif;
 
                                     if ( get_field( 'ag-people-resume' ) ) : ?>
-                                        <dd class="resume"><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
+                                    <dt class="field-title">Resume: </dt>
+                                    <dd class="resume"><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
                                     <?php endif;
 
                                     if ( get_field( 'ag-people-website' ) ) : ?>
-                                        <dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd>
+                                    <dt class="field-title">Website: </dt>
+                                    <dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd>
                                     <?php endif; ?>
                                  </dl>
                             </div>
