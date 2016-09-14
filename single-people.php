@@ -47,7 +47,7 @@ get_header(); ?>
 
                                     if ( get_field( 'ag-people-phone' ) ) :
                                     ?><dt class="field-title">Phone: </dt>
-                                    <dd><?php the_field( 'ag-people-phone' );?></dd>
+                                    <dd class="phone"><?php the_field( 'ag-people-phone' );?></dd>
                                     <?php endif;
 
                                     if ( get_field( 'ag-people-resume' ) ) : ?>
