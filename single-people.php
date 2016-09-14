@@ -51,12 +51,10 @@ get_header(); ?>
                                     <?php endif;
 
                                     if ( get_field( 'ag-people-resume' ) ) : ?>
-                                    <dt class="field-title">Resume: </dt>
                                     <dd class="resume"><a href="<?php the_field( 'ag-people-resume' ); ?>" target="_blank">Resume/CV</a></dd>
                                     <?php endif;
 
                                     if ( get_field( 'ag-people-website' ) ) : ?>
-                                    <dt class="field-title">Website: </dt>
                                     <dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd>
                                     <?php endif; ?>
                                  </dl>
