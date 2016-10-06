@@ -224,20 +224,8 @@ a.people-listing-link:hover {
   }
 }
 
-.people-email a.button {
-  color: #444;
-  display: inline-block;
-  height: 24px;
-  line-height: 24px;
-  text-decoration: none;
-  border: 4px solid #CACED0;
-  border-radius: 18px;
-  padding: 0 16px;
-  text-align: center;
-  font-size: 16px;
-  background: -moz-linear-gradient(top, #FFFFFF 0%, #E9E9E9 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #FFFFFF 0%, #E9E9E9 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #FFFFFF 0%, #E9E9E9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+#content p.people-email {
+  font-size: 14px;
 }
 
 .people-content-header {

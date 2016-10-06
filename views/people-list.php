@@ -40,7 +40,7 @@ if ( $people->have_posts() ) : ?>
 				</div>                                  
 				<div class="people-contact-details">
 					<p class="people-phone tel"><?php the_field( 'ag-people-phone' ); ?></p>
-					<p class="people-email email"><a class="button" title="<?php the_field( 'ag-people-email' ); ?>" href="mailto:<?php the_field( 'ag-people-email' ); ?>">Email</a></p>
+					<p class="people-email email"><a href="mailto:<?php the_field( 'ag-people-email' ); ?>"><?php the_field( 'ag-people-email' ); ?></a></p>
 				</div>
 			</div>
 			</a>
