@@ -43,7 +43,7 @@
   .peopletable ul {
     margin: 0;
     list-style: none;
-    
+
     ul {
       margin: 0 0 0 2em;
       list-style: circle;
@@ -258,7 +258,7 @@ img.attachment-people_single {
 }
 
 @media all and (min-width: 500px) {
-  .people h2.entry-title {
+  body:not(.search-results) .people h2.entry-title {
     display: none;
   }
 
