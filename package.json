@@ -1,27 +1,25 @@
 {
-  "name": "AgriLifePeople",
-  "version": "1.1.0",
+  "name": "agrilife-people",
+  "version": "1.2.0",
   "description": "People custom post type with some other goodies",
   "main": "agrilife-people.php",
-  "devDependencies": {
-    "compass": "~0.1.1",
-    "nodemon": "~1.3.7"
-  },
-  "scripts": {
-    "once": "npm run once:packages && npm run once:compass && npm run watch",
-    "once:packages": "npm install",
-    "once:compass": "compass create --css-dir css --sass-dir css/src --images-dir img --output-style expanded --relative-assets --quiet --bare",
-    
-    "build": "npm run build:css -s",
-    "build:css": "compass compile",
-
-    "package": "npm install && npm run build:css",
-    
-    "watch": "npm run watch:css -s",
-    "watch:css": "nodemon --quiet --watch css/ --ext scss --exec 'npm run build:css'"
-  },
+  "scripts": {},
   "repository": "https://github.com/AgriLife/AgriLife-People",
   "author": "J. Aaron Eaton",
   "license": "GPL2+",
-  "readmeFilename": "README.md"
+  "engines": {
+    "node": "4.0.0"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "grunt": "^0.4.2",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-gh-release": "0.0.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-sass-lint": "^0.2.2",
+    "nodemon": "~1.3.7"
+  }
 }
