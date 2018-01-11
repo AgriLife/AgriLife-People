@@ -30,7 +30,7 @@ class ALP_PostType {
 			'public' => true,
 			'show_ui' => true,
 			'rewrite' => array( 'slug' => 'people' ),
-			'supports' => false,
+			'supports' => array( 'excerpt' ),
 			'has_archive' => true,
 			'menu_icon' => 'dashicons-groups',
 		);

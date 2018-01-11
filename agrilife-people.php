@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: AgriLife People
- * Plugin URI: http://github.com/AgriLife/AgriLife-People 
+ * Plugin URI: http://github.com/AgriLife/AgriLife-People
  * Description: Creates a people custom post type.
  * Version: 1.1
  * Author: J. Aaron Eaton
@@ -65,7 +65,7 @@ class AgriLife_People {
     register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
     // Load up the plugin
-    add_action( 'init', array( $this, 'init' ) ); 
+    add_action( 'init', array( $this, 'init' ) );
 
     // Add/update options on admin load
     add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -76,6 +76,18 @@ class AgriLife_People {
     // Get the widgets ready
     add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
+    // Ensure the Relevanssi plugin doesn't hide People posts
+    add_filter('relevanssi_prevent_default_request', array( $this, 'rlv_fix_archive_kill' ), 10, 2);
+
+  }
+
+  /**
+   * Ensure the Relevanssi plugin doesn't hide People posts
+   * @return boolean
+   */
+  public function rlv_fix_archive_kill($kill, $query) {
+    if (empty($query->query_vars[‘s’])) $kill = false;
+    return $kill;
   }
 
   /**
@@ -133,17 +145,17 @@ class AgriLife_People {
 
     // Setup/update options
     if ( false === $this->options || ! isset( $this->options['schema_version'] ) || $this->options['schema_version'] < $this->schema_version ) {
-                         
+
       //init options array
       if ( ! is_array( $this->options ) )
               $this->options = array();
-             
+
       //establish schema version
       $current_schema_version = isset( $this->options['schema_version'] ) ? $this->options['schema_version'] : 0;
-     
+
       $this->options['schema_version'] = $this->schema_version;
       update_option( $this->option_name, $this->options );
-           
+
     }
 
   }
@@ -192,7 +204,7 @@ class AgriLife_People {
     if ( file_exists( $filename ) )
       require $filename;
 
-  } 
+  }
 
   public static function get_instance() {
 
