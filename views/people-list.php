@@ -3,12 +3,13 @@
 if ( $people->have_posts() ) : ?>
 
 	<ul class="people-listing-ul">
-		
+
 	<?php while ( $people->have_posts() ) : $people->the_post(); ?>
 
 		<?php
-		if ( get_field( 'ag-people-photo' ) ) {
-			$image = get_field( 'ag-people-photo' );
+		$image = get_field( 'ag-people-photo' );
+		if(!$image) $image = array();
+		if ( array_key_exists('sizes', $image) && array_key_exists('people_archive', $image['sizes']) ) {
 			$image_src = $image['sizes']['people_archive'];
 			$image_alt = the_title( '', '', false );
 		} else {
@@ -28,16 +29,16 @@ if ( $people->have_posts() ) : ?>
 					<h3 class="people-name" title="<?php the_title(); ?>">
 						<a href="<?php the_permalink(); ?>">
 							<?php
-								if($lastnamefirst === true){
+								if(isset($lastnamefirst) && $lastnamefirst === true){
 									 the_field( 'ag-people-last-name' );?>, <?php the_field( 'ag-people-first-name' );
 								} else {
-									the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); 
+									the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' );
 								}
 							?>
 						</a>
 					</h3>
 					<h4 class="people-title"><?php the_field( 'ag-people-title' ); ?></h4>
-				</div>                                  
+				</div>
 				<div class="people-contact-details">
 					<p class="people-phone tel"><?php the_field( 'ag-people-phone' ); ?></p>
 					<p class="people-email email"><a href="mailto:<?php the_field( 'ag-people-email' ); ?>"><?php the_field( 'ag-people-email' ); ?></a></p>
