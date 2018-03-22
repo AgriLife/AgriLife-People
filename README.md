@@ -58,10 +58,7 @@ Lastly, you can insert a list of people in any post or page you like by using th
 
 The following plugins must be installed and activated:
 
-* Advanced Custom Fields
-* ACF: Repeater Field
-* ACF: Flexible Content Field
-* ACF: Gallery Field
+* Advanced Custom Fields 5 PRO
 * Jetpack by WordPress.com
 
 To set up the repo for development for the first time, navigate to the directory in the console and run "npm run once".
