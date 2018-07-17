@@ -3,10 +3,29 @@
  * The Template for displaying all people single posts.
  */
 
+// Use site's default Genesis layout for single people page
+add_filter( 'body_class', 'alp_single_people_layout' );
+
+function alp_single_people_layout($classes){
+
+    if( function_exists('genesis_site_layout') ){
+
+        $classes[] = genesis_site_layout();
+
+    }
+
+    return $classes;
+
+}
+
 get_header(); ?>
 
         <div id="wrap">
-            <div id="content" role="main">
+            <div <?php
+                if( function_exists('genesis_site_layout') ){
+                    echo 'class="content" ';
+                }
+            ?>id="content" role="main">
             <p><span class="read-more"><a href="../">&larr; All People</a><span></p>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post();
@@ -35,9 +54,7 @@ get_header(); ?>
 
                                     <dd class="role"><?php the_field( 'ag-people-title' );?></dd>
 
-                                    <?php
-                                    $office = get_field( 'ag-people-office-location' );
-                                    if ( !empty( $office ) ) : ?>
+                                    <?php if ( get_field( 'ag-people-office-location' ) ) : ?>
                                     <dt class="field-title">Office: </dt>
                                     <dd class="office"><?php the_field( 'ag-people-office-location' ); ?></dd>
                                     <?php endif;
