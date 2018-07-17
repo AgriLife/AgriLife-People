@@ -6,7 +6,11 @@
 get_header(); ?>
 
 		<div id="wrap">
-			<div id="content" role="main">
+			<div <?php
+                if( function_exists('genesis_site_layout') ){
+                    echo 'class="' . genesis_site_layout() . '" ';
+                }
+            ?>id="content" role="main">
 			<p><span class="read-more"><a href="../">&larr; All People</a><span></p>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post();
@@ -38,8 +42,8 @@ get_header(); ?>
                                     <?php if ( get_field( 'ag-people-office-location' ) ) : ?>
                                     <dt class="field-title">Office: </dt>
                                     <dd class="office"><?php the_field( 'ag-people-office-location' ); ?></dd>
-                                    <?php endif; 
-                                    
+                                    <?php endif;
+
                                     if ( get_field( 'ag-people-email' ) ) : ?>
                                     <dt class="field-title">Email: </dt>
                                     <dd class="email"><a href="mailto:<?php the_field( 'ag-people-email' );?>"><?php the_field( 'ag-people-email' );?></a></dd>
