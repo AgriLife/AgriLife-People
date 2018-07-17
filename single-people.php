@@ -5,33 +5,29 @@
 
 get_header(); ?>
 
-		<div id="wrap">
-			<div <?php
-                if( function_exists('genesis_site_layout') ){
-                    echo 'class="' . genesis_site_layout() . '" ';
-                }
-            ?>id="content" role="main">
-			<p><span class="read-more"><a href="../">&larr; All People</a><span></p>
+        <div id="wrap">
+            <div id="content" role="main">
+            <p><span class="read-more"><a href="../">&larr; All People</a><span></p>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post();
 
-	if ( get_field( 'ag-people-photo' ) ) {
-		$image = get_field( 'ag-people-photo' );
-		$image_src = $image['sizes']['people_single'];
-		$image_alt = the_title( '', '', false );
-	} else {
-		$image_src = PEOPLE_PLUGIN_DIR_URL . 'img/agrilife-default-people-image-single.png';
-		$image_alt = 'No photo found';
-	}
+    if ( get_field( 'ag-people-photo' ) ) {
+        $image = get_field( 'ag-people-photo' );
+        $image_src = $image['sizes']['people_single'];
+        $image_alt = the_title( '', '', false );
+    } else {
+        $image_src = PEOPLE_PLUGIN_DIR_URL . 'img/agrilife-default-people-image-single.png';
+        $image_alt = 'No photo found';
+    }
 
 ?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                     <h2 class="entry-title"><?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?></h2>
-					<section class="entry-content">
-						<div class="people-single-head">
-							<div class="people-single-image">
-								<img src="<?php echo $image_src; ?>" alt="<?php echo $image_alt; ?>" title="<?php echo $image_alt; ?>" width="100%" height="auto" />
-							</div>
+                    <section class="entry-content">
+                        <div class="people-single-head">
+                            <div class="people-single-image">
+                                <img src="<?php echo $image_src; ?>" alt="<?php echo $image_alt; ?>" title="<?php echo $image_alt; ?>" width="100%" height="auto" />
+                            </div>
 
                             <div class="people-person-details">
                                 <dl class="details">
@@ -39,7 +35,9 @@ get_header(); ?>
 
                                     <dd class="role"><?php the_field( 'ag-people-title' );?></dd>
 
-                                    <?php if ( get_field( 'ag-people-office-location' ) ) : ?>
+                                    <?php
+                                    $office = get_field( 'ag-people-office-location' );
+                                    if ( !empty( $office ) ) : ?>
                                     <dt class="field-title">Office: </dt>
                                     <dd class="office"><?php the_field( 'ag-people-office-location' ); ?></dd>
                                     <?php endif;
@@ -134,14 +132,14 @@ get_header(); ?>
                                 ?>
                             </div>
 
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'agriflex' ), 'after' => '</div>' ) ); ?>
-					</section><!-- .entry-content -->
+                        <?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'agriflex' ), 'after' => '</div>' ) ); ?>
+                    </section><!-- .entry-content -->
 
-				</article><!-- #post-<?php the_ID(); ?> -->
+                </article><!-- #post-<?php the_ID(); ?> -->
 
 <?php endwhile; // end of the loop. ?>
-			</div><!-- #content -->
-		</div><!-- #wrap -->
+            </div><!-- #content -->
+        </div><!-- #wrap -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
