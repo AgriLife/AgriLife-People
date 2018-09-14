@@ -5,13 +5,15 @@
 
 get_header(); ?>
 
-<div class="<?php
+<div <?php
 
-if( function_exists('genesis_site_layout') ){
-	echo genesis_site_layout();
+if( !function_exists('genesis_site_layout') ){
+    echo 'id="wrap"';
+} else {
+    echo 'class="' . genesis_site_layout() . '-wrap"';
 }
 
-	?>-wrap">
+?>>
     <div <?php
 
     if( function_exists('genesis_site_layout') ){
