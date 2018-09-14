@@ -6,10 +6,23 @@
 
 get_header(); ?>
 
-<div id="wrap">
-	<div id="content" role="main">
+<div class="<?php
+
+if( function_exists('genesis_site_layout') ){
+	echo genesis_site_layout();
+}
+
+?>-wrap">
+  <div <?php
+
+  if( function_exists('genesis_site_layout') ){
+    echo 'class="content" ';
+  }
+
+  ?>id="content" role="main">
 		<h1 class="entry-title">People</h1>
 		<?php
+
 		ALP_Templates::search_form();
 
 		$people = ALP_Query::get_people();
@@ -22,12 +35,22 @@ get_header(); ?>
 		echo $output;
 
 		?>
+	</div><!-- #content --><?php
 
-	</div><!-- #content -->
+	if( function_exists('genesis_site_layout') ){
+		// Genesis theme
+		get_sidebar();
+	}
 
-</div><!-- #wrap -->
+	?>
+</div><!-- #wrap --><?php
 
-<?php get_sidebar(); ?>
+if( !function_exists('genesis_site_layout') ){
+	// Not a genesis theme
+	get_sidebar();
+}
 
-<?php get_footer(); ?>
+get_footer();
+
+?>
 
