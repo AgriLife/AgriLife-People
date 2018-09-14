@@ -9,18 +9,25 @@ class ALP_Metabox {
 	public function __construct() {
 
 		// Register Field Groups
-		if(function_exists("register_field_group"))
-		{
-			register_field_group(array (
-				'id' => 'acf_people-fields',
+		if( function_exists('acf_add_local_field_group') ):
+
+			acf_add_local_field_group(array(
+				'key' => 'group_5b9bde43a992a',
 				'title' => 'People Fields',
-				'fields' => array (
-					array (
+				'fields' => array(
+					array(
 						'key' => 'field_52540a7be7804',
 						'label' => 'First Name',
 						'name' => 'ag-people-first-name',
 						'type' => 'text',
+						'instructions' => '',
 						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',
@@ -28,12 +35,19 @@ class ALP_Metabox {
 						'formatting' => 'none',
 						'maxlength' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540aa741c37',
 						'label' => 'Last Name',
 						'name' => 'ag-people-last-name',
 						'type' => 'text',
+						'instructions' => '',
 						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',
@@ -41,11 +55,19 @@ class ALP_Metabox {
 						'formatting' => 'none',
 						'maxlength' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52541ab6ce6de',
 						'label' => 'Title',
 						'name' => 'ag-people-title',
 						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',
@@ -53,20 +75,43 @@ class ALP_Metabox {
 						'formatting' => 'none',
 						'maxlength' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540c3edf97b',
 						'label' => 'Photo',
 						'name' => 'ag-people-photo',
 						'type' => 'image',
-						'save_format' => 'object',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'preview_size' => 'thumbnail',
 						'library' => 'all',
+						'return_format' => 'array',
+						'min_width' => 0,
+						'min_height' => 0,
+						'min_size' => 0,
+						'max_width' => 0,
+						'max_height' => 0,
+						'max_size' => 0,
+						'mime_types' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540abf41c38',
 						'label' => 'Office Location',
 						'name' => 'ag-people-office-location',
 						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => '102A AGLS',
 						'prepend' => '',
@@ -74,29 +119,56 @@ class ALP_Metabox {
 						'formatting' => 'none',
 						'maxlength' => '',
 					),
-					array (
+					array(
 						'key' => 'field_5272c2754c8fa',
 						'label' => 'Resume/CV',
 						'name' => 'ag-people-resume',
 						'type' => 'file',
-						'save_format' => 'url',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'library' => 'all',
+						'return_format' => 'url',
+						'min_size' => 0,
+						'max_size' => 0,
+						'mime_types' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540af341c39',
 						'label' => 'Email',
 						'name' => 'ag-people-email',
 						'type' => 'email',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => '',
 						'prepend' => '',
 						'append' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540b4d41c3a',
 						'label' => 'Phone',
 						'name' => 'ag-people-phone',
 						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => 'xxx-xxx-xxxx',
 						'prepend' => '',
@@ -104,11 +176,19 @@ class ALP_Metabox {
 						'formatting' => 'none',
 						'maxlength' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540b7441c3b',
 						'label' => 'Website',
 						'name' => 'ag-people-website',
 						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'default_value' => '',
 						'placeholder' => 'http://agrilife.org',
 						'prepend' => '',
@@ -116,18 +196,40 @@ class ALP_Metabox {
 						'formatting' => 'none',
 						'maxlength' => '',
 					),
-					array (
+					array(
 						'key' => 'field_52540ba541c3c',
 						'label' => 'Undergraduate Education',
 						'name' => 'ag-people-undergrad',
 						'type' => 'repeater',
-						'sub_fields' => array (
-							array (
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'row_min' => 0,
+						'row_limit' => '',
+						'layout' => 'table',
+						'button_label' => 'Add Degree',
+						'min' => 0,
+						'max' => 0,
+						'collapsed' => '',
+						'sub_fields' => array(
+							array(
 								'key' => 'field_52540bcd41c3d',
 								'label' => 'Degree',
 								'name' => 'ag-people-undergrad-degree',
 								'type' => 'text',
-								'column_width' => '',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
 								'default_value' => '',
 								'placeholder' => '',
 								'prepend' => '',
@@ -136,23 +238,41 @@ class ALP_Metabox {
 								'maxlength' => '',
 							),
 						),
-						'row_min' => 0,
-						'row_limit' => '',
-						'layout' => 'table',
-						'button_label' => 'Add Degree',
 					),
-					array (
+					array(
 						'key' => 'field_52540bf641c3e',
 						'label' => 'Graduate Education',
 						'name' => 'ag-people-graduate',
 						'type' => 'repeater',
-						'sub_fields' => array (
-							array (
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'row_min' => 0,
+						'row_limit' => '',
+						'layout' => 'table',
+						'button_label' => 'Add Degree',
+						'min' => 0,
+						'max' => 0,
+						'collapsed' => '',
+						'sub_fields' => array(
+							array(
 								'key' => 'field_52540bf641c3f',
 								'label' => 'Degree',
 								'name' => 'ag-people-graduate-degree',
 								'type' => 'text',
-								'column_width' => '',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
 								'default_value' => '',
 								'placeholder' => '',
 								'prepend' => '',
@@ -161,48 +281,41 @@ class ALP_Metabox {
 								'maxlength' => '',
 							),
 						),
-						'row_min' => 0,
-						'row_limit' => '',
-						'layout' => 'table',
-						'button_label' => 'Add Degree',
 					),
-					array (
+					array(
 						'key' => 'field_52541865a0bba',
 						'label' => 'Courses Taught',
 						'name' => 'ag-people-courses',
 						'type' => 'repeater',
-						'sub_fields' => array (
-							array (
-								'key' => 'field_52541878a0bbb',
-								'label' => 'Course',
-								'name' => 'ag-people-course',
-								'type' => 'text',
-								'column_width' => '',
-								'default_value' => '',
-								'placeholder' => '',
-								'prepend' => '',
-								'append' => '',
-								'formatting' => 'none',
-								'maxlength' => '',
-							),
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
 						),
 						'row_min' => 0,
 						'row_limit' => '',
 						'layout' => 'table',
 						'button_label' => 'Add Course',
-					),
-					array (
-						'key' => 'field_5254180ea0bb8',
-						'label' => 'Awards Received',
-						'name' => 'ag-people-awards',
-						'type' => 'repeater',
-						'sub_fields' => array (
-							array (
-								'key' => 'field_52541842a0bb9',
-								'label' => 'Award',
-								'name' => 'ag-people-award',
+						'min' => 0,
+						'max' => 0,
+						'collapsed' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_52541878a0bbb',
+								'label' => 'Course',
+								'name' => 'ag-people-course',
 								'type' => 'text',
-								'column_width' => '',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
 								'default_value' => '',
 								'placeholder' => '',
 								'prepend' => '',
@@ -211,28 +324,83 @@ class ALP_Metabox {
 								'maxlength' => '',
 							),
 						),
+					),
+					array(
+						'key' => 'field_5254180ea0bb8',
+						'label' => 'Awards Received',
+						'name' => 'ag-people-awards',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
 						'row_min' => 0,
 						'row_limit' => '',
 						'layout' => 'table',
 						'button_label' => 'Add Award',
+						'min' => 0,
+						'max' => 0,
+						'collapsed' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_52541842a0bb9',
+								'label' => 'Award',
+								'name' => 'ag-people-award',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'formatting' => 'none',
+								'maxlength' => '',
+							),
+						),
 					),
-					array (
+					array(
 						'key' => 'field_525416b3f2379',
 						'label' => 'Content',
 						'name' => 'ag-people-content',
 						'type' => 'flexible_content',
-						'layouts' => array (
-							array (
-								'label' => 'Header',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'layouts' => array(
+							array(
+								'key' => '5b9be50643322',
 								'name' => 'ag-people-content-header',
+								'label' => 'Header',
 								'display' => 'row',
-								'sub_fields' => array (
-									array (
+								'sub_fields' => array(
+									array(
 										'key' => 'field_525416d5f237a',
 										'label' => 'Header',
 										'name' => 'header',
 										'type' => 'text',
-										'column_width' => '',
+										'instructions' => '',
+										'required' => 0,
+										'conditional_logic' => 0,
+										'wrapper' => array(
+											'width' => '',
+											'class' => '',
+											'id' => '',
+										),
 										'default_value' => '',
 										'placeholder' => '',
 										'prepend' => '',
@@ -241,91 +409,143 @@ class ALP_Metabox {
 										'maxlength' => '',
 									),
 								),
+								'min' => '',
+								'max' => '',
 							),
-							array (
-								'label' => 'Text',
+							array(
+								'key' => '5b9be50643344',
 								'name' => 'ag-people-content-text',
+								'label' => 'Text',
 								'display' => 'row',
-								'sub_fields' => array (
-									array (
+								'sub_fields' => array(
+									array(
 										'key' => 'field_525416f2f237c',
 										'label' => 'Text',
 										'name' => 'text',
 										'type' => 'wysiwyg',
-										'column_width' => '',
+										'instructions' => '',
+										'required' => 0,
+										'conditional_logic' => 0,
+										'wrapper' => array(
+											'width' => '',
+											'class' => '',
+											'id' => '',
+										),
 										'default_value' => '',
 										'toolbar' => 'basic',
-										'media_upload' => 'no',
+										'media_upload' => 0,
+										'tabs' => 'all',
+										'delay' => 0,
 									),
 								),
+								'min' => '',
+								'max' => '',
 							),
-							array (
-								'label' => 'Image',
+							array(
+								'key' => '5b9be50643362',
 								'name' => 'ag-people-content-image',
+								'label' => 'Image',
 								'display' => 'row',
-								'sub_fields' => array (
-									array (
+								'sub_fields' => array(
+									array(
 										'key' => 'field_5254170cf237e',
 										'label' => 'Image',
 										'name' => 'image',
 										'type' => 'image',
-										'column_width' => '',
-										'save_format' => 'object',
+										'instructions' => '',
+										'required' => 0,
+										'conditional_logic' => 0,
+										'wrapper' => array(
+											'width' => '',
+											'class' => '',
+											'id' => '',
+										),
 										'preview_size' => 'thumbnail',
 										'library' => 'all',
+										'return_format' => 'array',
+										'min_width' => 0,
+										'min_height' => 0,
+										'min_size' => 0,
+										'max_width' => 0,
+										'max_height' => 0,
+										'max_size' => 0,
+										'mime_types' => '',
 									),
 								),
+								'min' => '',
+								'max' => '',
 							),
-							array (
-								'label' => 'Gallery',
+							array(
+								'key' => '5b9be5064337f',
 								'name' => 'ag-people-content-gallery',
+								'label' => 'Gallery',
 								'display' => 'row',
-								'sub_fields' => array (
-									array (
+								'sub_fields' => array(
+									array(
 										'key' => 'field_52541732f2380',
 										'label' => 'Gallery',
 										'name' => 'gallery',
 										'type' => 'gallery',
-										'column_width' => '',
+										'instructions' => '',
+										'required' => 0,
+										'conditional_logic' => 0,
+										'wrapper' => array(
+											'width' => '',
+											'class' => '',
+											'id' => '',
+										),
 										'preview_size' => 'thumbnail',
 										'library' => 'all',
+										'min' => 0,
+										'max' => 0,
+										'min_width' => 0,
+										'min_height' => 0,
+										'min_size' => 0,
+										'max_width' => 0,
+										'max_height' => 0,
+										'max_size' => 0,
+										'mime_types' => '',
+										'insert' => 'append',
 									),
 								),
+								'min' => '',
+								'max' => '',
 							),
 						),
 						'button_label' => 'Add Section',
+						'min' => '',
+						'max' => '',
 					),
 				),
-				'location' => array (
-					array (
-						array (
+				'location' => array(
+					array(
+						array(
 							'param' => 'post_type',
 							'operator' => '==',
 							'value' => 'people',
-							'order_no' => 0,
-							'group_no' => 0,
 						),
 					),
 				),
-				'options' => array (
-					'position' => 'normal',
-					'layout' => 'no_box',
-					'hide_on_screen' => array (
-						0 => 'the_content',
-						1 => 'excerpt',
-						2 => 'custom_fields',
-						3 => 'discussion',
-						4 => 'comments',
-						5 => 'featured_image',
-						6 => 'categories',
-						7 => 'tags',
-						8 => 'send-trackbacks',
-					),
-				),
 				'menu_order' => 0,
+				'position' => 'acf_after_title',
+				'style' => 'seamless',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => array(
+					0 => 'the_content',
+					1 => 'excerpt',
+					2 => 'discussion',
+					3 => 'comments',
+					4 => 'featured_image',
+					5 => 'categories',
+					6 => 'tags',
+					7 => 'send-trackbacks',
+				),
+				'active' => 1,
+				'description' => '',
 			));
-		}
 
+		endif;
 
 	}
 
