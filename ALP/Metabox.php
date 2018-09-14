@@ -527,7 +527,7 @@ class ALP_Metabox {
 					),
 				),
 				'menu_order' => 0,
-				'position' => 'normal',
+				'position' => 'acf_after_title',
 				'style' => 'seamless',
 				'label_placement' => 'top',
 				'instruction_placement' => 'label',
