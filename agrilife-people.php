@@ -169,15 +169,6 @@ class AgriLife_People {
     if ( ! class_exists( 'Acf' ) )
       ALP_Message::install_plugin( 'Advanced Custom Fields' );
 
-    if ( ! class_exists( 'acf_field_repeater' ) )
-      ALP_Message::install_plugin( 'ACF: Repeater' );
-
-    if ( ! class_exists( 'acf_field_gallery' ) )
-      ALP_Message::install_plugin( 'ACF: Gallery' );
-
-    if ( ! class_exists( 'acf_field_flexible_content' ) )
-      ALP_Message::install_plugin( 'ACF: Flexible Content' );
-
   }
 
   /**
