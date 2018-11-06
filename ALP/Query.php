@@ -12,15 +12,15 @@ class ALP_Query {
 	 * @param  string $search The search term (optional)
 	 * @return object         A WP_Query object with the results
 	 */
-	public static function get_people( $type = '', $search = '' ) {
+	public static function get_people( $type = '', $search = '', $orderby = 'title', $order = 'ASC' ) {
 
 		// Set default arguments for every People query
 		$args = array(
 			'post_type'      => 'people',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
-			'orderby'       => 'title',
-			'order'          => 'ASC'
+			'orderby'       => $orderby,
+			'order'          => $order
 		);
 
 		// Add the person type query if needed
@@ -36,11 +36,11 @@ class ALP_Query {
 		}
 
 		// Add the search terms if needed
-		if ( ! empty( $search ) ) {
+		if ( !empty( $search ) && !in_array($search, array('true','false')) ) {
 			$args['s'] = $search;
 		}
 
-		$args = apply_filters('people_listing_args', $args);
+		$args = apply_filters( 'people_listing_args', $args );
 
 		return new WP_Query( $args );
 

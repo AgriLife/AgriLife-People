@@ -6,9 +6,20 @@
 
 class ALP_Shortcode {
 
-	public function __construct() {
+	private $name;
 
-		add_shortcode( 'people_listing', array( $this, 'create_shortcode' ) );
+	private $loop_path;
+
+	private $path;
+
+	public function __construct( $path ) {
+
+		$this->name = 'people_listing';
+		$this->path = $path;
+		$filevar = !defined('AG_EXTRES_DIR_PATH') ? '' : '-research';
+		$this->loop_path = $this->path . "views/people-list{$filevar}.php";
+
+		add_shortcode( $this->name, array( $this, 'create_shortcode' ) );
 
 	}
 
@@ -19,28 +30,34 @@ class ALP_Shortcode {
 	 */
 	public function create_shortcode( $atts ) {
 
-		extract( shortcode_atts( array(
-							'type'   => false,
-							'search' => true,
-							'lastnamefirst' => false
-						),
-						$atts ));
+		$defaults = apply_filters( "shortcode_atts_{$this->name}", array(
+			'type'          => '',
+			'search'        => 'false',
+			'lastnamefirst' => false,
+			'orderby'       => 'title',
+			'order'         => 'ASC'
+		) );
 
-		$people = ALP_Query::get_people( $type );
+		extract( shortcode_atts( $defaults, $atts, $this->name ) );
 
-		// The search parameter is passed as a string. Convert it to boolean.
-		$search = $search === 'false' ? false : $search;
+		/* Sanitize shortcode attributes
+		--------------------------------------------- */
+		$type          = esc_attr( $type ) ?: $defaults['type'];
+		$lastnamefirst = $lastnamefirst === 'true' ? true : false;
+		$order         = $order === 'DESC' ? 'DESC' : 'ASC';
+		$orderby       = sanitize_sql_orderby( $orderby ) ?: $defaults['orderby'];
 
-		// The lastnamefirst parameter is passed as a string. Convert it to boolean.
-		$lastnamefirst = $lastnamefirst === 'true' ? true : $lastnamefirst;
+		/* Output
+		--------------------------------------------- */
+		$people = ALP_Query::get_people( $type, $search, $orderby, $order );
 
 		ob_start();
-		if ( $search ) {
+		if ( $search !== 'false' ) {
 			ALP_Templates::search_form();
 		}
 
-		require PEOPLE_PLUGIN_DIR_PATH . '/views/people-list.php';
-		
+		require $this->loop_path;
+
 		$output = ob_get_contents();
 		ob_clean();
 
