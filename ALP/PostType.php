@@ -33,6 +33,7 @@ class ALP_PostType {
 			'supports' => array( 'excerpt' ),
 			'has_archive' => true,
 			'menu_icon' => 'dashicons-groups',
+      'hierarchical' => true,
 		);
 
 		// Register the People post type

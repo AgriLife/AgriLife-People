@@ -19,20 +19,23 @@ class ALP_Shortcode {
 	 */
 	public function create_shortcode( $atts ) {
 
-		extract( shortcode_atts( array(
-							'type'   => false,
-							'search' => true,
-							'lastnamefirst' => false
-						),
-						$atts ));
+		// Pull in shortcode attributes and set defaults
+		$atts = shortcode_atts( array(
+							'type'   		=> false,
+							'search' 		=> true,
+							'lastnamefirst' => false,
+							'order'         => 'ASC',
+							'orderby'       => 'title',
+						), $atts , 'people_listing' );
 
-		$people = ALP_Query::get_people( $type );
+		// Sanitize shortcode attributes
+		$type 			= ( $atts['type'] ? sanitize_text_field( $atts['type'] ) : false);
+		$search 		= filter_var( $atts['search'], FILTER_VALIDATE_BOOLEAN );
+		$lastnamefirst 	= filter_var( $atts['lastnamefirst'], FILTER_VALIDATE_BOOLEAN );
+		$order  		= sanitize_text_field( $atts['order'] );
+		$orderby		= sanitize_text_field( $atts['orderby'] );
 
-		// The search parameter is passed as a string. Convert it to boolean.
-		$search = $search === 'false' ? false : $search;
-
-		// The lastnamefirst parameter is passed as a string. Convert it to boolean.
-		$lastnamefirst = $lastnamefirst === 'true' ? true : $lastnamefirst;
+		$people = ALP_Query::get_people( $type, $search, $order, $orderby );
 
 		ob_start();
 		if ( $search ) {

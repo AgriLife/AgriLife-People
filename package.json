@@ -1,11 +1,11 @@
 {
   "name": "agrilife-people",
-  "version": "1.4.3",
+  "version": "1.5",
   "description": "People custom post type with some other goodies",
   "main": "agrilife-people.php",
   "scripts": {},
   "repository": "https://github.com/AgriLife/AgriLife-People",
-  "author": "J. Aaron Eaton",
+  "author": "Texas A&M Agrilife",
   "license": "GPL2+",
   "engines": {
     "node": "4.0.0"
