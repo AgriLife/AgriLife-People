@@ -12,7 +12,7 @@ class ALP_Shortcode {
 
 	private $path;
 
-	public function __construct( $path ) {
+	public function __construct( $path = '' ) {
 
 		$this->name = 'people_listing';
 		$this->path = $path;
