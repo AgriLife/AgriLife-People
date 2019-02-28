@@ -6,18 +6,21 @@ module.exports = (grunt) ->
         '**/*.scss'
       ]
       tasks: ['develop']
-    compass:
+    sass:
       pkg:
         options:
-          config: 'config.rb'
-          force: true
+          sourcemap: 'none'
+          style: 'compressed'
+          precision: 2
+        files:
+          'css/style.css': 'css/src/style.scss'
       dev:
         options:
-          config: 'config.rb'
-          force: true
-          outputStyle: 'expanded'
-          sourcemap: true
-          noLineComments: true
+          style: 'expanded'
+          precision: 2
+          trace: true
+        files:
+          'css/style.css': 'css/src/style.scss'
     sasslint:
       options:
         configFile: '.sass-lint.yml'
@@ -51,16 +54,17 @@ module.exports = (grunt) ->
           file: '<%= pkg.name %>.zip'
           'Content-Type': 'application/zip'
 
-  @loadNpmTasks 'grunt-contrib-compass'
+
+  @loadNpmTasks 'grunt-contrib-sass'
   @loadNpmTasks 'grunt-contrib-compress'
   @loadNpmTasks 'grunt-gh-release'
   @loadNpmTasks 'grunt-sass-lint'
   @loadNpmTasks 'grunt-contrib-watch'
 
-  @registerTask 'default', ['sasslint', 'compass:dev']
-  @registerTask 'package', ['compass:pkg']
   @registerTask 'release', ['compress', 'setreleasemsg', 'gh_release']
   @registerTask 'setreleasemsg', 'Set release message as range of commits', ->
+  @registerTask 'default', ['sasslint', 'sass:pkg']
+  @registerTask 'develop', ['sasslint', 'sass:dev']
     done = @async()
     grunt.util.spawn {
       cmd: 'git'
