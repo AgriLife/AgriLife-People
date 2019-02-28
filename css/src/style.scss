@@ -1,10 +1,10 @@
 .people-search-form {
   margin-bottom: 20px;
   padding: 10px;
-  background: #f0f0f0;
+  background: #F0F0F0;
   background: rgba(0, 0, 0, .04);
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid #F0F0F0;
+  border-bottom: 1px solid #F0F0F0;
   position: relative;
 
   .people-searchform {
@@ -19,10 +19,10 @@
       width: 90%;
       margin: 0;
       padding: 8px 0px 8px 30px;
-      background: #fff url("../img/search.png") no-repeat 5px 45%;
+      background: #FFF url("../img/search.png") no-repeat 5px 45%;
       border-radius: 10px;
       color: #999;
-      border: 1px solid #ccc;
+      border: 1px solid #CCC;
       -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
       -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
       box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -88,10 +88,6 @@
     word-break: break-word;
     margin: 0;
   }
-  // .people-extra-info dt,
-  // .people-person-details dt {
-  //   font-size: 1em;
-  // }
 }
 
 .widget_featured_person {
@@ -110,8 +106,8 @@
     padding: 0;
     zoom: 1;
     background: #000;
-    background: rgba(1,1,1,0.8);
-    border-bottom: 5px solid black;
+    background: rgba(1, 1, 1, 0.8);
+    border-bottom: 5px solid #000;
   }
 
   .featured-person-name {
@@ -122,19 +118,19 @@
 
   .featured-person-title {
     margin-top: 0;
-    color: #fff;
+    color: #FFF;
     margin: .4em .2em;
     zoom: 1;
   }
 }
 
 #aside .featured-person-info h4 {
-  color: #fff;
+  color: #FFF;
   margin: .2em;
   zoom: 1;
 
   a {
-    color: #fff;
+    color: #FFF;
   }
 }
 
@@ -159,7 +155,7 @@
   display: block;
 
   &:nth-child(even) {
-    background: #f0f0f0;
+    background: #F0F0F0;
     background: rgba(0, 0, 0, .03);
   }
 }
@@ -174,7 +170,7 @@
   list-style-type: none;
   margin-left: 0;
   padding-left: 0;
-  border-top: double #f0f0f0;
+  border-top: double #F0F0F0;
 }
 
 .people-container {
@@ -186,7 +182,7 @@
 
 .people-listing-item:hover,
 a.people-listing-link:hover {
-  background: #f1efce;
+  background: #F1EFCE;
 }
 
 .people-image {
