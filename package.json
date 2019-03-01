@@ -14,8 +14,7 @@
   "dependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-compress": "^1.4.3",
-    "grunt-contrib-sass": "^1.0.0",
-    "sass": "^1.17.2"
+    "grunt-contrib-sass": "^1.0.0"
   },
   "devDependencies": {
     "grunt-contrib-watch": "^1.1.0",
