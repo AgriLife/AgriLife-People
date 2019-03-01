@@ -516,6 +516,102 @@ class ALP_Metabox {
 						'min' => '',
 						'max' => '',
 					),
+					array(
+						'key' => 'field_5c793d5b45699',
+						'label' => 'Assistants',
+						'name' => 'ag-people-assistants',
+						'type' => 'repeater',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'collapsed' => '',
+						'min' => 0,
+						'max' => 0,
+						'layout' => 'table',
+						'button_label' => '',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5c793e514569a',
+								'label' => 'First Name',
+								'name' => 'first_name',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_5c793f584569d',
+								'label' => 'Last Name',
+								'name' => 'last_name',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_5c793f244569b',
+								'label' => 'Title',
+								'name' => 'title',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_5c793f464569c',
+								'label' => 'Email',
+								'name' => 'email',
+								'type' => 'email',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+							),
+						),
+					),
 				),
 				'location' => array(
 					array(
@@ -545,7 +641,7 @@ class ALP_Metabox {
 				'description' => '',
 			));
 
-		endif;
+			endif;
 
 	}
 

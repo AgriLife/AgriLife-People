@@ -21,6 +21,7 @@ if ( $people->have_posts() ) : ?>
 		$job_title = get_field( 'ag-people-title' );
 		$phone = get_field( 'ag-people-phone' );
 		$email = get_field( 'ag-people-email' );
+		$assistants = get_field( 'ag-people-assistants' );
 
 		if(isset($lastnamefirst) && $lastnamefirst === true){
 			$fullname = get_field( 'ag-people-last-name' ) . ', ' . get_field( 'ag-people-first-name' );
@@ -47,8 +48,37 @@ if ( $people->have_posts() ) : ?>
 
 		$markup['contact-email'] = "<p class=\"people-email email\"><a href=\"mailto:{$email}\">{$email}</a></p>";
 
+		$markup['assistants'] = '';
+
+		if ( $assistants ) {
+
+			foreach ( $assistants as $assistant ) {
+				// Ensure the item has non-empty values.
+				$assistant = array_filter( $assistant );
+
+				if ( ! empty( $assistant ) ) {
+
+					$name = sprintf( '%s %s', $assistant['first_name'], $assistant['last_name'] );
+
+					if( array_key_exists( 'email', $assistant ) ) {
+						$name = sprintf(
+							'<a href="mailto:%s">%s</a>',
+							$assistant['email'],
+							$name
+						);
+					}
+
+					$markup['assistants'] = sprintf(
+						'<p class="people-assistants">%s: %s</p>',
+						$assistant['title'],
+						$name
+					);
+				}
+			}
+		}
+
 		$markup['contact-details'] = "<div class=\"people-contact-details\">{$markup['contact-phone']}
-{$markup['contact-email']}</div>";
+{$markup['contact-email']}{$markup['assistants']}</div>";
 
 		?><li class="people-listing-item"><div class="role people-container"><?php
 

@@ -86,7 +86,45 @@ $image_alt = 'No photo found';
                             if ( get_field( 'ag-people-website' ) ) : ?>
                             <dd class="website"><a href="<?php the_field( 'ag-people-website' );?>"><?php the_field( 'ag-people-website' );?></a></dd>
                             <?php endif; ?>
-                         </dl>
+                        </dl>
+                        <?php
+
+                            $assistants = get_field( 'ag-people-assistants' );
+
+                            // Ensure no empty assistant arrays
+                            foreach ( $assistants as $key => $assistant ) {
+                                $assistants[$key] = array_filter( $assistant );
+                            }
+
+                            $assistants = array_filter( $assistants );
+
+                            if ( ! empty ( $assistants ) ) {
+
+                                echo '<div class="people-person-assistants">';
+
+                                foreach ( $assistants as $assistant ) {
+
+                                    $name = sprintf( '%s %s', $assistant['first_name'], $assistant['last_name'] );
+
+                                    if( array_key_exists( 'email', $assistant ) ) {
+                                        $name = sprintf(
+                                            '<a href="mailto:%s">%s</a>',
+                                            $assistant['email'],
+                                            $name
+                                        );
+                                    }
+
+                                    echo sprintf(
+                                        '<p class="people-assistants">%s: %s</p>',
+                                        $assistant['title'],
+                                        $name
+                                    );
+                                }
+
+                                echo '</div>';
+
+                            }
+                        ?>
                     </div>
 
                     <dl class="education">
