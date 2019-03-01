@@ -26,14 +26,21 @@ class ALP_PostType {
 
 		// Post type arguments
 		$args = array(
+			'can_export' => true,
+			'capability_type' => 'post',
+			'has_archive' => true,
 			'labels' => $labels,
 			'public' => true,
+			'publicly_queryable' => true,
+			'show_in_rest' => true,
+			'show_in_menu' => true,
+			'show_in_admin_bar' => true,
+			'show_in_nav_menus' => true,
 			'show_ui' => true,
 			'rewrite' => array( 'slug' => 'people' ),
 			'supports' => array( 'excerpt' ),
-			'has_archive' => true,
 			'menu_icon' => 'dashicons-groups',
-      'hierarchical' => true,
+			'hierarchical' => true,
 		);
 
 		// Register the People post type

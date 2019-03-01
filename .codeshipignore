@@ -48,6 +48,4 @@ css/src
 node_modules
 config.rb
 package.json
-known-issues.json
-vipscan.json
 *.md

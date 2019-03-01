@@ -130,7 +130,7 @@ class AgriLife_People {
     $alp_metabox = new ALP_Metabox;
 
     // Make the shortcode
-    $alp_shortcode = new ALP_Shortcode;
+    $alp_shortcode = new ALP_Shortcode( PEOPLE_PLUGIN_DIR_PATH );
 
     // Direct to the proper templates
     $alp_templates = new ALP_Templates;

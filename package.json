@@ -1,6 +1,6 @@
 {
   "name": "agrilife-people",
-  "version": "1.5",
+  "version": "1.5.3",
   "description": "People custom post type with some other goodies",
   "main": "agrilife-people.php",
   "scripts": {},
@@ -8,18 +8,16 @@
   "author": "Texas A&M Agrilife",
   "license": "GPL2+",
   "engines": {
-    "node": "4.0.0"
+    "node": ">=6.0.0"
   },
   "readmeFilename": "README.md",
   "dependencies": {
-    "grunt": "^0.4.2",
-    "grunt-contrib-compass": "^1.1.1",
+    "grunt": "^1.0.3",
     "grunt-contrib-compress": "^1.4.3",
-    "grunt-gh-release": "0.0.2"
+    "grunt-contrib-sass": "^1.0.0"
   },
   "devDependencies": {
-    "grunt-contrib-watch": "^0.5.3",
-    "grunt-sass-lint": "^0.2.2",
-    "nodemon": "~1.3.7"
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sass-lint": "^0.2.4"
   }
 }
