@@ -8,13 +8,14 @@
   "author": "J. Aaron Eaton",
   "license": "GPL2+",
   "engines": {
-    "node": "6.0.0"
+    "node": ">=6.0.0"
   },
   "readmeFilename": "README.md",
   "dependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-compress": "^1.4.3",
-    "grunt-contrib-sass": "^1.0.0"
+    "grunt-contrib-sass": "^1.0.0",
+    "sass": "^3.4.22"
   },
   "devDependencies": {
     "grunt-contrib-watch": "^1.1.0",
