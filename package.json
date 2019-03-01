@@ -8,7 +8,7 @@
   "author": "J. Aaron Eaton",
   "license": "GPL2+",
   "engines": {
-    "node": "4.0.0"
+    "node": "6.0.0"
   },
   "readmeFilename": "README.md",
   "dependencies": {
