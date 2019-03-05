@@ -39,9 +39,13 @@ if ( $people->have_posts() ) : ?>
 					{$markup['photo']}
 				</a></div>";
 
+		$markup['name'] = "<h3 class=\"people-name\" title=\"{$title}\"><a href=\"{$permalink}\">{$fullname}</a></h3>";
+
+		$markup['title'] = "<h4 class=\"people-title\">{$job_title}</h4>";
+
 		$markup['name-title'] = "<div class=\"people-head\">
-					<h3 class=\"people-name\" title=\"{$title}\"><a href=\"{$permalink}\">{$fullname}</a></h3>
-					<h4 class=\"people-title\">{$job_title}</h4>
+					{$markup['name']}
+					{$markup['title']}
 				</div>";
 
 		$markup['contact-phone'] = "<p class=\"people-phone tel\">{$phone}</p>";
