@@ -49,7 +49,7 @@ class ALP_Shortcode {
 
 		/* Output
 		--------------------------------------------- */
-		$people = ALP_Query::get_people( $type, $search, $orderby, $order );
+		$people = ALP_Query::get_people( $type, $search, $order, $orderby );
 
 		ob_start();
 		if ( $search !== 'false' ) {
