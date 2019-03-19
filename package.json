@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": "https://github.com/AgriLife/AgriLife-People",
   "author": "Texas A&M Agrilife",
-  "license": "GPL2+",
+  "license": "GPL-2.0+",
   "engines": {
     "node": ">=6.0.0"
   },
