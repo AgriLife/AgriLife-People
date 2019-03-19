@@ -6,11 +6,9 @@ __Description:__ People custom post type with some other goodies
 
 __Version:__ 1.1
 
-__Author:__ J. Aaron Eaton
+__Author:__ J. Aaron Eaton, Zachary Watkins
 
-__Author URI:__ http://channeleaton.com
-
-__License:__ GPL2
+__License:__ GPL2.0+
 
 ## Usage
 
@@ -62,8 +60,7 @@ Lastly, you can insert a list of people in any post or page you like by using th
 
 The following plugins must be installed and activated:
 
-* Advanced Custom Fields 5 PRO
-* Jetpack by WordPress.com
+* Advanced Custom Fields PRO, version 5 or higher
 
 To set up the repo for development for the first time, navigate to the directory in the console and run "npm run once".
 
