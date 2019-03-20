@@ -1,0 +1,17 @@
+{
+    "name": "agrilife/agrilife-people",
+    "description": "People custom post type with some other goodies",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "J. Aaron Eaton and Zachary Watkins",
+            "email": "zachary.watkins@ag.tamu.edu"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^1.0"
+    }
+}

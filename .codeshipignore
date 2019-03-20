@@ -46,6 +46,8 @@ Thumbs.db
 .sass-cache
 css/src
 node_modules
+vendor
+hooks
 config.rb
 package.json
 *.md
