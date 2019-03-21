@@ -11,7 +11,7 @@
  * Plugin Name:  AgriLife People
  * Plugin URI:   https://github.com/AgriLife/agrilife-people
  * Description:  Creates a people custom post type.
- * Version:      1.5.7
+ * Version:      1.5.8
  * Author:       J. Aaron Eaton, Zachary Watkins
  * Author Email: zachary.watkins@ag.tamu.edu
  * Text Domain:  agrilife
@@ -27,3 +27,5 @@ define( 'PEOPLE_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-agrilife-people.php';
 spl_autoload_register( 'AgriLife_People::autoload' );
 AgriLife_People::get_instance();
+
+require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Widget/FeaturedPerson.php';

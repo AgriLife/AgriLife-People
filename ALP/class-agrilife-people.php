@@ -133,6 +133,7 @@ class AgriLife_People {
 	public function init() {
 
 		// Load the plugin assets.
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Assets.php';
 		$alp_assets = new ALP_Assets();
 
 		// Create the custom post type.
@@ -140,15 +141,19 @@ class AgriLife_People {
 		$alp_posttype = new PostType();
 
 		// Create the Type taxonomy.
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Taxonomy.php';
 		$alp_taxonomy = new ALP_Taxonomy();
 
 		// Create the Metaboxes.
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Metabox.php';
 		$alp_metabox = new ALP_Metabox();
 
 		// Make the shortcode.
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Shortcode.php';
 		$alp_shortcode = new ALP_Shortcode( PEOPLE_PLUGIN_DIR_PATH );
 
 		// Direct to the proper templates.
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Templates.php';
 		$alp_templates = new ALP_Templates();
 
 	}
@@ -230,7 +235,7 @@ class AgriLife_People {
 	 */
 	public static function get_instance() {
 
-		return self::$instance;
+		return null === self::$instance ? new self() : self::$instance;
 
 	}
 
