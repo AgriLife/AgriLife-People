@@ -14,9 +14,9 @@ class ALP_Shortcode {
 
 	public function __construct( $path = '' ) {
 
-		$this->name = 'people_listing';
-		$this->path = $path;
-		$filevar = !defined('AG_EXTRES_DIR_PATH') ? '' : '-research';
+		$this->name      = 'people_listing';
+		$this->path      = $path;
+		$filevar         = ! defined( 'AG_EXTRES_DIR_PATH' ) ? '' : '-research';
 		$this->loop_path = $this->path . "views/people-list{$filevar}.php";
 
 		add_shortcode( $this->name, array( $this, 'create_shortcode' ) );
@@ -25,30 +25,37 @@ class ALP_Shortcode {
 
 	/**
 	 * Renders the 'people_listing' shortcode
+	 *
 	 * @param  string $atts The shortcode attributes
 	 * @return string       The shortcode output
 	 */
 	public function create_shortcode( $atts ) {
 
-		$defaults = apply_filters( "shortcode_atts_{$this->name}", array(
-			'type'          => '',
-			'search'        => 'false',
-			'lastnamefirst' => false,
-			'orderby'       => 'title',
-			'order'         => 'ASC'
-		) );
+		$defaults = apply_filters(
+			"shortcode_atts_{$this->name}",
+			array(
+				'type'          => '',
+				'search'        => 'false',
+				'lastnamefirst' => false,
+				'orderby'       => 'title',
+				'order'         => 'ASC',
+			)
+		);
 
 		extract( shortcode_atts( $defaults, $atts, $this->name ) );
 
-		/* Sanitize shortcode attributes
+		/*
+		 Sanitize shortcode attributes
 		--------------------------------------------- */
 		$type          = esc_attr( $type ) ?: $defaults['type'];
 		$lastnamefirst = $lastnamefirst === 'true' ? true : false;
 		$order         = $order === 'DESC' ? 'DESC' : 'ASC';
 		$orderby       = sanitize_sql_orderby( $orderby ) ?: $defaults['orderby'];
 
-		/* Output
+		/*
+		 Output
 		--------------------------------------------- */
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Query.php';
 		$people = ALP_Query::get_people( $type, $search, $order, $orderby );
 
 		ob_start();

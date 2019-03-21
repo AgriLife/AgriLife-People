@@ -5,33 +5,41 @@
 
 get_header(); ?>
 
-<div <?php
+<div 
+<?php
 
-if( !function_exists('genesis_site_layout') ){
-    echo 'id="wrap"';
+if ( ! function_exists( 'genesis_site_layout' ) ) {
+	echo 'id="wrap"';
 } else {
-    echo 'class="' . genesis_site_layout() . '-wrap"';
+	echo 'class="' . genesis_site_layout() . '-wrap"';
 }
 
-?>>
-    <div <?php
+?>
+>
+	<div 
+	<?php
 
-    if( function_exists('genesis_site_layout') ){
-      echo 'class="content" ';
-    }
+	if ( function_exists( 'genesis_site_layout' ) ) {
+		echo 'class="content" ';
+	}
 
-    ?>id="content" role="main">
+	?>
+	id="content" role="main">
 
-  		<h1 class="page-title"><?php
+		  <h1 class="page-title">
+		<?php
 			printf( __( 'People: %s', 'agriflex' ), '<span>' . $wp_query->queried_object->name . '</span>' );
-		?></h1>
+		?>
+		</h1>
 
 		<?php
 
 		$category_description = $wp_query->queried_object->description;
-		if ( ! empty( $category_description ) )
+		if ( ! empty( $category_description ) ) {
 			echo '<div class="archive-meta">' . $category_description . '</div>';
+		}
 
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Query.php';
 		$people = ALP_Query::get_people( $wp_query->queried_object->slug );
 
 		ob_start();
@@ -41,17 +49,19 @@ if( !function_exists('genesis_site_layout') ){
 
 		echo $output;
 
-			?>
-  </div><!-- #content --><?php
+		?>
+  </div><!-- #content -->
+	<?php
 
-	if( function_exists('genesis_site_layout') ){
+	if ( function_exists( 'genesis_site_layout' ) ) {
 		get_sidebar();
 	}
 
 	?>
-</div><!-- #wrap --><?php
+</div><!-- #wrap -->
+<?php
 
-if( !function_exists('genesis_site_layout') ){
+if ( ! function_exists( 'genesis_site_layout' ) ) {
 	// Not a genesis theme
 	get_sidebar();
 }
@@ -59,4 +69,3 @@ if( !function_exists('genesis_site_layout') ){
 get_footer();
 
 ?>
-
