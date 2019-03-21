@@ -8,7 +8,7 @@ $search_terms = get_search_query();
 
 get_header(); ?>
 
-<div 
+<div
 <?php
 
 if ( ! function_exists( 'genesis_site_layout' ) ) {
@@ -19,7 +19,7 @@ if ( ! function_exists( 'genesis_site_layout' ) ) {
 
 ?>
 >
-  <div 
+  <div
 	<?php
 
 	if ( function_exists( 'genesis_site_layout' ) ) {
@@ -31,6 +31,7 @@ if ( ! function_exists( 'genesis_site_layout' ) ) {
 		<h2 class="entry-title">Person search for: <?php echo $search_terms; ?></h2>
 		<?php
 
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Templates.php';
 		ALP_Templates::search_form();
 
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Query.php';

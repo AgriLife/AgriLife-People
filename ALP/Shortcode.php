@@ -60,6 +60,7 @@ class ALP_Shortcode {
 
 		ob_start();
 		if ( $search !== 'false' ) {
+			require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Templates.php';
 			ALP_Templates::search_form();
 		}
 

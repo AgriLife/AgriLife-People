@@ -6,7 +6,7 @@
 
 get_header(); ?>
 
-<div 
+<div
 <?php
 
 if ( ! function_exists( 'genesis_site_layout' ) ) {
@@ -17,7 +17,7 @@ if ( ! function_exists( 'genesis_site_layout' ) ) {
 
 ?>
 >
-  <div 
+  <div
 	<?php
 
 	if ( function_exists( 'genesis_site_layout' ) ) {
@@ -29,6 +29,7 @@ if ( ! function_exists( 'genesis_site_layout' ) ) {
 		<h1 class="entry-title">People</h1>
 		<?php
 
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Templates.php';
 		ALP_Templates::search_form();
 
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Query.php';
