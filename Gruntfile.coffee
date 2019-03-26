@@ -81,7 +81,6 @@ module.exports = (grunt) ->
       args: [ 'config', '--get', 'remote.origin.url' ]
     }, (err, result, code) ->
       if result.stdout isnt ''
-        grunt.log.writeln 'Remote origin url: ' + result
         matches = result.stdout.match /([^\/:]+)\/([^\/.]+)(\.git)?$/
         grunt.config 'release.repofullname', matches[1] + '/' + matches[2]
         grunt.task.run 'setlasttag'
@@ -94,11 +93,11 @@ module.exports = (grunt) ->
 
     grunt.util.spawn {
       cmd: 'git'
-      args: [ 'tag' ]
+      args: [ 'describe', '--tags' ]
     }, (err, result, code) ->
       if result.stdout isnt ''
-        matches = result.stdout.match /([^\n]+)$/
-        grunt.config 'release.lasttag', matches[1] + '..'
+        match = result.stdout.match /([^\n]+)/
+        grunt.config 'release.lasttag', match[1] + '..'
 
       grunt.task.run 'setmsg'
 
