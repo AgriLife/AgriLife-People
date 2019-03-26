@@ -83,14 +83,9 @@ class PostType {
 	 */
 	public function save_people_title( $post_id ) {
 
-		$slug = 'people';
-		$key  = 'post_type';
+		$type = get_post_type( $post_id );
 
-		if (
-			isset( $_POST[ $key ], $_POST[ $key . '_nonce' ] )
-			&& wp_verify_nonce( sanitize_key( $_POST[ $key . '_nonce' ] ) )
-			&& $slug !== $_POST[ $key ]
-		) {
+		if ( 'people' === $type ) {
 
 			remove_action( 'save_post', array( $this, 'save_people_title' ) );
 
@@ -111,6 +106,7 @@ class PostType {
 			wp_update_post( $args );
 
 			add_action( 'save_post', array( $this, 'save_people_title' ) );
+
 		}
 
 	}
