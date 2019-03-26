@@ -96,8 +96,8 @@ module.exports = (grunt) ->
       args: [ 'describe', '--tags' ]
     }, (err, result, code) ->
       if result.stdout isnt ''
-        match = result.stdout.match /([^\n]+)/
-        grunt.config 'release.lasttag', match[1] + '..'
+        matches = result.stdout.match /([^\n]+)/
+        grunt.config 'release.lasttag', matches[1] + '..'
 
       grunt.task.run 'setmsg'
 
