@@ -1,11 +1,19 @@
 <?php
 /**
  * The Template for displaying all people single posts.
+ *
+ * @link       https://github.com/AgriLife/agrilife-people/blob/master/single-people.php
+ * @since      0.1.0
+ * @package    agrilife-people
  */
 
-// Use site's default Genesis layout for single people page
-add_filter( 'body_class', 'alp_single_people_layout' );
-
+/**
+ * Use site's default Genesis layout for single people page.
+ *
+ * @since 0.1.0
+ * @param array $classes Existing body classes.
+ * @return array
+ */
 function alp_single_people_layout( $classes ) {
 
 	if ( function_exists( 'genesis_site_layout' ) ) {
@@ -17,21 +25,22 @@ function alp_single_people_layout( $classes ) {
 	return $classes;
 
 }
+add_filter( 'body_class', 'alp_single_people_layout' );
 
 get_header(); ?>
 
-<div 
+<div
 <?php
 
 if ( ! function_exists( 'genesis_site_layout' ) ) {
-	echo 'id="wrap"';
+	echo wp_kses_post( 'id="wrap"' );
 } else {
-	echo 'class="' . genesis_site_layout() . '-wrap"';
+	echo wp_kses_post( 'class="' . genesis_site_layout() . '-wrap"' );
 }
 
 ?>
 >
-	<div 
+	<div
 	<?php
 
 	if ( function_exists( 'genesis_site_layout' ) ) {
@@ -62,7 +71,7 @@ if ( have_posts() ) {
 			<section class="entry-content">
 				<div class="people-single-head">
 					<div class="people-single-image">
-						<img src="<?php echo $image_src; ?>" alt="<?php echo $image_alt; ?>" title="<?php echo $image_alt; ?>" width="100%" height="auto" />
+						<img src="<?php echo esc_attr( $image_src ); ?>" alt="<?php echo esc_attr( $image_alt ); ?>" title="<?php echo esc_attr( $image_alt ); ?>" width="100%" height="auto" />
 					</div>
 
 					<div class="people-person-details">
@@ -108,7 +117,7 @@ if ( have_posts() ) {
 
 						if ( $assistants ) {
 
-							// Ensure no empty assistant arrays
+							// Ensure no empty assistant arrays.
 							foreach ( $assistants as $key => $assistant ) {
 								if ( is_array( $assistant ) ) {
 									$assistants[ $key ] = array_filter( $assistant );
@@ -137,8 +146,8 @@ if ( have_posts() ) {
 
 									echo sprintf(
 										'<p class="people-assistants">%s: %s</p>',
-										$assistant['title'],
-										$name
+										wp_kses_post( $assistant['title'] ),
+										wp_kses_post( $name )
 									);
 								}
 
@@ -154,7 +163,7 @@ if ( have_posts() ) {
 						if ( get_field( 'ag-people-undergrad' ) ) {
 							echo '<dt>Undergraduate Education</dt>';
 							while ( has_sub_field( 'ag-people-undergrad' ) ) :
-								printf( '<dd>%s</dd>', get_sub_field( 'ag-people-undergrad-degree' ) );
+								printf( '<dd>%s</dd>', wp_kses_post( get_sub_field( 'ag-people-undergrad-degree' ) ) );
 							endwhile;
 						}
 						?>
@@ -163,7 +172,7 @@ if ( have_posts() ) {
 						if ( get_field( 'ag-people-graduate' ) ) {
 							echo '<dt>Graduate Education</dt>';
 							while ( has_sub_field( 'ag-people-graduate' ) ) :
-								printf( '<dd>%s</dd>', get_sub_field( 'ag-people-graduate-degree' ) );
+								printf( '<dd>%s</dd>', wp_kses_post( get_sub_field( 'ag-people-graduate-degree' ) ) );
 							endwhile;
 						}
 						?>
@@ -172,7 +181,7 @@ if ( have_posts() ) {
 						if ( get_field( 'ag-people-awards' ) ) {
 							echo '<dt>Awards</dt>';
 							while ( has_sub_field( 'ag-people-awards' ) ) :
-								printf( '<dd>%s</dd>', get_sub_field( 'ag-people-award' ) );
+								printf( '<dd>%s</dd>', wp_kses_post( get_sub_field( 'ag-people-award' ) ) );
 							endwhile;
 						}
 						?>
@@ -181,7 +190,7 @@ if ( have_posts() ) {
 						if ( get_field( 'ag-people-courses' ) ) {
 							echo '<dt>Courses Taught</dt>';
 							while ( has_sub_field( 'ag-people-courses' ) ) :
-								printf( '<dd>%s</dd>', get_sub_field( 'ag-people-course' ) );
+								printf( '<dd>%s</dd>', wp_kses_post( get_sub_field( 'ag-people-course' ) ) );
 							endwhile;
 						}
 						?>
@@ -194,17 +203,17 @@ if ( have_posts() ) {
 							$layout = get_row_layout();
 							switch ( $layout ) {
 								case 'ag-people-content-header':
-									printf( '<h3 class="people-content-header">%s</h3>', get_sub_field( 'header' ) );
+									printf( '<h3 class="people-content-header">%s</h3>', wp_kses_post( get_sub_field( 'header' ) ) );
 									break;
 								case 'ag-people-content-text':
-									printf( '<div class="people-content-text">%s</div>', get_sub_field( 'text' ) );
+									printf( '<div class="people-content-text">%s</div>', wp_kses_post( get_sub_field( 'text' ) ) );
 									break;
 								case 'ag-people-content-image':
 									$image       = get_sub_field( 'image' );
 									$image_src   = $image['url'];
 									$image_title = $image['title'];
 									$image_alt   = $image['alt'];
-									printf( '<div class="people-content-image"><img src="%s" alt="%s" title="%s" /></div>', $image_src, $image_src, $image_title );
+									printf( '<div class="people-content-image"><img src="%s" alt="%s" title="%s" /></div>', esc_attr( $image_src ), esc_attr( $image_src ), esc_attr( $image_title ) );
 									break;
 								case 'ag-people-content-gallery':
 									$images    = get_sub_field( 'gallery' );
@@ -247,7 +256,7 @@ endwhile;
 </div><!-- #wrap --><?php
 
 if ( ! function_exists( 'genesis_site_layout' ) ) {
-	// Not a genesis theme
+	// Not a genesis theme.
 	get_sidebar();
 }
 
