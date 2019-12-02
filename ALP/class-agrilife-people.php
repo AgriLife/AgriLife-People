@@ -136,6 +136,10 @@ class AgriLife_People {
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Assets.php';
 		$alp_assets = new ALP_Assets();
 
+		// Load the plugin assets.
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-message.php';
+		$alp_assets = new ALP_Message();
+
 		// Create the custom post type.
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-posttype.php';
 		$alp_posttype = new PostType();
