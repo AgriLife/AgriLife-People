@@ -1,13 +1,14 @@
 {
   "name": "agrilife-people",
-  "version": "1.5.14",
+  "version": "1.5.15",
   "description": "People custom post type with some other goodies",
   "main": "agrilife-people.php",
   "scripts": {
     "start": "git config core.hooksPath hooks && chmod u+x ./hooks/pre-commit && composer install && npm install && grunt develop",
     "checkwp": "npm run configphpcs && npm run checkphp",
     "configphpcs": "vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs && vendor/bin/phpcs --config-set ignore_errors_on_exit 1 && vendor/bin/phpcs --config-set ignore_warnings_on_exit 1",
-    "checkphp": "vendor/bin/phpcs --standard=WordPress --report=source ./*.php ./ALP && vendor/bin/phpcs --standard=WordPress ./*.php ./ALP"
+    "fixphp": "vendor/bin/phpcbf --standard=WordPress ./*.php ./ALP",
+    "checkphp": "vendor/bin/phpcs --standard=WordPress ./*.php ./ALP"
   },
   "repository": "https://github.com/AgriLife/AgriLife-People",
   "author": "Texas A&M Agrilife",

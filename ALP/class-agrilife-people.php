@@ -149,7 +149,7 @@ class AgriLife_People {
 		$alp_taxonomy = new ALP_Taxonomy();
 
 		// Create the Metaboxes.
-		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Metabox.php';
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-metabox.php';
 		$alp_metabox = new ALP_Metabox();
 
 		// Make the shortcode.

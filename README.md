@@ -114,4 +114,4 @@ To manually compile Sass files, run "npm build".
 * Updated to use Advanced Custom Fields
 * Added flexible content areas for people pages
 * Tweaked default styles
- 
+
