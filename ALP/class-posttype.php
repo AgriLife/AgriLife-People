@@ -87,26 +87,32 @@ class PostType {
 
 		if ( 'people' === $type ) {
 
-			remove_action( 'save_post', array( $this, 'save_people_title' ) );
+			$first_name = get_field( 'ag-people-first-name', $post_id );
+			$last_name  = get_field( 'ag-people-first-name', $post_id );
 
-			$people_title = sprintf(
-				'%s, %s',
-				get_field( 'ag-people-last-name', $post_id ),
-				get_field( 'ag-people-first-name', $post_id )
-			);
+			if ( ! empty( $first_name ) || ! empty( $last_name ) ) {
 
-			$people_slug = sanitize_title( $people_title );
+				remove_action( 'save_post', array( $this, 'save_people_title' ) );
 
-			$args = array(
-				'ID'         => $post_id,
-				'post_title' => $people_title,
-				'post_name'  => $people_slug,
-			);
+				$people_title = sprintf(
+					'%s, %s',
+					$first_name,
+					$last_name
+				);
 
-			wp_update_post( $args );
+				$people_slug = sanitize_title( $people_title );
 
-			add_action( 'save_post', array( $this, 'save_people_title' ) );
+				$args = array(
+					'ID'         => $post_id,
+					'post_title' => $people_title,
+					'post_name'  => $people_slug,
+				);
 
+				wp_update_post( $args );
+
+				add_action( 'save_post', array( $this, 'save_people_title' ) );
+
+			}
 		}
 
 	}
