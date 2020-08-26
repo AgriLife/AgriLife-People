@@ -1,6 +1,6 @@
 {
   "name": "agrilife-people",
-  "version": "1.5.17",
+  "version": "1.6.0",
   "description": "People custom post type with some other goodies",
   "main": "agrilife-people.php",
   "scripts": {

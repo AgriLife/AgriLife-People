@@ -86,6 +86,9 @@ class AgriLife_People {
 		// Ensure the Relevanssi plugin doesn't hide People posts.
 		add_filter( 'relevanssi_prevent_default_request', array( $this, 'rlv_fix_archive_kill' ), 10, 2 );
 
+		add_action( 'acf/init', array( $this, 'options_page' ), 9 );
+		add_action( 'acf/init', array( $this, 'genesis_layout_options' ), 11 );
+
 		// Sort posts by last name field.
 		add_action( 'pre_get_posts', array( $this, 'alp_pre_get_posts' ) );
 
@@ -217,6 +220,125 @@ class AgriLife_People {
 	}
 
 	/**
+	 * Registers the plugin settings page.
+	 *
+	 * @since 1.6.0
+	 * @return void
+	 */
+	public function options_page() {
+
+		if ( function_exists( 'acf_add_options_page' ) ) {
+
+			$settings = array(
+				'page_title'  => __( 'Settings' ),
+				'menu_title'  => __( 'Settings' ),
+				'menu_slug'   => 'agrilife-people-settings',
+				'capability'  => 'edit_plugins',
+				'position'    => '',
+				'parent_slug' => 'edit.php?post_type=people',
+			);
+
+			acf_add_options_page( $settings );
+
+			if ( function_exists( 'acf_add_local_field_group' ) ) {
+
+				acf_add_local_field_group(
+					array(
+						'key'                   => 'group_5e14d2d88b327',
+						'title'                 => 'AgriLife People Settings',
+						'fields'                => array(),
+						'location'              => array(
+							array(
+								array(
+									'param'    => 'options_page',
+									'operator' => '==',
+									'value'    => 'agrilife-people-settings',
+								),
+							),
+						),
+						'menu_order'            => 0,
+						'position'              => 'normal',
+						'style'                 => 'default',
+						'label_placement'       => 'top',
+						'instruction_placement' => 'label',
+						'hide_on_screen'        => '',
+						'active'                => true,
+						'description'           => '',
+					)
+				);
+
+			}
+		}
+	}
+
+	/**
+	 * Registers the plugin settings page fields.
+	 *
+	 * @since 1.6.0
+	 * @return void
+	 */
+	public function genesis_layout_options() {
+
+		if ( function_exists( 'acf_add_local_field' ) ) {
+
+			$enabled_layouts = genesis_get_layouts( 'site' );
+			$choices         = array( 'default' => 'Site Default' );
+			foreach ( $enabled_layouts as $key => $value ) {
+				$choices[ $key ] = $value['label'];
+			}
+
+			acf_add_local_field(
+				array(
+					'key'               => 'field_5f441f3fb9695',
+					'label'             => 'Single Person Layout',
+					'name'              => 'single_person_layout',
+					'type'              => 'select',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'choices'           => $choices,
+					'default_value'     => 'default',
+					'allow_null'        => 0,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'return_format'     => 'value',
+					'ajax'              => 0,
+					'placeholder'       => '',
+					'parent'            => 'group_5e14d2d88b327',
+				)
+			);
+			acf_add_local_field(
+				array(
+					'key'               => 'field_5f441f3fb9696',
+					'label'             => 'Search and Archive Layout',
+					'name'              => 'person_list_layout',
+					'type'              => 'select',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'choices'           => $choices,
+					'default_value'     => 'default',
+					'allow_null'        => 0,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'return_format'     => 'value',
+					'ajax'              => 0,
+					'placeholder'       => '',
+					'parent'            => 'group_5e14d2d88b327',
+				)
+			);
+		}
+	}
 
 	/**
 	 * Order people posts by last name custom field.
@@ -246,6 +368,8 @@ class AgriLife_People {
 		return $query;
 
 	}
+
+	/**
 	 * Autoloads the requested class. PSR-0 compliant
 	 *
 	 * @since 0.1.0
