@@ -155,13 +155,29 @@ class AgriLife_People {
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-message.php';
 		$alp_assets = new ALP_Message();
 
-		// Create the custom post type.
-		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-posttype.php';
-		$alp_posttype = new PostType();
+		// Create taxonomies.
+		require_once PEOPLE_PLUGIN_DIR_PATH . 'ALP/class-taxonomy.php';
+		$alp_types_taxonomy = new \AgriLife_People\Taxonomy( 'Type', 'types', 'people', 'agrilife-people' );
 
-		// Create the Type taxonomy.
-		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Taxonomy.php';
-		$alp_taxonomy = new ALP_Taxonomy();
+		// Create the custom post type.
+		require_once PEOPLE_PLUGIN_DIR_PATH . 'ALP/class-posttype.php';
+		$alp_post_type = new \Agrilife_People\PostType(
+			array(
+				'singular' => __( 'People', 'agrilife-people' ),
+				'plural'   => __( 'People', 'agrilife-people' ),
+			),
+			ALP_TEMPLATE_PATH,
+			'people',
+			'agrilife-people',
+			array( 'types' ),
+			'dashicons-groups',
+			array( 'excerpt' ),
+			array( 'single' => 'single-person.php' ),
+			array(
+				'capability_type' => 'post',
+				'hierarchical'    => true,
+			)
+		);
 		add_action( 'init', array( $this, 'remove_post_type_support' ), 12 );
 
 		// Create the Metaboxes.
@@ -169,11 +185,11 @@ class AgriLife_People {
 		$alp_metabox = new ALP_Metabox();
 
 		// Make the shortcode.
-		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Shortcode.php';
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-shortcode.php';
 		$alp_shortcode = new ALP_Shortcode( PEOPLE_PLUGIN_DIR_PATH );
 
 		// Direct to the proper templates.
-		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Templates.php';
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-templates.php';
 		$alp_templates = new ALP_Templates();
 
 	}
