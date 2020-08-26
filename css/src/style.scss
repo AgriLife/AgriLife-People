@@ -35,7 +35,8 @@
 	}
 }
 
-#content {
+#content,
+.content {
 	ul li.people-listing-item {
 		margin: 0;
 	}
@@ -220,7 +221,8 @@ a.people-listing-link:hover {
 	}
 }
 
-#content p.people-email {
+#content p.people-email,
+.content p.people-email {
 	font-size: 14px;
 }
 
@@ -254,16 +256,19 @@ img.attachment-people_single {
 }
 
 @media all and (min-width: 500px) {
-	body:not(.search-results) .people h2.entry-title {
+	body:not(.search-results) .people > h2.entry-title {
 		display: none;
 	}
 
-	#content .people-person-details dt.name {
-		font-size: 2em;
-		line-height: 1em;
-		word-wrap: break-word;
-		margin: 0;
-		display: block;
+	#content,
+	.content {
+		.people-person-details dt.name {
+			font-size: 2em;
+			line-height: 1em;
+			word-wrap: break-word;
+			margin: 0;
+			display: block;
+		}
 	}
 	.people-person-details {
 		margin-left: 45%;
