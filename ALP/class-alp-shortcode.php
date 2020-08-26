@@ -1,17 +1,50 @@
 <?php
-
 /**
- * Creates the shortcode to list people. Can be filtered by Type taxonomy
+ * Creates the shortcode to list people. Can be filtered by Type taxonomy.
+ *
+ * @link       https://github.com/AgriLife/agrilife-people/blob/master/ALP/class-alp-shortcode.php
+ * @since      1.5.7
+ * @package    agrilife-people
+ * @subpackage agrilife-people/ALP
  */
 
+/**
+ * The shortcode class.
+ *
+ * @since 0.1.0
+ * @return void
+ */
 class ALP_Shortcode {
 
+	/**
+	 * Slug of the shortcode.
+	 *
+	 * @var string
+	 */
 	private $name;
 
+	/**
+	 * Person template file.
+	 *
+	 * @var string
+	 */
 	private $loop_path;
 
+	/**
+	 * Plugin directory path.
+	 *
+	 * @var string
+	 */
 	private $path;
 
+	/**
+	 * Construct function.
+	 *
+	 * @since 0.1.0
+	 * @param string $path The plugin directory path.
+	 *
+	 * @return void
+	 */
 	public function __construct( $path = '' ) {
 
 		$this->name      = 'people_listing';
@@ -26,8 +59,8 @@ class ALP_Shortcode {
 	/**
 	 * Renders the 'people_listing' shortcode
 	 *
-	 * @param  string $atts The shortcode attributes
-	 * @return string       The shortcode output
+	 * @param  string $atts The shortcode attributes.
+	 * @return string       The shortcode output.
 	 */
 	public function create_shortcode( $atts ) {
 
@@ -42,25 +75,27 @@ class ALP_Shortcode {
 			)
 		);
 
-		extract( shortcode_atts( $defaults, $atts, $this->name ) );
+		extract( shortcode_atts( $defaults, $atts, $this->name ) ); //phpcs:ignore
 
 		/*
-		 Sanitize shortcode attributes
-		--------------------------------------------- */
+		Sanitize shortcode attributes
+		---------------------------------------------
+		*/
 		$type          = esc_attr( $type ) ?: $defaults['type'];
-		$lastnamefirst = $lastnamefirst === 'true' ? true : false;
-		$order         = $order === 'DESC' ? 'DESC' : 'ASC';
+		$lastnamefirst = 'true' === $lastnamefirst ? true : false;
+		$order         = 'DESC' === $order ? 'DESC' : 'ASC';
 		$orderby       = sanitize_sql_orderby( $orderby ) ?: $defaults['orderby'];
 
 		/*
-		 Output
-		--------------------------------------------- */
+		Output
+		---------------------------------------------
+		*/
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Query.php';
 		$people = ALP_Query::get_people( $type, $search, $order, $orderby );
 
 		ob_start();
-		if ( $search !== 'false' ) {
-			require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Templates.php';
+		if ( 'false' !== $search ) {
+			require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-templates.php';
 			ALP_Templates::search_form();
 		}
 
