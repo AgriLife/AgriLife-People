@@ -229,7 +229,7 @@ function alp_post_content() {
 		</dl>
 
 
-		<div class="people-person-content">
+		<div class="people-person-content cell small-12 medium-12">
 			<?php
 			while ( has_sub_field( 'ag-people-content' ) ) :
 				$layout = get_row_layout();
