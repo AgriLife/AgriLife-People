@@ -190,7 +190,7 @@ function alp_post_content() {
 			?>
 		</div>
 
-		<dl class="education">
+		<dl class="education cell small-12 medium-12">
 			<?php
 			if ( get_field( 'ag-people-undergrad' ) ) {
 				echo '<dt>Undergraduate Education</dt>';
