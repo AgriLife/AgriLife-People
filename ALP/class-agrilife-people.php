@@ -92,6 +92,9 @@ class AgriLife_People {
 		// Sort posts by last name field.
 		add_action( 'pre_get_posts', array( $this, 'alp_pre_get_posts' ) );
 
+		// Change Genesis page layout based on settings.
+		add_filter( 'genesis_pre_get_option_site_layout', array( $this, 'alp_single_person_layout_filter' ) );
+
 		// Format People excerpt output.
 		add_filter( 'get_the_excerpt', array( $this, 'filter_site_search_results' ) );
 
@@ -385,6 +388,37 @@ class AgriLife_People {
 	public function remove_post_type_support() {
 
 		remove_post_type_support( 'people', 'genesis-entry-meta-before-content' );
+
+	}
+
+	/**
+	 * Set person layout choice.
+	 *
+	 * @since 1.6.0
+	 * @param mixed $layout Return string of layout choice or false to use site default.
+	 * @return mixed
+	 */
+	public function alp_single_person_layout_filter( $layout ) {
+
+		$field_name = false;
+		if ( is_archive() && is_post_type_archive( 'people' ) ) {
+			$field_name = 'person_list_layout';
+		} elseif ( is_singular( 'people' ) ) {
+			$field_name = 'single_person_layout';
+		}
+
+		if ( $field_name ) {
+
+			$layout_choice = get_field( $field_name, 'option' );
+
+			if ( ! empty( $layout_choice ) && 'default' !== $layout_choice ) {
+
+				return $layout_choice;
+
+			}
+		}
+
+		return $layout;
 
 	}
 
