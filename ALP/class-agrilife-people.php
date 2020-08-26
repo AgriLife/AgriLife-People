@@ -92,6 +92,9 @@ class AgriLife_People {
 		// Sort posts by last name field.
 		add_action( 'pre_get_posts', array( $this, 'alp_pre_get_posts' ) );
 
+		// Set the post title as Last, First.
+		add_action( 'save_post', array( $this, 'save_people_title' ) );
+
 	}
 
 	/**
@@ -366,6 +369,49 @@ class AgriLife_People {
 		}
 
 		return $query;
+
+	}
+
+	/**
+	 * Saves the title as Last, First
+	 *
+	 * @since 1.6.0
+	 * @param  int $post_id The current post ID.
+	 * @return void
+	 */
+	public function save_people_title( $post_id ) {
+
+		$type = get_post_type( $post_id );
+
+		if ( 'people' === $type ) {
+
+			$first_name = get_field( 'ag-people-first-name', $post_id );
+			$last_name  = get_field( 'ag-people-last-name', $post_id );
+
+			if ( ! empty( $first_name ) || ! empty( $last_name ) ) {
+
+				remove_action( 'save_post', array( $this, 'save_people_title' ) );
+
+				$people_title = sprintf(
+					'%s, %s',
+					$last_name,
+					$first_name
+				);
+
+				$people_slug = sanitize_title( $people_title );
+
+				$args = array(
+					'ID'         => $post_id,
+					'post_title' => $people_title,
+					'post_name'  => $people_slug,
+				);
+
+				wp_update_post( $args );
+
+				add_action( 'save_post', array( $this, 'save_people_title' ) );
+
+			}
+		}
 
 	}
 
