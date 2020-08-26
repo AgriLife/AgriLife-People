@@ -22,6 +22,7 @@
 define( 'PEOPLE_PLUGIN_DIRNAME', 'agrilife-people' );
 define( 'PEOPLE_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PEOPLE_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+define( 'ALP_TEMPLATE_PATH', PEOPLE_PLUGIN_DIR_PATH . 'templates' );
 
 // Autoload all classes.
 require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-agrilife-people.php';
