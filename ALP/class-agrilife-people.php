@@ -159,6 +159,7 @@ class AgriLife_People {
 		// Create the Type taxonomy.
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/Taxonomy.php';
 		$alp_taxonomy = new ALP_Taxonomy();
+		add_action( 'init', array( $this, 'remove_post_type_support' ), 12 );
 
 		// Create the Metaboxes.
 		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-alp-metabox.php';
@@ -372,6 +373,18 @@ class AgriLife_People {
 		}
 
 		return $query;
+
+	}
+
+	/**
+	 * Remove post type support.
+	 *
+	 * @since 1.6.0
+	 * @return void
+	 */
+	public function remove_post_type_support() {
+
+		remove_post_type_support( 'people', 'genesis-entry-meta-before-content' );
 
 	}
 
