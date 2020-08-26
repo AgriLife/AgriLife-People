@@ -86,6 +86,9 @@ class AgriLife_People {
 		// Ensure the Relevanssi plugin doesn't hide People posts.
 		add_filter( 'relevanssi_prevent_default_request', array( $this, 'rlv_fix_archive_kill' ), 10, 2 );
 
+		// Sort posts by last name field.
+		add_action( 'pre_get_posts', array( $this, 'alp_pre_get_posts' ) );
+
 	}
 
 	/**
@@ -214,6 +217,35 @@ class AgriLife_People {
 	}
 
 	/**
+
+	/**
+	 * Order people posts by last name custom field.
+	 *
+	 * @since 1.6.0
+	 * @param object $query The current post query.
+	 *
+	 * @return object
+	 */
+	public function alp_pre_get_posts( $query ) {
+
+		// Do not modify queries in the admin.
+		if ( is_admin() ) {
+
+			return $query;
+
+		}
+
+		if ( isset( $query->query_vars['post_type'] ) && 'people' === $query->query_vars['post_type'] ) {
+
+			$query->set( 'orderby', 'meta_value' );
+			$query->set( 'meta_key', 'ag-people-last-name' );
+			$query->set( 'order', 'ASC' );
+
+		}
+
+		return $query;
+
+	}
 	 * Autoloads the requested class. PSR-0 compliant
 	 *
 	 * @since 0.1.0
