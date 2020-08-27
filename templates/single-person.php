@@ -268,13 +268,14 @@ function alp_post_content() {
 	<?php
 
 }
-add_action( 'the_content', 'alp_post_content' );
 
 get_header();
 
 if ( function_exists( 'genesis' ) ) {
+	add_action( 'genesis_entry_content', 'alp_post_content' );
 	genesis();
 } else {
+	add_action( 'the_content', 'alp_post_content' );
 	// Probably AgriFlex2.
 	?>
 	<div id="wrap">
