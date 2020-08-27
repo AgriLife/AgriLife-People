@@ -7,8 +7,8 @@
     "start": "git config core.hooksPath hooks && chmod u+x ./hooks/pre-commit && composer install && npm install && grunt develop",
     "checkwp": "npm run configphpcs && npm run checkphp",
     "configphpcs": "vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs && vendor/bin/phpcs --config-set ignore_errors_on_exit 1 && vendor/bin/phpcs --config-set ignore_warnings_on_exit 1",
-    "fixphp": "vendor/bin/phpcbf --standard=WordPress ./*.php ./ALP",
-    "checkphp": "vendor/bin/phpcs --standard=WordPress ./*.php ./ALP"
+    "fixphp": "vendor/bin/phpcbf --standard=WordPress ./*.php ./ALP ./templates ./views",
+    "checkphp": "vendor/bin/phpcs --standard=WordPress ./*.php ./ALP ./templates ./views"
   },
   "repository": "https://github.com/AgriLife/AgriLife-People",
   "author": "Texas A&M Agrilife",
