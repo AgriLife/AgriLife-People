@@ -104,13 +104,13 @@ function alp_post_content() {
 			<dl class="details">
 				<dt class="name">
 				<?php
-					if ( function_exists( 'genesis_do_post_title' ) ) {
-						genesis_entry_header_markup_open();
-						genesis_do_post_title();
-						genesis_entry_header_markup_close();
-					} else {
-						echo get_field( 'ag-people-first-name' ) . ' ' . get_field( 'ag-people-last-name' );
-					}
+				if ( function_exists( 'genesis_do_post_title' ) ) {
+					genesis_entry_header_markup_open();
+					genesis_do_post_title();
+					genesis_entry_header_markup_close();
+				} else {
+					echo wp_kses_post( get_field( 'ag-people-first-name' ) . ' ' . get_field( 'ag-people-last-name' ) );
+				}
 				?>
 				</dt>
 
@@ -272,4 +272,26 @@ add_action( 'the_content', 'alp_post_content' );
 
 get_header();
 
-genesis();
+if ( function_exists( 'genesis' ) ) {
+	genesis();
+} else {
+	// Probably AgriFlex2.
+	?>
+	<div id="wrap">
+		<div id="content" role="main">
+			<?php
+			alp_all_people_link();
+			?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<h2 class="entry-title"><?php the_field( 'ag-people-first-name' ); ?> <?php the_field( 'ag-people-last-name' ); ?></h2>
+				<section class="entry-content">
+				<?php
+				the_content();
+				?>
+				</section>
+			</article>
+		</div>
+	</div>
+	<?php
+	get_footer();
+}
