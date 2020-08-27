@@ -104,9 +104,13 @@ function alp_post_content() {
 			<dl class="details">
 				<dt class="name">
 				<?php
-					genesis_entry_header_markup_open();
-					genesis_do_post_title();
-					genesis_entry_header_markup_close();
+					if ( function_exists( 'genesis_do_post_title' ) ) {
+						genesis_entry_header_markup_open();
+						genesis_do_post_title();
+						genesis_entry_header_markup_close();
+					} else {
+						echo get_field( 'ag-people-first-name' ) . ' ' . get_field( 'ag-people-last-name' );
+					}
 				?>
 				</dt>
 
