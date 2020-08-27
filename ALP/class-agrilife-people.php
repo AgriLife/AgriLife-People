@@ -305,7 +305,7 @@ class AgriLife_People {
 	 */
 	public function genesis_layout_options() {
 
-		if ( function_exists( 'acf_add_local_field' ) ) {
+		if ( function_exists( 'genesis_get_layouts' ) && function_exists( 'acf_add_local_field' ) ) {
 
 			$enabled_layouts = genesis_get_layouts( 'site' );
 			$choices         = array( 'default' => 'Site Default' );
