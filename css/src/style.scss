@@ -36,6 +36,7 @@
 }
 
 #content,
+#content-wrap,
 .content {
 	ul li.people-listing-item {
 		margin: 0;
@@ -221,9 +222,12 @@ a.people-listing-link:hover {
 	}
 }
 
-#content p.people-email,
-.content p.people-email {
-	font-size: 14px;
+#content,
+.content,
+#content-wrap {
+	p.people-email {
+		font-size: 14px;
+	}
 }
 
 .people-content-header {
@@ -261,7 +265,8 @@ img.attachment-people_single {
 	}
 
 	#content,
-	.content {
+	.content,
+	#content-wrap {
 		.people-person-details dt.name {
 			font-size: 2em;
 			line-height: 1em;
