@@ -86,14 +86,11 @@ class AgriLife_People {
 		// Ensure the Relevanssi plugin doesn't hide People posts.
 		add_filter( 'relevanssi_prevent_default_request', array( $this, 'rlv_fix_archive_kill' ), 10, 2 );
 
-		add_action( 'acf/init', array( $this, 'options_page' ), 9 );
-		add_action( 'acf/init', array( $this, 'genesis_layout_options' ), 11 );
+		// Change Genesis page layout based on settings.
+		add_action( 'after_setup_theme', array( $this, 'add_genesis_layout_settings' ) );
 
 		// Sort posts by last name field.
 		add_action( 'pre_get_posts', array( $this, 'alp_pre_get_posts' ) );
-
-		// Change Genesis page layout based on settings.
-		add_filter( 'genesis_pre_get_option_site_layout', array( $this, 'alp_single_person_layout_filter' ) );
 
 		// Format People excerpt output.
 		add_filter( 'get_the_excerpt', array( $this, 'filter_site_search_results' ) );
@@ -101,6 +98,23 @@ class AgriLife_People {
 		// Set the post title as Last, First.
 		add_action( 'save_post', array( $this, 'save_people_title' ) );
 
+	}
+
+	/**
+	 * Add AgriLife People Settings page with Genesis theme layout options.
+	 *
+	 * @since 1.6.0
+	 * @return void
+	 */
+	public function add_genesis_layout_settings() {
+
+		if ( function_exists( 'genesis_get_layouts' ) ) {
+
+			add_action( 'acf/init', array( $this, 'options_page' ), 9 );
+			add_action( 'acf/init', array( $this, 'genesis_layout_options' ), 11 );
+			add_filter( 'genesis_pre_get_option_site_layout', array( $this, 'alp_single_person_layout_filter' ) );
+
+		}
 	}
 
 	/**
@@ -305,7 +319,7 @@ class AgriLife_People {
 	 */
 	public function genesis_layout_options() {
 
-		if ( function_exists( 'genesis_get_layouts' ) && function_exists( 'acf_add_local_field' ) ) {
+		if ( function_exists( 'acf_add_local_field' ) ) {
 
 			$enabled_layouts = genesis_get_layouts( 'site' );
 			$choices         = array( 'default' => 'Site Default' );
