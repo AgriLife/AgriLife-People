@@ -18,7 +18,7 @@
   },
   "readmeFilename": "README.md",
   "dependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.3",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-sass": "^1.0.0"
   },
