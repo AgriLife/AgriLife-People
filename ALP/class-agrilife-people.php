@@ -125,7 +125,7 @@ class AgriLife_People {
 	 * @return boolean
 	 */
 	public function rlv_fix_archive_kill( $kill, $query ) {
-		if ( empty( $query->query_vars[ ‘s’ ] ) ) {
+		if ( empty( $query->query_vars[ 's' ] ) ) {
 			$kill = false;
 		}
 		return $kill;
