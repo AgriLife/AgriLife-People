@@ -7,6 +7,12 @@
  * @package    agrilife-people
  */
 
+
+// EB March 2023: Disable Relvanssi on ALP search results page so that Relevanssi doesn't block ALP search results
+remove_filter( 'posts_request', 'relevanssi_prevent_default_request' ); 
+remove_filter( 'posts_pre_query', 'relevanssi_query', 99 );
+
+// Run the query
 $search_terms = get_search_query();
 
 get_header(); ?>
