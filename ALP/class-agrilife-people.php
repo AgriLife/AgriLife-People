@@ -83,8 +83,10 @@ class AgriLife_People {
 		// Get the widgets ready.
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
+		/* EB March 2023: This no longer works after PHP8 / WP 6.1 - we are now disabling Relevanssi on search-people.php to fix this issue 
 		// Ensure the Relevanssi plugin doesn't hide People posts.
 		add_filter( 'relevanssi_prevent_default_request', array( $this, 'rlv_fix_archive_kill' ), 10, 2 );
+		*/
 
 		// Change Genesis page layout based on settings.
 		add_action( 'after_setup_theme', array( $this, 'add_genesis_layout_settings' ) );
@@ -116,7 +118,7 @@ class AgriLife_People {
 
 		}
 	}
-
+	// EB March 2023: This no longer works after PHP8 / WP 6.1 - we are now disabling Relevanssi on search-people.php to fix this issue 
 	/**
 	 * Ensure the Relevanssi plugin doesn't hide People posts
 	 *
@@ -124,12 +126,13 @@ class AgriLife_People {
 	 * @param object  $query The query object.
 	 * @return boolean
 	 */
+	/*
 	public function rlv_fix_archive_kill( $kill, $query ) {
 		if ( empty( $query->query_vars[ 's' ] ) ) {
 			$kill = false;
 		}
 		return $kill;
-	}
+	} */
 
 	/**
 	 * Items to run on plugin activation
