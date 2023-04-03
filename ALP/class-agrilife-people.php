@@ -177,7 +177,7 @@ class AgriLife_People {
 		$alp_types_taxonomy = new \AgriLife_People\Taxonomy( 'Type', 'types', 'people', 'agrilife-people' );
 
 		// Create the custom post type.
-		require_once PEOPLE_PLUGIN_DIR_PATH . 'ALP/class-posttype.php';
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-posttype.php';
 		$alp_post_type = new \Agrilife_People\PostType(
 			array(
 				'singular' => __( 'People', 'agrilife-people' ),
