@@ -173,7 +173,7 @@ class AgriLife_People {
 		$alp_assets = new ALP_Message();
 
 		// Create taxonomies.
-		require_once PEOPLE_PLUGIN_DIR_PATH . 'ALP/class-taxonomy.php';
+		require_once PEOPLE_PLUGIN_DIR_PATH . '/ALP/class-taxonomy.php';
 		$alp_types_taxonomy = new \AgriLife_People\Taxonomy( 'Type', 'types', 'people', 'agrilife-people' );
 
 		// Create the custom post type.
